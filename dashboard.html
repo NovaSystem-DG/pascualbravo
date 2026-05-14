@@ -1,2735 +1,1184 @@
 <!doctype html>
-<html lang="es" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Institución Universitaria Pascual Bravo</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      /* ── TOKENS ── */
-      :root {
-        --pb-blue: #1a3a6b;
-        --pb-blue-dark: #0f2347;
-        --pb-blue-mid: #254e96;
-        --pb-blue-pale: #eaf0fb;
-        --pb-gold: #f0b429;
-        --bg: #ffffff;
-        --bg-soft: #f5f7fb;
-        --bg-card: #ffffff;
-        --text: #18121e;
-        --text-soft: #2d3a50;
-        --muted: #6e7a90;
-        --border: #dde3ef;
-        --shadow-sm: 0 1px 4px rgba(26, 58, 107, 0.07);
-        --shadow-md: 0 4px 20px rgba(26, 58, 107, 0.12);
-      }
-      [data-theme="dark"] {
-        --bg: #0b0f1a;
-        --bg-soft: #0f1626;
-        --bg-card: #141d30;
-        --text: #e8edf6;
-        --text-soft: #b0bcd4;
-        --muted: #7a8ba8;
-        --border: #1e2e4a;
-        --pb-blue-pale: #0d1e3a;
-        --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.35);
-        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.45);
-      }
-
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        overflow-x: hidden;
-        transition:
-          background 0.28s,
-          color 0.28s;
-      }
-      a {
-        text-decoration: none;
-      }
-      img {
-        display: block;
-      }
-
-      /* ── GOV BAR ── */
-      .govco-bar {
-        background: var(--pb-blue-dark);
-        padding: 5px 0;
-        font-size: 0.73rem;
-      }
-      .govco-bar a {
-        color: rgba(255, 255, 255, 0.6);
-        transition: color 0.15s;
-      }
-      .govco-bar a:hover {
-        color: #fff;
-      }
-      .govco-bar .sep {
-        color: rgba(255, 255, 255, 0.22);
-        margin: 0 10px;
-      }
-      .govco-logo {
-        height: 16px;
-        filter: brightness(0) invert(1);
-        opacity: 0.7;
-      }
-
-      /* ── UTILITY BAR ── */
-      .utility-bar {
-        background: var(--bg-card);
-        border-bottom: 1px solid var(--border);
-        padding: 7px 0;
-        font-size: 0.78rem;
-        transition:
-          background 0.28s,
-          border-color 0.28s;
-      }
-      .utility-bar .soy-label {
-        color: var(--muted);
-        font-weight: 600;
-        margin-right: 6px;
-      }
-      .utility-bar a {
-        color: var(--pb-blue);
-        font-weight: 500;
-        margin: 0 4px;
-      }
-      .utility-bar a:hover {
-        color: var(--pb-blue-mid);
-      }
-      .social-link {
-        color: var(--muted);
-        display: inline-flex;
-        align-items: center;
-        padding: 4px 6px;
-        border-radius: 6px;
-        transition: background 0.15s;
-      }
-      .social-link:hover {
-        background: var(--pb-blue-pale);
-        color: var(--pb-blue) !important;
-      }
-
-      /* dark mode toggle — inline in utility bar */
-      .dm-toggle {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        cursor: pointer;
-        user-select: none;
-      }
-      .dm-pill {
-        width: 34px;
-        height: 18px;
-        border-radius: 9px;
-        background: var(--border);
-        position: relative;
-        transition: background 0.25s;
-      }
-      .dm-pill::after {
-        content: "";
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: #fff;
-        top: 3px;
-        left: 3px;
-        transition:
-          left 0.22s,
-          background 0.22s;
-      }
-      [data-theme="dark"] .dm-pill {
-        background: var(--pb-blue-mid);
-      }
-      [data-theme="dark"] .dm-pill::after {
-        left: 19px;
-      }
-      .dm-label {
-        font-size: 0.72rem;
-        font-weight: 600;
-        color: var(--muted);
-        white-space: nowrap;
-      }
-
-      /* ── MAIN NAV ── */
-      .main-nav {
-        background: var(--bg-card);
-        border-bottom: 2px solid var(--border);
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        box-shadow: var(--shadow-sm);
-        transition:
-          background 0.28s,
-          border-color 0.28s;
-      }
-      .main-nav .inner {
-        display: flex;
-        align-items: center;
-        padding: 0 24px;
-        max-width: 1320px;
-        margin: 0 auto;
-      }
-      .nav-logo {
-        height: 50px;
-        padding: 6px 0;
-        margin-right: 28px;
-      }
-      [data-theme="dark"] .nav-logo {
-        filter: brightness(0) invert(1);
-        opacity: 0.9;
-      }
-      .nav-menu {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        flex: 1;
-      }
-      .nav-menu > li > a {
-        display: block;
-        padding: 18px 12px;
-        color: var(--text-soft);
-        font-size: 0.84rem;
-        font-weight: 600;
-        position: relative;
-        transition: color 0.15s;
-        white-space: nowrap;
-      }
-      .nav-menu > li > a::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 12px;
-        right: 12px;
-        height: 2px;
-        background: var(--pb-blue);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.22s;
-      }
-      .nav-menu > li > a:hover {
-        color: var(--pb-blue);
-      }
-      .nav-menu > li > a:hover::after {
-        transform: scaleX(1);
-      }
-      .nav-menu > li > a.active-link {
-        color: var(--pb-blue);
-      }
-      .nav-menu > li > a.active-link::after {
-        transform: scaleX(1);
-      }
-      .nav-actions {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-left: auto;
-      }
-      .btn-search {
-        background: none;
-        border: none;
-        color: var(--muted);
-        cursor: pointer;
-        padding: 7px;
-        border-radius: 8px;
-        transition: background 0.15s;
-        display: flex;
-      }
-      .btn-search:hover {
-        background: var(--pb-blue-pale);
-        color: var(--pb-blue);
-      }
-      .btn-sicau {
-        background: var(--pb-blue);
-        color: #fff;
-        font-size: 0.82rem;
-        font-weight: 700;
-        padding: 8px 18px;
-        border-radius: 8px;
-        white-space: nowrap;
-        transition: background 0.2s;
-      }
-      .btn-sicau:hover {
-        background: var(--pb-blue-mid);
-        color: #fff;
-      }
-
-      /* ── HERO ── */
-      .hero-slider {
-        position: relative;
-        overflow: hidden;
-        background: var(--pb-blue-dark);
-        min-height: 400px;
-      }
-      .hero-slide {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.7s ease;
-        pointer-events: none;
-      }
-      .hero-slide.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .hero-slide-bg {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-      }
-      .hero-slide-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          95deg,
-          rgba(15, 35, 71, 0.93) 0%,
-          rgba(15, 35, 71, 0.58) 55%,
-          rgba(15, 35, 71, 0.18) 100%
-        );
-      }
-      .hero-slide-content {
-        position: relative;
-        z-index: 2;
-        max-width: 600px;
-        padding: 64px 0;
-      }
-      .hero-chip {
-        display: inline-block;
-        background: var(--pb-gold);
-        color: #1a1200;
-        font-size: 0.7rem;
-        font-weight: 800;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        padding: 4px 12px;
-        border-radius: 4px;
-        margin-bottom: 18px;
-      }
-      .hero-slide-content h1 {
-        font-size: clamp(1.9rem, 4vw, 3rem);
-        font-weight: 800;
-        color: #fff;
-        line-height: 1.1;
-        margin-bottom: 14px;
-      }
-      .hero-slide-content p {
-        color: rgba(255, 255, 255, 0.76);
-        font-size: 0.94rem;
-        line-height: 1.75;
-        max-width: 460px;
-        margin-bottom: 28px;
-      }
-      .btn-hero {
-        background: var(--pb-gold);
-        color: #1a1200;
-        font-weight: 700;
-        font-size: 0.88rem;
-        padding: 11px 24px;
-        border-radius: 8px;
-        display: inline-block;
-        transition:
-          transform 0.15s,
-          box-shadow 0.15s;
-      }
-      .btn-hero:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 18px rgba(240, 180, 41, 0.4);
-        color: #1a1200;
-      }
-      .hero-ctrl {
-        position: absolute;
-        bottom: 18px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 10;
-        display: flex;
-        gap: 7px;
-      }
-      .hero-dot {
-        width: 28px;
-        height: 4px;
-        border-radius: 2px;
-        background: rgba(255, 255, 255, 0.3);
-        cursor: pointer;
-        border: none;
-        transition:
-          background 0.2s,
-          width 0.2s;
-      }
-      .hero-dot.active {
-        background: var(--pb-gold);
-        width: 42px;
-      }
-      .hero-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 10;
-        background: rgba(255, 255, 255, 0.14);
-        backdrop-filter: blur(6px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #fff;
-        border-radius: 50%;
-        width: 38px;
-        height: 38px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 1.1rem;
-        transition: background 0.2s;
-        user-select: none;
-      }
-      .hero-arrow:hover {
-        background: rgba(255, 255, 255, 0.26);
-      }
-      .hero-arrow.prev {
-        left: 14px;
-      }
-      .hero-arrow.next {
-        right: 14px;
-      }
-
-      /* ── PROFILES ── */
-      .profiles-section {
-        background: var(--bg-card);
-        border-bottom: 1px solid var(--border);
-        transition:
-          background 0.28s,
-          border-color 0.28s;
-      }
-      .profile-grid {
-        display: flex;
-      }
-      .profile-item {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        padding: 20px 10px;
-        border-right: 1px solid var(--border);
-        transition:
-          background 0.15s,
-          border-color 0.28s;
-        cursor: pointer;
-      }
-      .profile-item:last-child {
-        border-right: none;
-      }
-      .profile-item:hover {
-        background: var(--pb-blue-pale);
-      }
-      .profile-item:hover .profile-icon-wrap {
-        background: var(--pb-blue);
-      }
-      .profile-item:hover .profile-icon-wrap svg {
-        stroke: #fff;
-      }
-      .profile-item:hover .profile-name {
-        color: var(--pb-blue);
-      }
-      .profile-icon-wrap {
-        width: 46px;
-        height: 46px;
-        border-radius: 13px;
-        background: var(--pb-blue-pale);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.15s;
-      }
-      .profile-icon-wrap svg {
-        width: 22px;
-        height: 22px;
-        stroke: var(--pb-blue);
-        fill: none;
-        stroke-width: 1.8;
-      }
-      .profile-name {
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: var(--text);
-      }
-      .profile-desc {
-        font-size: 0.7rem;
-        color: var(--muted);
-        text-align: center;
-        line-height: 1.35;
-      }
-      .profile-btn {
-        font-size: 0.7rem;
-        font-weight: 700;
-        color: var(--pb-blue);
-        background: transparent;
-        border: 1.5px solid var(--pb-blue);
-        border-radius: 6px;
-        padding: 3px 10px;
-        transition:
-          background 0.15s,
-          color 0.15s;
-        margin-top: 2px;
-      }
-      .profile-btn:hover {
-        background: var(--pb-blue);
-        color: #fff;
-      }
-
-      /* ── MAIN SECTION ── */
-      .main-section {
-        padding: 32px 0 52px;
-        background: var(--bg-soft);
-        transition: background 0.28s;
-      }
-      .section-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 16px;
-      }
-      .section-head h2 {
-        font-size: 1rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: var(--text);
-      }
-      .section-head h2 span {
-        color: var(--pb-blue);
-      }
-      .see-all {
-        font-size: 0.78rem;
-        font-weight: 600;
-        color: var(--pb-blue);
-      }
-      .see-all:hover {
-        text-decoration: underline;
-      }
-
-      /* ── NEWS CARDS ── */
-      .news-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 13px;
-        overflow: hidden;
-        box-shadow: var(--shadow-sm);
-        transition:
-          box-shadow 0.2s,
-          transform 0.2s,
-          background 0.28s,
-          border-color 0.28s;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-      .news-card:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateY(-3px);
-      }
-      .news-card-img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-      }
-      .news-card-body {
-        padding: 14px 16px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      .news-badge {
-        font-size: 0.67rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.8px;
-        color: var(--pb-blue);
-        background: var(--pb-blue-pale);
-        padding: 3px 8px;
-        border-radius: 4px;
-        display: inline-block;
-        margin-bottom: 8px;
-      }
-      .news-card-body h4 {
-        font-size: 0.88rem;
-        font-weight: 700;
-        line-height: 1.45;
-        flex: 1;
-        color: var(--text);
-      }
-      .news-card-body small {
-        font-size: 0.73rem;
-        color: var(--muted);
-        margin-top: 8px;
-        display: block;
-      }
-      .news-link {
-        font-size: 0.76rem;
-        font-weight: 600;
-        color: var(--pb-blue);
-        margin-top: 8px;
-        display: inline-block;
-      }
-      .news-link:hover {
-        text-decoration: underline;
-      }
-
-      /* ── WIDGETS ── */
-      .widget-box {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 13px;
-        padding: 18px;
-        box-shadow: var(--shadow-sm);
-        transition:
-          background 0.28s,
-          border-color 0.28s;
-      }
-      .widget-box h5 {
-        font-size: 0.92rem;
-        font-weight: 800;
-        margin-bottom: 6px;
-        color: var(--text);
-      }
-      .widget-box p {
-        font-size: 0.82rem;
-        color: var(--muted);
-        line-height: 1.65;
-      }
-      .widget-tag {
-        display: inline-block;
-        font-size: 0.67rem;
-        font-weight: 700;
-        letter-spacing: 0.8px;
-        text-transform: uppercase;
-        color: var(--pb-blue);
-        background: var(--pb-blue-pale);
-        padding: 3px 8px;
-        border-radius: 4px;
-        margin-bottom: 8px;
-      }
-
-      /* ── QUICK SERVICES ── */
-      .quick-services-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-      }
-      .qs-item {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 11px;
-        padding: 14px 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 9px;
-        box-shadow: var(--shadow-sm);
-        transition:
-          border-color 0.15s,
-          box-shadow 0.15s,
-          transform 0.15s,
-          background 0.28s;
-        cursor: pointer;
-        text-align: center;
-      }
-      .qs-item:hover {
-        border-color: var(--pb-blue);
-        box-shadow: var(--shadow-md);
-        transform: translateY(-2px);
-      }
-      .qs-icon {
-        width: 42px;
-        height: 42px;
-        border-radius: 11px;
-        background: var(--pb-blue-pale);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .qs-icon svg {
-        width: 19px;
-        height: 19px;
-        stroke: var(--pb-blue);
-        fill: none;
-        stroke-width: 1.8;
-      }
-      .qs-item span {
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--text);
-        line-height: 1.3;
-      }
-
-      /* ── CAMPUS CARDS ── */
-      .campus-card {
-        border-radius: 13px;
-        overflow: hidden;
-        position: relative;
-        min-height: 165px;
-        box-shadow: var(--shadow-sm);
-      }
-      .campus-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .campus-card-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to top,
-          rgba(15, 35, 71, 0.82) 0%,
-          transparent 60%
-        );
-      }
-      .campus-card-text {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 12px 14px;
-      }
-      .campus-card-text h5 {
-        font-size: 0.82rem;
-        font-weight: 700;
-        color: #fff;
-        margin: 0;
-      }
-      .campus-card.tall {
-        min-height: 344px;
-      }
-
-      /* ── SERVICE LIST ── */
-      .service-list-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: var(--text-soft);
-        font-size: 0.82rem;
-        font-weight: 500;
-        padding: 9px 0;
-        border-bottom: 1px solid var(--border);
-        transition:
-          color 0.15s,
-          border-color 0.28s;
-      }
-      .service-list-item:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
-      }
-      .service-list-item:hover {
-        color: var(--pb-blue);
-      }
-
-      /* ── FOOTER ── */
-      .site-footer {
-        background: var(--pb-blue-dark);
-        padding: 44px 0 20px;
-      }
-      [data-theme="dark"] .site-footer {
-        background: #070c18;
-      }
-      .footer-logo {
-        height: 36px;
-        filter: brightness(0) invert(1);
-        opacity: 0.82;
-        margin-bottom: 14px;
-      }
-      .footer-text {
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.45);
-        line-height: 1.7;
-        max-width: 240px;
-      }
-      .footer-col-title {
-        font-size: 0.75rem;
-        font-weight: 800;
-        color: rgba(255, 255, 255, 0.88);
-        text-transform: uppercase;
-        letter-spacing: 0.6px;
-        margin-bottom: 14px;
-      }
-      .footer-link {
-        display: block;
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.45);
-        margin-bottom: 7px;
-        transition: color 0.15s;
-      }
-      .footer-link:hover {
-        color: var(--pb-gold);
-      }
-      .footer-divider {
-        border-color: rgba(255, 255, 255, 0.1);
-        margin: 26px 0 14px;
-      }
-      .footer-bottom {
-        font-size: 0.73rem;
-        color: rgba(255, 255, 255, 0.3);
-      }
-      .footer-bottom a {
-        color: rgba(255, 255, 255, 0.38);
-        margin-left: 14px;
-      }
-      .footer-bottom a:hover {
-        color: rgba(255, 255, 255, 0.75);
-      }
-      .social-row {
-        display: flex;
-        gap: 7px;
-        margin-top: 16px;
-      }
-      .soc-btn {
-        width: 30px;
-        height: 30px;
-        border-radius: 7px;
-        background: rgba(255, 255, 255, 0.08);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 0.78rem;
-        font-weight: 700;
-        transition:
-          background 0.15s,
-          color 0.15s;
-      }
-      .soc-btn:hover {
-        background: var(--pb-gold);
-        color: #1a1200;
-      }
-      .partner-logo {
-        height: 32px;
-        filter: brightness(0) invert(1);
-        opacity: 0.4;
-        transition: opacity 0.15s;
-      }
-      .partner-logo:hover {
-        opacity: 0.7;
-      }
-
-      /* ── SEARCH OVERLAY ── */
-      .search-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(10, 20, 50, 0.55);
-        z-index: 2000;
-        display: none;
-        align-items: flex-start;
-        justify-content: center;
-        padding-top: 100px;
-      }
-      .search-overlay.open {
-        display: flex;
-      }
-      .search-box {
-        background: var(--bg-card);
-        border-radius: 14px;
-        padding: 22px;
-        width: 100%;
-        max-width: 580px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
-        position: relative;
-        transition: background 0.28s;
-      }
-      .search-box input {
-        width: 100%;
-        border: 2px solid var(--border);
-        border-radius: 9px;
-        padding: 13px 16px;
-        font-size: 0.95rem;
-        font-family: inherit;
-        outline: none;
-        transition:
-          border-color 0.15s,
-          background 0.28s;
-        background: var(--bg-soft);
-        color: var(--text);
-      }
-      .search-box input:focus {
-        border-color: var(--pb-blue);
-      }
-      .search-close {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: var(--muted);
-        font-size: 1.1rem;
-      }
-
-      /* ── PAGES ── */
-      .page {
-        display: none;
-      }
-      .page.active {
-        display: block;
-      }
-
-      /* ── NOTICIAS PAGE ── */
-      .inner-hero {
-        background: var(--pb-blue-dark);
-        padding: 48px 0 40px;
-        color: #fff;
-        position: relative;
-        overflow: hidden;
-      }
-      [data-theme="dark"] .inner-hero {
-        background: #07101f;
-      }
-      .inner-hero::after {
-        content: "";
-        position: absolute;
-        right: -80px;
-        top: -80px;
-        width: 340px;
-        height: 340px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.03);
-        pointer-events: none;
-      }
-      .inner-hero h1 {
-        font-size: 2rem;
-        font-weight: 800;
-        line-height: 1.15;
-      }
-      .inner-hero p {
-        color: rgba(255, 255, 255, 0.62);
-        font-size: 0.9rem;
-        margin-top: 8px;
-      }
-      .breadcrumb-inner a {
-        color: rgba(255, 255, 255, 0.48);
-        font-size: 0.78rem;
-      }
-      .breadcrumb-inner span {
-        color: rgba(255, 255, 255, 0.22);
-        margin: 0 8px;
-      }
-      .breadcrumb-inner strong {
-        color: rgba(255, 255, 255, 0.82);
-        font-size: 0.78rem;
-        font-weight: 600;
-      }
-
-      .filter-bar {
-        background: var(--bg-card);
-        border-bottom: 1px solid var(--border);
-        padding: 13px 0;
-        transition:
-          background 0.28s,
-          border-color 0.28s;
-      }
-      .filter-pill {
-        font-size: 0.74rem;
-        font-weight: 600;
-        padding: 5px 14px;
-        border-radius: 20px;
-        border: 1.5px solid var(--border);
-        color: var(--muted);
-        background: transparent;
-        cursor: pointer;
-        transition: all 0.15s;
-      }
-      .filter-pill:hover,
-      .filter-pill.active {
-        border-color: var(--pb-blue);
-        background: var(--pb-blue);
-        color: #fff;
-      }
-
-      /* big featured card */
-      .news-big {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 13px;
-        overflow: hidden;
-        box-shadow: var(--shadow-sm);
-        transition:
-          box-shadow 0.2s,
-          transform 0.2s,
-          background 0.28s,
-          border-color 0.28s;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
-      .news-big:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateY(-3px);
-      }
-      .news-big-img {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-      }
-      .news-big-body {
-        padding: 20px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      .news-big-body h3 {
-        font-size: 1.08rem;
-        font-weight: 700;
-        line-height: 1.45;
-        color: var(--text);
-        margin-bottom: 10px;
-      }
-      .news-big-body p {
-        font-size: 0.83rem;
-        color: var(--muted);
-        line-height: 1.7;
-        flex: 1;
-      }
-      .news-big-body small {
-        font-size: 0.73rem;
-        color: var(--muted);
-        margin-top: 12px;
-        display: block;
-      }
-
-      /* sidebar list items */
-      .news-row-item {
-        display: flex;
-        gap: 12px;
-        padding: 11px 0;
-        border-bottom: 1px solid var(--border);
-        cursor: pointer;
-        transition: border-color 0.28s;
-      }
-      .news-row-item:last-child {
-        border-bottom: none;
-      }
-      .news-row-item:hover .news-row-title {
-        color: var(--pb-blue);
-      }
-      .news-row-img {
-        width: 78px;
-        height: 68px;
-        border-radius: 8px;
-        object-fit: cover;
-        flex-shrink: 0;
-      }
-      .news-row-title {
-        font-size: 0.82rem;
-        font-weight: 700;
-        color: var(--text);
-        line-height: 1.4;
-        margin-bottom: 4px;
-        transition: color 0.15s;
-      }
-      .news-row-date {
-        font-size: 0.7rem;
-        color: var(--muted);
-      }
-
-      /* ── FINANCIACIÓN PAGE ── */
-      .fin-option {
-        background: var(--bg-card);
-        border: 1.5px solid var(--border);
-        border-radius: 13px;
-        padding: 22px;
-        transition:
-          border-color 0.2s,
-          box-shadow 0.2s,
-          transform 0.2s,
-          background 0.28s;
-        height: 100%;
-      }
-      .fin-option:hover {
-        border-color: var(--pb-blue);
-        box-shadow: var(--shadow-md);
-        transform: translateY(-3px);
-      }
-      .fin-icon-wrap {
-        width: 48px;
-        height: 48px;
-        border-radius: 13px;
-        background: var(--pb-blue-pale);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 14px;
-      }
-      .fin-icon-wrap svg {
-        width: 22px;
-        height: 22px;
-        stroke: var(--pb-blue);
-        fill: none;
-        stroke-width: 1.8;
-      }
-      .fin-option h5 {
-        font-size: 0.93rem;
-        font-weight: 800;
-        color: var(--text);
-        margin-bottom: 8px;
-      }
-      .fin-option p {
-        font-size: 0.81rem;
-        color: var(--muted);
-        line-height: 1.65;
-      }
-      .fin-tag {
-        display: inline-block;
-        font-size: 0.65rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.8px;
-        padding: 3px 8px;
-        border-radius: 4px;
-        margin-top: 12px;
-      }
-      .fin-tag-green {
-        background: #dcfce7;
-        color: #15803d;
-      }
-      .fin-tag-blue {
-        background: var(--pb-blue-pale);
-        color: var(--pb-blue);
-      }
-      .fin-tag-gold {
-        background: #fef9c3;
-        color: #854d0e;
-      }
-      [data-theme="dark"] .fin-tag-green {
-        background: #052e16;
-        color: #4ade80;
-      }
-      [data-theme="dark"] .fin-tag-gold {
-        background: #1c1200;
-        color: #fbbf24;
-      }
-
-      /* calculator */
-      .calc-box {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 13px;
-        padding: 24px;
-        transition:
-          background 0.28s,
-          border-color 0.28s;
-      }
-      .calc-box h4 {
-        font-size: 1rem;
-        font-weight: 800;
-        color: var(--text);
-        margin-bottom: 18px;
-      }
-      .calc-label {
-        font-size: 0.78rem;
-        font-weight: 600;
-        color: var(--text-soft);
-        margin-bottom: 6px;
-      }
-      .calc-input {
-        width: 100%;
-        padding: 10px 13px;
-        border: 1.5px solid var(--border);
-        border-radius: 9px;
-        font-size: 0.87rem;
-        font-family: inherit;
-        background: var(--bg-soft);
-        color: var(--text);
-        outline: none;
-        transition:
-          border-color 0.15s,
-          background 0.28s;
-        margin-bottom: 14px;
-        appearance: none;
-        -webkit-appearance: none;
-      }
-      .calc-input:focus {
-        border-color: var(--pb-blue);
-      }
-      .calc-result {
-        background: var(--pb-blue-pale);
-        border: 1.5px solid var(--pb-blue);
-        border-radius: 10px;
-        padding: 16px;
-        text-align: center;
-        margin-top: 4px;
-      }
-      .calc-result .result-num {
-        font-size: 1.6rem;
-        font-weight: 800;
-        color: var(--pb-blue);
-      }
-      .calc-result .result-label {
-        font-size: 0.74rem;
-        color: var(--muted);
-        margin-top: 3px;
-      }
-      .btn-primary-solid {
-        width: 100%;
-        padding: 11px;
-        margin-top: 14px;
-        border: none;
-        cursor: pointer;
-        border-radius: 9px;
-        background: var(--pb-blue);
-        color: #fff;
-        font-size: 0.86rem;
-        font-weight: 700;
-        font-family: inherit;
-        transition:
-          background 0.2s,
-          transform 0.15s;
-      }
-      .btn-primary-solid:hover {
-        background: var(--pb-blue-mid);
-        transform: translateY(-1px);
-      }
-
-      /* step list */
-      .step-item {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-      }
-      .step-num {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.72rem;
-        font-weight: 800;
-        background: var(--pb-blue);
-        color: #fff;
-      }
-      .step-num.gold {
-        background: var(--pb-gold);
-        color: #1a1200;
-      }
-      .step-title {
-        font-size: 0.82rem;
-        font-weight: 700;
-        color: var(--text);
-      }
-      .step-desc {
-        font-size: 0.77rem;
-        color: var(--muted);
-        margin-top: 2px;
-        line-height: 1.5;
-      }
-
-      /* contact strip */
-      .contact-strip {
-        background: var(--bg-soft);
-        border-radius: 10px;
-        padding: 13px 16px;
-        transition: background 0.28s;
-      }
-      .contact-strip .cs-label {
-        font-size: 0.68rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.7px;
-        color: var(--muted);
-      }
-      .contact-strip .cs-val {
-        font-size: 0.86rem;
-        font-weight: 700;
-        color: var(--text);
-        margin-top: 2px;
-      }
-      .contact-strip .cs-val.blue {
-        color: var(--pb-blue);
-      }
-
-      /* ── RESPONSIVE ── */
-      @media (max-width: 991px) {
-        .profile-grid {
-          flex-wrap: wrap;
-        }
-        .profile-item {
-          flex: 1 1 33%;
-          border-bottom: 1px solid var(--border);
-        }
-        .quick-services-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .nav-menu {
-          display: none;
-        }
-      }
-      @media (max-width: 575px) {
-        .profile-item {
-          flex: 1 1 50%;
-        }
-      }
-
-      /* ── ANIMATIONS ── */
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(14px);
-        }
-        to {
-          opacity: 1;
-          transform: none;
-        }
-      }
-      .fade-up {
-        animation: fadeUp 0.5s ease both;
-      }
-      .d1 {
-        animation-delay: 0.08s;
-      }
-      .d2 {
-        animation-delay: 0.16s;
-      }
-      .d3 {
-        animation-delay: 0.24s;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- GOV.CO -->
-    <div class="govco-bar">
-      <div
-        class="container d-flex align-items-center justify-content-between py-1"
-      >
-        <div class="d-flex align-items-center gap-3 flex-wrap">
-          <img
-            src="https://pascualbravo.edu.co/wp-content/uploads/2019/12/gov.co_.png"
-            class="govco-logo"
-            alt="gov.co"
-          />
-          <a href="#">Transparencia y acceso a la información pública</a>
-          <span class="sep d-none d-md-inline">|</span>
-          <a href="#" class="d-none d-md-inline"
-            >Atención y servicios a la ciudadanía</a
-          >
-          <span class="sep d-none d-lg-inline">|</span>
-          <a href="#" class="d-none d-lg-inline">Participa</a>
-        </div>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Institución Universitaria Pascual Bravo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --pb-purple: #4a2b8c;
+      --pb-purple-dark: #2e1a5e;
+      --pb-purple-light: #6b44b8;
+      --pb-gold: #f5c518;
+      --pb-gold-dark: #d4a70a;
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --text: #1a1220;
+      --muted: #6b6475;
+      --border: rgba(74,43,140,.1);
+      --card-bg: #fff;
+    }
+ 
+    * { margin:0; padding:0; box-sizing:border-box; }
+ 
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+ 
+    /* ── GOV BAR ── */
+    .gov-bar {
+      background: var(--pb-purple-dark);
+      padding: 6px 0;
+      font-size: .75rem;
+      color: rgba(255,255,255,.7);
+      border-bottom: 2px solid var(--pb-gold);
+    }
+    .gov-bar a { color: rgba(255,255,255,.7); text-decoration: none; }
+    .gov-bar a:hover { color: var(--pb-gold); }
+    .gov-logo { height: 18px; opacity: .85; filter: brightness(10); }
+ 
+    /* ── NAVBAR ── */
+    .navbar {
+      background: #fff !important;
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+      box-shadow: 0 2px 20px rgba(74,43,140,.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar .container { padding: 0 24px; }
+    .navbar-brand img { height: 52px; }
+    .nav-link {
+      color: var(--text) !important;
+      font-weight: 500;
+      font-size: .88rem;
+      padding: 24px 14px !important;
+      position: relative;
+      letter-spacing: .2px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 14px; right: 14px;
+      height: 2px;
+      background: var(--pb-purple);
+      transform: scaleX(0);
+      transition: transform .25s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+    .nav-link:hover { color: var(--pb-purple) !important; }
+ 
+    .btn-sicau {
+      background: var(--pb-purple);
+      color: #fff !important;
+      border-radius: 8px;
+      font-weight: 600;
+      padding: 8px 18px !important;
+      font-size: .83rem;
+      letter-spacing: .5px;
+      transition: background .2s;
+    }
+    .btn-sicau::after { display: none !important; }
+    .btn-sicau:hover { background: var(--pb-purple-light) !important; color: #fff !important; }
+ 
+    .profiles-bar {
+      background: var(--pb-purple);
+      padding: 0;
+    }
+    .profiles-bar a {
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      font-size: .82rem;
+      font-weight: 500;
+      padding: 8px 16px;
+      display: inline-block;
+      transition: .2s;
+      border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .profiles-bar a:hover { background: rgba(255,255,255,.12); color: #fff; }
+    .profiles-bar span {
+      color: rgba(255,255,255,.5);
+      font-size: .8rem;
+      padding: 8px 16px;
+      font-weight: 600;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+ 
+    /* ── HERO ── */
+    .hero {
+      background: var(--pb-purple-dark);
+      min-height: 560px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1800&auto=format&fit=crop') center/cover;
+      opacity: .18;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, var(--pb-purple-dark) 38%, rgba(74,43,140,.4) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; }
+ 
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--pb-gold);
+      color: var(--pb-purple-dark);
+      font-weight: 700;
+      font-size: .75rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: -2px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--pb-gold);
+    }
+    .hero p {
+      color: rgba(255,255,255,.75);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+    .btn-hero-primary {
+      background: var(--pb-gold);
+      color: var(--pb-purple-dark);
+      font-weight: 700;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: .95rem;
+      transition: .2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-hero-primary:hover {
+      background: var(--pb-gold-dark);
+      color: var(--pb-purple-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245,197,24,.35);
+    }
+    .btn-hero-outline {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,.35);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: .95rem;
+      font-weight: 500;
+      transition: .2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-hero-outline:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.7);
+      color: #fff;
+    }
+ 
+    /* Hero stats */
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .hero-stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--pb-gold);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: .8rem;
+      color: rgba(255,255,255,.55);
+      margin-top: 4px;
+    }
+ 
+    /* Hero right panel */
+    .hero-panel {
+      position: relative; z-index: 2;
+    }
+    .hero-news-card {
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: .25s;
+    }
+    .hero-news-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.25); }
+    .hero-news-card img {
+      width: 100%; height: 180px; object-fit: cover; display: block;
+    }
+    .hero-news-body { padding: 20px; }
+    .hero-news-tag {
+      font-size: .72rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--pb-gold); margin-bottom: 8px;
+    }
+    .hero-news-body h4 {
+      font-size: 1.05rem; font-weight: 600; color: #fff; line-height: 1.4;
+    }
+    .hero-news-body small { color: rgba(255,255,255,.45); font-size: .78rem; margin-top: 8px; display: block; }
+ 
+    .hero-side-stack { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .hero-side-item {
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 14px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: .2s;
+      text-decoration: none;
+    }
+    .hero-side-item:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.22); }
+    .hero-side-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(245,197,24,.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .hero-side-icon svg { width: 18px; height: 18px; }
+    .hero-side-text h6 { font-size: .88rem; font-weight: 600; color: #fff; margin: 0; }
+    .hero-side-text small { font-size: .75rem; color: rgba(255,255,255,.5); }
+ 
+    /* ── QUICK ACCESS ── */
+    .quick-access {
+      background: var(--pb-purple);
+      padding: 28px 0;
+    }
+    .quick-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: rgba(255,255,255,.8);
+      transition: .2s;
+      padding: 16px 12px;
+      border-radius: 14px;
+    }
+    .quick-item:hover { background: rgba(255,255,255,.1); color: #fff; }
+    .quick-icon {
+      width: 52px; height: 52px;
+      background: rgba(255,255,255,.12);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .quick-icon svg { width: 24px; height: 24px; stroke: #fff; fill: none; }
+    .quick-item span { font-size: .82rem; font-weight: 500; text-align: center; line-height: 1.3; }
+ 
+    /* ── SECTION LABELS ── */
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .75rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--pb-purple); margin-bottom: 12px;
+    }
+    .section-label::before {
+      content: '';
+      width: 24px; height: 2px; background: var(--pb-gold);
+    }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+ 
+    /* ── NEWS SECTION ── */
+    .news-section { padding: 72px 0; }
+ 
+    .news-featured {
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 24px rgba(74,43,140,.06);
+      height: 100%;
+      display: flex; flex-direction: column;
+      transition: .25s;
+    }
+    .news-featured:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(74,43,140,.12); }
+    .news-featured img { width: 100%; height: 240px; object-fit: cover; }
+    .news-featured-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .news-tag {
+      font-size: .72rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(74,43,140,.08);
+      color: var(--pb-purple);
+      padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 12px;
+    }
+    .news-featured-body h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem; font-weight: 700; line-height: 1.3; margin-bottom: 12px;
+    }
+    .news-featured-body p { color: var(--muted); font-size: .9rem; line-height: 1.7; flex: 1; }
+    .news-meta { color: var(--muted); font-size: .78rem; margin-top: 16px; }
+    .read-more {
+      color: var(--pb-purple); font-weight: 600; font-size: .85rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 16px;
+    }
+    .read-more:hover { color: var(--pb-purple-light); }
+ 
+    .news-list { display: flex; flex-direction: column; gap: 1px; }
+    .news-list-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: .2s;
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 10px;
+    }
+    .news-list-item:hover { border-color: var(--pb-purple); box-shadow: 0 4px 16px rgba(74,43,140,.08); }
+    .news-list-img {
+      width: 72px; height: 72px; border-radius: 10px;
+      object-fit: cover; flex-shrink: 0;
+    }
+    .news-list-content { flex: 1; }
+    .news-list-content .news-tag { margin-bottom: 6px; }
+    .news-list-content h5 { font-size: .95rem; font-weight: 600; line-height: 1.4; margin-bottom: 4px; }
+    .news-list-content small { color: var(--muted); font-size: .78rem; }
+ 
+    /* ── PROGRAMS STRIP ── */
+    .programs-section { background: var(--pb-purple-dark); padding: 72px 0; }
+    .program-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 18px; padding: 28px;
+      transition: .25s; cursor: pointer; height: 100%;
+    }
+    .program-card:hover {
+      background: rgba(255,255,255,.12);
+      border-color: var(--pb-gold);
+      transform: translateY(-4px);
+    }
+    .program-num {
+      font-family: 'Fraunces', serif;
+      font-size: 2.8rem; font-weight: 700;
+      color: var(--pb-gold); line-height: 1;
+      margin-bottom: 8px;
+    }
+    .program-card h5 { color: #fff; font-weight: 600; font-size: 1rem; margin-bottom: 10px; }
+    .program-card p { color: rgba(255,255,255,.55); font-size: .85rem; line-height: 1.6; }
+    .program-arrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--pb-gold); font-size: .82rem; font-weight: 600;
+      text-decoration: none; margin-top: 16px;
+    }
+ 
+    /* ── CAMPUS EDITORIAL ── */
+    .campus-section { padding: 80px 0; }
+    .campus-visual {
+      border-radius: 24px; overflow: hidden;
+      position: relative; min-height: 460px;
+    }
+    .campus-visual img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .campus-visual-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(74,43,140,.85) 0%, transparent 60%);
+    }
+    .campus-visual-text {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 40px;
+    }
+    .campus-tag {
+      font-size: .72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--pb-gold); margin-bottom: 10px;
+    }
+    .campus-visual-text h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 2.2rem; font-weight: 700; color: #fff;
+      line-height: 1.15; max-width: 340px; margin-bottom: 16px;
+    }
+    .campus-visual-text p { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 320px; line-height: 1.7; }
+ 
+    .campus-info-grid { display: grid; grid-template-rows: auto auto; gap: 16px; height: 100%; }
+    .campus-info-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px; padding: 24px;
+      transition: .2s;
+    }
+    .campus-info-card:hover { border-color: var(--pb-purple); box-shadow: 0 4px 20px rgba(74,43,140,.08); }
+    .campus-info-card .icon-wrap {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(74,43,140,.08);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .campus-info-card .icon-wrap svg { width: 22px; height: 22px; stroke: var(--pb-purple); fill: none; }
+    .campus-info-card h5 { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+    .campus-info-card p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+ 
+    /* ── EVENTS ── */
+    .events-section { background: #fff; padding: 60px 0; }
+    .event-row {
+      display: flex; align-items: center; gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer; transition: .2s;
+    }
+    .event-row:hover .event-title { color: var(--pb-purple); }
+    .event-date-box {
+      min-width: 56px;
+      text-align: center;
+      background: rgba(74,43,140,.06);
+      border-radius: 12px;
+      padding: 8px 10px;
+    }
+    .event-date-day { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 700; color: var(--pb-purple); line-height: 1; }
+    .event-date-mon { font-size: .7rem; text-transform: uppercase; color: var(--muted); font-weight: 600; letter-spacing: .5px; }
+    .event-title { font-weight: 600; font-size: .95rem; margin: 0; }
+    .event-subtitle { color: var(--muted); font-size: .82rem; }
+    .event-badge {
+      margin-left: auto;
+      font-size: .72rem; font-weight: 700; letter-spacing: .8px;
+      text-transform: uppercase;
+      background: rgba(74,43,140,.08);
+      color: var(--pb-purple);
+      padding: 4px 10px; border-radius: 20px; white-space: nowrap;
+    }
+ 
+    .calendar-widget {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 22px;
+    }
+    .cal-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 16px;
+    }
+    .cal-header h6 { font-weight: 700; margin: 0; }
+    .cal-nav { color: var(--pb-purple); cursor: pointer; font-size: .85rem; font-weight: 600; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; text-align: center; font-size: .8rem; }
+    .cal-day-name { color: var(--muted); font-weight: 600; padding: 4px 0; }
+    .cal-day { padding: 6px 4px; border-radius: 8px; cursor: pointer; transition: .15s; }
+    .cal-day:hover { background: rgba(74,43,140,.08); }
+    .cal-day.today { background: var(--pb-purple); color: #fff; font-weight: 700; border-radius: 8px; }
+    .cal-day.has-event { position: relative; font-weight: 600; color: var(--pb-purple); }
+    .cal-day.has-event::after {
+      content: ''; position: absolute; bottom: 1px; left: 50%; transform: translateX(-50%);
+      width: 4px; height: 4px; border-radius: 50%; background: var(--pb-gold);
+    }
+    .cal-day.empty { color: transparent; pointer-events: none; }
+ 
+    /* ── BANNER CTA ── */
+    .banner-cta {
+      background: linear-gradient(105deg, var(--pb-purple) 0%, var(--pb-purple-light) 100%);
+      padding: 64px 0;
+      position: relative; overflow: hidden;
+    }
+    .banner-cta::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: rgba(255,255,255,.04);
+      right: -180px; top: -180px;
+    }
+    .banner-cta h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700;
+      color: #fff; line-height: 1.1;
+    }
+    .banner-cta p { color: rgba(255,255,255,.75); font-size: 1rem; line-height: 1.7; max-width: 500px; margin-top: 12px; }
+    .btn-cta-gold {
+      background: var(--pb-gold); color: var(--pb-purple-dark);
+      font-weight: 700; border: none; padding: 14px 32px;
+      border-radius: 10px; font-size: .95rem; transition: .2s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-cta-gold:hover { background: var(--pb-gold-dark); transform: translateY(-2px); color: var(--pb-purple-dark); }
+    .btn-cta-white {
+      background: transparent; color: #fff;
+      border: 1.5px solid rgba(255,255,255,.4);
+      padding: 14px 28px; border-radius: 10px; font-size: .95rem;
+      font-weight: 500; transition: .2s; text-decoration: none; display: inline-block;
+    }
+    .btn-cta-white:hover { background: rgba(255,255,255,.1); color: #fff; }
+ 
+    /* ── FOOTER ── */
+    .footer-main {
+      background: var(--pb-purple-dark);
+      padding: 60px 0 32px;
+    }
+    .footer-logo { height: 48px; filter: brightness(10); opacity: .9; margin-bottom: 16px; }
+    .footer-desc { color: rgba(255,255,255,.5); font-size: .85rem; line-height: 1.7; max-width: 280px; }
+    .footer-title { color: rgba(255,255,255,.9); font-weight: 700; font-size: .85rem; letter-spacing: .5px; margin-bottom: 16px; }
+    .footer-link {
+      display: block; color: rgba(255,255,255,.5); text-decoration: none;
+      font-size: .84rem; margin-bottom: 8px; transition: .15s;
+    }
+    .footer-link:hover { color: var(--pb-gold); }
+    .footer-divider { border-color: rgba(255,255,255,.08); margin: 28px 0 20px; }
+    .footer-bottom { color: rgba(255,255,255,.35); font-size: .78rem; }
+    .social-btn {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.6); transition: .2s; text-decoration: none; font-size: .85rem;
+    }
+    .social-btn:hover { background: var(--pb-gold); color: var(--pb-purple-dark); }
+    .contact-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+    .contact-item svg { width: 15px; height: 15px; stroke: var(--pb-gold); fill: none; flex-shrink: 0; margin-top: 2px; }
+    .contact-item span { color: rgba(255,255,255,.55); font-size: .83rem; line-height: 1.5; }
+ 
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .anim-1 { animation: fadeUp .6s ease both; }
+    .anim-2 { animation: fadeUp .6s .12s ease both; }
+    .anim-3 { animation: fadeUp .6s .24s ease both; }
+    .anim-4 { animation: fadeUp .6s .36s ease both; }
+ 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 991px) {
+      .hero { min-height: auto; padding: 60px 0; }
+      .hero h1 { letter-spacing: -1px; }
+      .hero-stats { gap: 20px; }
+      .campus-visual { min-height: 300px; }
+    }
+    @media (max-width: 767px) {
+      .hero-stats { flex-wrap: wrap; gap: 16px; }
+      .quick-access .row { gap: 4px; }
+      .profiles-bar { overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- GOV BAR -->
+<div class="gov-bar">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-3">
+      <img src="https://pascualbravo.edu.co/wp-content/uploads/2019/12/gov.co_.png" alt="gov.co" class="gov-logo"/>
+      <a href="#">Transparencia y acceso a la información pública</a>
+      <a href="#" class="d-none d-md-inline">Atención y servicios a la ciudadanía</a>
+      <a href="#" class="d-none d-lg-inline">Participa</a>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+      <div class="d-none d-md-flex gap-2 align-items-center" style="font-size:.8rem;color:rgba(255,255,255,.5)">
+        <a href="#" style="color:rgba(255,255,255,.6);text-decoration:none">ES</a>
+        <span>|</span>
+        <a href="#" style="color:rgba(255,255,255,.6);text-decoration:none">EN</a>
       </div>
     </div>
-
-    <!-- UTILITY -->
-    <div class="utility-bar d-none d-lg-block">
-      <div class="container d-flex align-items-center justify-content-between">
-        <div class="d-flex align-items-center gap-1 flex-wrap">
-          <span class="soy-label">Soy:</span>
-          <a href="#">Estudiante</a>
-          <a href="#">Aspirante</a>
-          <a href="#">Egresado</a>
-          <a href="#">Docente/Empleado</a>
-          <a href="#">Niño</a>
-        </div>
-        <div class="d-flex align-items-center gap-2">
-          <a href="#" class="social-link"
-            ><svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
-              /></svg
-          ></a>
-          <a href="#" class="social-link"
-            ><svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
-              /></svg
-          ></a>
-          <a href="#" class="social-link"
-            ><svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <rect x="2" y="2" width="20" height="20" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" /></svg
-          ></a>
-          <a href="#" class="social-link"
-            ><svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M9 12a4 4 0 104 4V4a5 5 0 005 5" /></svg
-          ></a>
-          <a href="#" class="social-link"
-            ><svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                d="M22.54 6.42a2.78 2.78 0 00-1.94-1.94C18.88 4 12 4 12 4s-6.88 0-8.6.48A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.94 1.94C5.12 20 12 20 12 20s6.88 0 8.6-.48a2.78 2.78 0 001.94-1.94A29 29 0 0023 12a29 29 0 00-.46-5.58z"
-              />
-              <polygon
-                points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
-                fill="currentColor"
-              /></svg
-          ></a>
-          <div
-            style="
-              width: 1px;
-              height: 14px;
-              background: var(--border);
-              margin: 0 4px;
-            "
-          ></div>
-          <a
-            href="#"
-            style="color: var(--muted); font-size: 0.74rem; font-weight: 600"
-            >ES</a
-          >
-          <a
-            href="#"
-            style="
-              color: var(--muted);
-              font-size: 0.74rem;
-              font-weight: 600;
-              margin-left: 5px;
-            "
-            >EN</a
-          >
-          <div
-            style="
-              width: 1px;
-              height: 14px;
-              background: var(--border);
-              margin: 0 4px;
-            "
-          ></div>
-          <!-- DARK MODE TOGGLE -->
-          <label class="dm-toggle" id="dmToggle" title="Alternar modo oscuro">
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="var(--muted)"
-              stroke-width="2"
-            >
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </svg>
-            <div class="dm-pill"></div>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="var(--muted)"
-              stroke-width="2"
-            >
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-            </svg>
-            <span class="dm-label" id="dmLabel">Claro</span>
-          </label>
-        </div>
+  </div>
+</div>
+ 
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="https://pascualbravo.edu.co/wp-content/uploads/2023/06/cropped-Imagotipo-horizontal_acreditados.png" alt="Pascual Bravo"/>
+    </a>
+    <button class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav mx-auto gap-0">
+        <li class="nav-item"><a class="nav-link" href="#">Estudia con nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Institucional</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Académico</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Bienestar</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Investigación</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Noticias</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-3 ms-3">
+        <a href="#" class="nav-link btn-sicau">Acceso SICAU</a>
       </div>
     </div>
-
-    <!-- NAV -->
-    <nav class="main-nav">
-      <div class="inner">
-        <a
-          href="#"
-          onclick="
-            showPage('home');
-            return false;
-          "
-        >
-          <img
-            src="https://pascualbravo.edu.co/wp-content/uploads/2023/06/cropped-Imagotipo-horizontal_acreditados.png"
-            class="nav-logo"
-            alt="Pascual Bravo"
-          />
+  </div>
+</nav>
+ 
+<!-- PROFILES BAR -->
+<div class="profiles-bar">
+  <div class="container px-0">
+    <span>Soy:</span>
+    <a href="#">Aspirante</a>
+    <a href="#">Estudiante</a>
+    <a href="#">Egresado</a>
+    <a href="#">Docente / Empleado</a>
+    <a href="#">Niño</a>
+  </div>
+</div>
+ 
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container py-5">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 hero-content">
+        <div class="hero-eyebrow anim-1">
+          <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="currentColor"/></svg>
+          Inscripciones 2026 abiertas
+        </div>
+        <h1 class="anim-2">Liderazgo,<br/><em>innovación</em> y<br/>tecnología.</h1>
+        <p class="anim-3">Formamos profesionales con sólidas competencias técnicas y humanas para transformar la sociedad desde Medellín al mundo.</p>
+        <div class="d-flex flex-wrap gap-3 anim-4">
+          <a href="#" class="btn-hero-primary">Conoce nuestros programas</a>
+          <a href="#" class="btn-hero-outline">Acerca del Pascual</a>
+        </div>
+        <div class="hero-stats anim-4">
+          <div>
+            <div class="hero-stat-num">60+</div>
+            <div class="hero-stat-label">Años de historia</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">38</div>
+            <div class="hero-stat-label">Programas académicos</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">Alta</div>
+            <div class="hero-stat-label">Calidad acreditada</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 hero-panel anim-3">
+        <a href="#" style="text-decoration:none">
+          <div class="hero-news-card">
+            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=900&auto=format&fit=crop" alt="Nuevo Doctorado"/>
+            <div class="hero-news-body">
+              <div class="hero-news-tag">● Destacado</div>
+              <h4>Nuevo Doctorado en Ciencia y Tecnología — alianza ITM & Pascual Bravo</h4>
+              <small>7 de mayo, 2026</small>
+            </div>
+          </div>
         </a>
-        <ul class="nav-menu">
-          <li>
-            <a
-              href="#"
-              onclick="
-                showPage('home');
-                return false;
-              "
-              id="nav-home"
-              >Estudia con nosotros</a
-            >
-          </li>
-          <li><a href="#" id="nav-institucional">Institucional</a></li>
-          <li><a href="#" id="nav-academico">Académico</a></li>
-          <li><a href="#" id="nav-bienestar">Bienestar</a></li>
-          <li><a href="#" id="nav-investigacion">Investigación</a></li>
-          <li>
-            <a
-              href="#"
-              onclick="
-                showPage('financiacion');
-                return false;
-              "
-              id="nav-financiacion"
-              >Extensión</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              onclick="
-                showPage('noticias');
-                return false;
-              "
-              id="nav-noticias"
-              >Noticias</a
-            >
-          </li>
-        </ul>
-        <div class="nav-actions">
-          <button class="btn-search" id="searchBtn">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <path d="M21 21l-4.35-4.35" />
-            </svg>
-          </button>
-          <a href="#" class="btn-sicau">Acceso SICAU</a>
+        <div class="hero-side-stack mt-3">
+          <a href="#" class="hero-side-item">
+            <div class="hero-side-icon">
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" style="color:var(--pb-gold)"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+            </div>
+            <div class="hero-side-text">
+              <h6>Proyectos de Sostenibilidad</h6>
+              <small>Campus verde · 7 mayo, 2026</small>
+            </div>
+          </a>
+          <a href="#" class="hero-side-item">
+            <div class="hero-side-icon">
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" style="color:var(--pb-gold)"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            </div>
+            <div class="hero-side-text">
+              <h6>Conecta en otro país — SCER-WS</h6>
+              <small>Intercambio internacional · 7 mayo, 2026</small>
+            </div>
+          </a>
         </div>
-      </div>
-    </nav>
-
-    <!-- SEARCH OVERLAY -->
-    <div class="search-overlay" id="searchOverlay">
-      <div class="search-box">
-        <button class="search-close" id="searchClose">✕</button>
-        <p
-          style="
-            font-size: 0.77rem;
-            font-weight: 700;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 10px;
-          "
-        >
-          ¿Qué estás buscando?
-        </p>
-        <input
-          type="text"
-          placeholder="Busca programas, noticias, servicios..."
-        />
       </div>
     </div>
-
-    <!-- ═══════════════════════════════════════════════ PAGE: HOME ═══ -->
-    <div id="page-home" class="page active">
-      <!-- HERO SLIDER -->
-      <div class="hero-slider" style="min-height: 400px">
-        <div class="hero-slide active">
-          <div
-            class="hero-slide-bg"
-            style="
-              background-image: url(&quot;https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1800&auto=format&fit=crop&quot;);
-            "
-          ></div>
-          <div class="hero-slide-overlay"></div>
-          <div class="container">
-            <div class="hero-slide-content fade-up">
-              <div class="hero-chip">Inscripciones 2026 — abiertas</div>
-              <h1>Innovación, Tradición, Futuro</h1>
-              <p>
-                Formamos líderes en ingeniería y tecnología con alta calidad
-                académica acreditada.
-              </p>
-              <a href="#" class="btn-hero">Ver nuestra oferta de pregrados</a>
-            </div>
+  </div>
+</section>
+ 
+<!-- QUICK ACCESS -->
+<div class="quick-access">
+  <div class="container">
+    <div class="row g-0 justify-content-center">
+      <div class="col-6 col-sm-4 col-lg-2">
+        <a href="#" class="quick-item">
+          <div class="quick-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
           </div>
-        </div>
-        <div class="hero-slide">
-          <div
-            class="hero-slide-bg"
-            style="
-              background-image: url(&quot;https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1800&auto=format&fit=crop&quot;);
-            "
-          ></div>
-          <div class="hero-slide-overlay"></div>
-          <div class="container">
-            <div class="hero-slide-content">
-              <div class="hero-chip">Investigación</div>
-              <h1>Nuevo Doctorado en Ciencia y Tecnología</h1>
-              <p>Ofertado en alianza con la Institución Universitaria ITM.</p>
-              <a href="#" class="btn-hero">Conoce más</a>
-            </div>
-          </div>
-        </div>
-        <div class="hero-slide">
-          <div
-            class="hero-slide-bg"
-            style="
-              background-image: url(&quot;https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1800&auto=format&fit=crop&quot;);
-            "
-          ></div>
-          <div class="hero-slide-overlay"></div>
-          <div class="container">
-            <div class="hero-slide-content">
-              <div class="hero-chip">Movilidad Internacional</div>
-              <h1>Conecta en otro país — Alianza del Pacífico</h1>
-              <p>Estudia un semestre en el exterior con apoyo institucional.</p>
-              <a href="#" class="btn-hero">Ver convocatoria</a>
-            </div>
-          </div>
-        </div>
-        <button class="hero-arrow prev" id="heroPrev">&#8249;</button>
-        <button class="hero-arrow next" id="heroNext">&#8250;</button>
-        <div class="hero-ctrl">
-          <button class="hero-dot active" data-i="0"></button>
-          <button class="hero-dot" data-i="1"></button>
-          <button class="hero-dot" data-i="2"></button>
-        </div>
+          <span>Calendario académico</span>
+        </a>
       </div>
-
-      <!-- PROFILES -->
-      <section class="profiles-section">
-        <div class="profile-grid">
-          <div class="profile-item">
-            <div class="profile-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div class="profile-name">Aspirante</div>
-            <div class="profile-desc">Inscríbete en la institución</div>
-            <a href="#" class="profile-btn">Inscríbete</a>
+      <div class="col-6 col-sm-4 col-lg-2">
+        <a href="#" class="quick-item">
+          <div class="quick-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
           </div>
-          <div class="profile-item">
-            <div class="profile-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-              </svg>
-            </div>
-            <div class="profile-name">Estudiante</div>
-            <div class="profile-desc">Acompañamiento y estatutos</div>
-            <a href="#" class="profile-btn">Mi portal</a>
+          <span>Biblioteca</span>
+        </a>
+      </div>
+      <div class="col-6 col-sm-4 col-lg-2">
+        <a href="#" class="quick-item">
+          <div class="quick-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           </div>
-          <div class="profile-item">
-            <div class="profile-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-              </svg>
-            </div>
-            <div class="profile-name">Egresado</div>
-            <div class="profile-desc">Programas para egresados</div>
-            <a href="#" class="profile-btn">Proyectos actuales</a>
+          <span>Programas de Pregrado</span>
+        </a>
+      </div>
+      <div class="col-6 col-sm-4 col-lg-2">
+        <a href="#" class="quick-item">
+          <div class="quick-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           </div>
-          <div class="profile-item">
-            <div class="profile-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
-              </svg>
-            </div>
-            <div class="profile-name">Docente/Empleado</div>
-            <div class="profile-desc">Portal para docentes</div>
-            <a href="#" class="profile-btn">Docente/Empleado</a>
+          <span>Financiación</span>
+        </a>
+      </div>
+      <div class="col-6 col-sm-4 col-lg-2">
+        <a href="#" class="quick-item">
+          <div class="quick-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
-          <div class="profile-item">
-            <div class="profile-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M12 14c-5 0-8 2-8 4v2h16v-2c0-2-3-4-8-4z" />
-              </svg>
-            </div>
-            <div class="profile-name">Niño</div>
-            <div class="profile-desc">Microcredenciales para jóvenes</div>
-            <a href="#" class="profile-btn">Inscríbete</a>
+          <span>Bienestar</span>
+        </a>
+      </div>
+      <div class="col-6 col-sm-4 col-lg-2">
+        <a href="#" class="quick-item">
+          <div class="quick-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
           </div>
-        </div>
-      </section>
-
-      <!-- MAIN CONTENT -->
-      <section class="main-section">
-        <div class="container">
-          <div class="row g-4">
-            <!-- LEFT -->
-            <div class="col-lg-8">
-              <!-- Noticias -->
-              <div class="section-head">
-                <h2><span>Últimas</span> noticias</h2>
-                <a
-                  href="#"
-                  class="see-all"
-                  onclick="
-                    showPage('noticias');
-                    return false;
-                  "
-                  >Ver todas →</a
-                >
-              </div>
-              <div class="row g-3 mb-4">
-                <div class="col-md-4 fade-up">
-                  <div class="news-card">
-                    <img
-                      src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop"
-                      class="news-card-img"
-                      alt=""
-                    />
-                    <div class="news-card-body">
-                      <span class="news-badge">Tecnología</span>
-                      <h4>
-                        Tecnología en Desarrollo de Software renueva
-                        acreditación de Alta Calidad
-                      </h4>
-                      <small>7 mayo, 2026</small>
-                      <a href="#" class="news-link">Conoce más →</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 fade-up d1">
-                  <div class="news-card">
-                    <img
-                      src="https://images.unsplash.com/photo-1532094349884-543559382f3f?q=80&w=600&auto=format&fit=crop"
-                      class="news-card-img"
-                      alt=""
-                    />
-                    <div class="news-card-body">
-                      <span class="news-badge">Innovación</span>
-                      <h4>
-                        Premio de Innovación de Biomáquinas — Investigación y
-                        concurso
-                      </h4>
-                      <small>7 mayo, 2026</small>
-                      <a href="#" class="news-link">Conoce más →</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 fade-up d2">
-                  <div class="news-card">
-                    <img
-                      src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=600&auto=format&fit=crop"
-                      class="news-card-img"
-                      alt=""
-                    />
-                    <div class="news-card-body">
-                      <span class="news-badge">Internacional</span>
-                      <h4>
-                        Estudios en Instituciones Universitarias del exterior —
-                        Pascual Bravo
-                      </h4>
-                      <small>7 mayo, 2026</small>
-                      <a href="#" class="news-link">Conoce más →</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Servicios rápidos -->
-              <div class="section-head">
-                <h2><span>Servicios</span> rápidos</h2>
-              </div>
-              <div class="quick-services-grid mb-4 fade-up d1">
-                <div class="qs-item">
-                  <div class="qs-icon">
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                      />
-                      <polyline points="22,6 12,13 2,6" />
-                    </svg>
-                  </div>
-                  <span>Correo Institucional</span>
-                </div>
-                <div class="qs-item" onclick="showPage('financiacion')">
-                  <div class="qs-icon">
-                    <svg viewBox="0 0 24 24">
-                      <circle cx="12" cy="8" r="7" />
-                      <polyline
-                        points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"
-                      />
-                    </svg>
-                  </div>
-                  <span>Financiación</span>
-                </div>
-                <div class="qs-item">
-                  <div class="qs-icon">
-                    <svg viewBox="0 0 24 24">
-                      <rect x="3" y="4" width="18" height="18" rx="2" />
-                      <line x1="16" y1="2" x2="16" y2="6" />
-                      <line x1="8" y1="2" x2="8" y2="6" />
-                      <line x1="3" y1="10" x2="21" y2="10" />
-                    </svg>
-                  </div>
-                  <span>Calendario de Participación</span>
-                </div>
-                <div class="qs-item">
-                  <div class="qs-icon">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                      <path
-                        d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"
-                      />
-                    </svg>
-                  </div>
-                  <span>Catálogo Virtual</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- RIGHT -->
-            <div class="col-lg-4">
-              <div class="widget-box mb-3 fade-up">
-                <span class="widget-tag">Ecosistema Digital</span>
-                <h5>CampusFlow: Ecosistema Digital Estudiantil</h5>
-                <p>
-                  El nuevo portal estudiantil reúne todos tus servicios
-                  académicos en un solo lugar.
-                </p>
-                <a href="#" class="news-link mt-2">Conoce más →</a>
-              </div>
-
-              <div class="widget-box mb-3 fade-up d1">
-                <h5 style="margin-bottom: 12px">Servicios al Estudiante</h5>
-                <a href="#" class="service-list-item">
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--pb-blue)"
-                    stroke-width="2"
-                  >
-                    <rect x="3" y="4" width="18" height="18" rx="2" />
-                    <line x1="16" y1="2" x2="16" y2="6" />
-                    <line x1="8" y1="2" x2="8" y2="6" />
-                    <line x1="3" y1="10" x2="21" y2="10" />
-                  </svg>
-                  Calendario académico
-                </a>
-                <a href="#" class="service-list-item">
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--pb-blue)"
-                    stroke-width="2"
-                  >
-                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                    <path
-                      d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"
-                    />
-                  </svg>
-                  Biblioteca
-                </a>
-                <a href="#" class="service-list-item">
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--pb-blue)"
-                    stroke-width="2"
-                  >
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                  </svg>
-                  Acceso de biblioteca
-                </a>
-                <a href="#" class="service-list-item">
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--pb-blue)"
-                    stroke-width="2"
-                  >
-                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                  </svg>
-                  Servicio al Estudiante
-                </a>
-              </div>
-
-              <!-- Vida en el campus -->
-              <div class="section-head mt-1">
-                <h2 style="font-size: 0.88rem">
-                  <span>Vida</span> en el campus
-                </h2>
-                <a href="#" class="see-all">Ver más →</a>
-              </div>
-              <div class="row g-2 fade-up d2">
-                <div class="col-7">
-                  <div class="campus-card tall">
-                    <img
-                      src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&auto=format&fit=crop"
-                      alt="Eventos"
-                    />
-                    <div class="campus-card-overlay"></div>
-                    <div class="campus-card-text">
-                      <h5>Eventos y vida en el campus</h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-5 d-flex flex-column gap-2">
-                  <div class="campus-card" style="flex: 1; min-height: 168px">
-                    <img
-                      src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop"
-                      alt="Talleres"
-                    />
-                    <div class="campus-card-overlay"></div>
-                    <div class="campus-card-text">
-                      <h5>Eventos y talleres</h5>
-                    </div>
-                  </div>
-                  <div class="campus-card" style="flex: 1; min-height: 168px">
-                    <img
-                      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=400&auto=format&fit=crop"
-                      alt="Bienestar"
-                    />
-                    <div class="campus-card-overlay"></div>
-                    <div class="campus-card-text">
-                      <h5>Bienestar estudiantil</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          <span>SICAU</span>
+        </a>
+      </div>
     </div>
-    <!-- /page-home -->
-
-    <!-- ═══════════════════════════════════════════ PAGE: NOTICIAS ═══ -->
-    <div id="page-noticias" class="page">
-      <div class="inner-hero">
-        <div class="container" style="position: relative; z-index: 2">
-          <div class="breadcrumb-inner mb-3">
-            <a
-              href="#"
-              onclick="
-                showPage('home');
-                return false;
-              "
-              >Inicio</a
-            >
-            <span>/</span>
-            <strong>Noticias</strong>
-          </div>
-          <h1>Noticias</h1>
-          <p>
-            Entérate de todo lo que pasa en la Institución Universitaria Pascual
-            Bravo
-          </p>
-        </div>
+  </div>
+</div>
+ 
+<!-- NEWS SECTION -->
+<section class="news-section">
+  <div class="container">
+    <div class="row justify-content-between align-items-end mb-5">
+      <div class="col-auto">
+        <div class="section-label">Noticias destacadas</div>
+        <h2 class="section-title">Lo que está pasando<br/>en el Pascual</h2>
       </div>
-
-      <div class="filter-bar">
-        <div class="container d-flex gap-2 flex-wrap">
-          <button class="filter-pill active">Todas</button>
-          <button class="filter-pill">Académico</button>
-          <button class="filter-pill">Investigación</button>
-          <button class="filter-pill">Institucional</button>
-          <button class="filter-pill">Internacional</button>
-          <button class="filter-pill">Bienestar</button>
-          <button class="filter-pill">Innovación</button>
-        </div>
+      <div class="col-auto">
+        <a href="#" style="color:var(--pb-purple);font-weight:600;font-size:.88rem;text-decoration:none">
+          Ver todas las noticias →
+        </a>
       </div>
-
-      <section class="main-section">
-        <div class="container">
-          <!-- FEATURED + SIDEBAR -->
-          <div class="row g-4 mb-4">
-            <div class="col-lg-7">
-              <div class="news-big">
-                <img
-                  src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=900&auto=format&fit=crop"
-                  class="news-big-img"
-                  alt=""
-                />
-                <div class="news-big-body">
-                  <span class="news-badge">Destacado · Institucional</span>
-                  <h3>
-                    Pascual Bravo celebra 99 años formando ingenieros y
-                    tecnólogos para el país
-                  </h3>
-                  <p>
-                    La institución conmemora casi un siglo de trayectoria
-                    académica con eventos especiales, exposiciones y un acto
-                    solemne en el auditorio principal con participación de
-                    egresados destacados del sector industrial antioqueño.
-                  </p>
-                  <small>12 mayo, 2026 · Oficina de Comunicaciones</small>
-                  <a href="#" class="news-link" style="margin-top: 14px"
-                    >Leer artículo completo →</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-5">
-              <div class="widget-box" style="height: 100%">
-                <h5 style="margin-bottom: 14px">Noticias recientes</h5>
-                <div class="news-row-item">
-                  <img
-                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=200&auto=format&fit=crop"
-                    class="news-row-img"
-                    alt=""
-                  />
-                  <div>
-                    <span
-                      class="news-badge"
-                      style="font-size: 0.6rem; padding: 2px 6px"
-                      >Tecnología</span
-                    >
-                    <div class="news-row-title">
-                      Tecnología en Desarrollo de Software renueva acreditación
-                      de Alta Calidad
-                    </div>
-                    <div class="news-row-date">7 mayo, 2026</div>
-                  </div>
-                </div>
-                <div class="news-row-item">
-                  <img
-                    src="https://images.unsplash.com/photo-1532094349884-543559382f3f?q=80&w=200&auto=format&fit=crop"
-                    class="news-row-img"
-                    alt=""
-                  />
-                  <div>
-                    <span
-                      class="news-badge"
-                      style="font-size: 0.6rem; padding: 2px 6px"
-                      >Innovación</span
-                    >
-                    <div class="news-row-title">
-                      Premio de Innovación de Biomáquinas 2026 — Convocatoria
-                      abierta
-                    </div>
-                    <div class="news-row-date">5 mayo, 2026</div>
-                  </div>
-                </div>
-                <div class="news-row-item">
-                  <img
-                    src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=200&auto=format&fit=crop"
-                    class="news-row-img"
-                    alt=""
-                  />
-                  <div>
-                    <span
-                      class="news-badge"
-                      style="font-size: 0.6rem; padding: 2px 6px"
-                      >Internacional</span
-                    >
-                    <div class="news-row-title">
-                      Movilidad Alianza del Pacífico — convocatoria 2026-2
-                    </div>
-                    <div class="news-row-date">2 mayo, 2026</div>
-                  </div>
-                </div>
-                <div class="news-row-item">
-                  <img
-                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=200&auto=format&fit=crop"
-                    class="news-row-img"
-                    alt=""
-                  />
-                  <div>
-                    <span
-                      class="news-badge"
-                      style="font-size: 0.6rem; padding: 2px 6px"
-                      >Investigación</span
-                    >
-                    <div class="news-row-title">
-                      Nuevo Doctorado en Ciencia y Tecnología inicia
-                      inscripciones
-                    </div>
-                    <div class="news-row-date">28 abril, 2026</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- GRID -->
-          <div class="section-head">
-            <h2><span>Todas</span> las noticias</h2>
-          </div>
-          <div class="row g-3">
-            <div class="col-md-4 col-sm-6">
-              <div class="news-card">
-                <img
-                  src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=600&auto=format&fit=crop"
-                  class="news-card-img"
-                  alt=""
-                />
-                <div class="news-card-body">
-                  <span class="news-badge">Académico</span>
-                  <h4>
-                    Nuevos laboratorios de robótica e inteligencia artificial
-                    inaugurados
-                  </h4>
-                  <small>25 abril, 2026</small>
-                  <a href="#" class="news-link">Leer más →</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-              <div class="news-card">
-                <img
-                  src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&auto=format&fit=crop"
-                  class="news-card-img"
-                  alt=""
-                />
-                <div class="news-card-body">
-                  <span class="news-badge">Bienestar</span>
-                  <h4>
-                    Semana de la salud mental: actividades gratuitas para todos
-                    los estudiantes
-                  </h4>
-                  <small>20 abril, 2026</small>
-                  <a href="#" class="news-link">Leer más →</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-              <div class="news-card">
-                <img
-                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=600&auto=format&fit=crop"
-                  class="news-card-img"
-                  alt=""
-                />
-                <div class="news-card-body">
-                  <span class="news-badge">Tecnología</span>
-                  <h4>
-                    Hackathon Pascual 2026: 72 horas de innovación y tecnología
-                    aplicada
-                  </h4>
-                  <small>10 abril, 2026</small>
-                  <a href="#" class="news-link">Leer más →</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-              <div class="news-card">
-                <img
-                  src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?q=80&w=600&auto=format&fit=crop"
-                  class="news-card-img"
-                  alt=""
-                />
-                <div class="news-card-body">
-                  <span class="news-badge">Institucional</span>
-                  <h4>
-                    Pascual Bravo escala posiciones en rankings nacionales de
-                    IES
-                  </h4>
-                  <small>5 abril, 2026</small>
-                  <a href="#" class="news-link">Leer más →</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-              <div class="news-card">
-                <img
-                  src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=600&auto=format&fit=crop"
-                  class="news-card-img"
-                  alt=""
-                />
-                <div class="news-card-body">
-                  <span class="news-badge">Extensión</span>
-                  <h4>
-                    Diplomado en Gestión de Proyectos con certificación
-                    internacional PMI
-                  </h4>
-                  <small>1 abril, 2026</small>
-                  <a href="#" class="news-link">Leer más →</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-              <div class="news-card">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
-                  class="news-card-img"
-                  alt=""
-                />
-                <div class="news-card-body">
-                  <span class="news-badge">Egresados</span>
-                  <h4>
-                    Egresado Pascual Bravo lidera startup de energía solar en
-                    Latinoamérica
-                  </h4>
-                  <small>15 marzo, 2026</small>
-                  <a href="#" class="news-link">Leer más →</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="text-center mt-4">
-            <button
-              style="
-                padding: 10px 32px;
-                border: 1.5px solid var(--pb-blue);
-                border-radius: 8px;
-                background: transparent;
-                color: var(--pb-blue);
-                font-weight: 700;
-                font-size: 0.84rem;
-                cursor: pointer;
-                font-family: inherit;
-                transition:
-                  background 0.15s,
-                  color 0.15s;
-              "
-              onmouseover="
-                this.style.background = 'var(--pb-blue)';
-                this.style.color = '#fff';
-              "
-              onmouseout="
-                this.style.background = 'transparent';
-                this.style.color = 'var(--pb-blue)';
-              "
-            >
-              Cargar más noticias
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
-    <!-- /page-noticias -->
-
-    <!-- ════════════════════════════════════════ PAGE: FINANCIACIÓN ═══ -->
-    <div id="page-financiacion" class="page">
-      <div class="inner-hero">
-        <div class="container" style="position: relative; z-index: 2">
-          <div class="breadcrumb-inner mb-3">
-            <a
-              href="#"
-              onclick="
-                showPage('home');
-                return false;
-              "
-              >Inicio</a
-            >
-            <span>/</span>
-            <strong>Financiación</strong>
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="news-featured">
+          <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=900&auto=format&fit=crop" alt="Noticias"/>
+          <div class="news-featured-body">
+            <span class="news-tag">Tecnología</span>
+            <h3>Tecnología en Desarrollo de Software renueva su acreditación de alta calidad por seis años</h3>
+            <p>El programa, referente en la región, obtiene nuevamente el reconocimiento nacional gracias a la calidad de su cuerpo docente y sus egresados.</p>
+            <div class="news-meta">7 de mayo, 2026</div>
+            <a href="#" class="read-more">Leer más <span>→</span></a>
           </div>
-          <div class="hero-chip" style="margin-bottom: 16px">
-            Opciones de financiación 2026
-          </div>
-          <h1>Financia tu educación</h1>
-          <p>
-            Conoce las opciones disponibles para estudiar en Pascual Bravo sin
-            que el dinero sea un obstáculo.
-          </p>
         </div>
       </div>
-
-      <section class="main-section">
-        <div class="container">
-          <!-- OPCIONES -->
-          <div class="section-head">
-            <h2><span>Opciones</span> de financiación</h2>
-          </div>
-          <div class="row g-3 mb-5">
-            <div class="col-md-6 col-lg-3">
-              <div class="fin-option">
-                <div class="fin-icon-wrap">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                </div>
-                <h5>ICETEX</h5>
-                <p>
-                  Crédito educativo con tasas subsidiadas para estratos 1 a 4.
-                  Paga mientras estudias o después de graduarte.
-                </p>
-                <span class="fin-tag fin-tag-green">Más solicitado</span>
-              </div>
+      <div class="col-lg-7">
+        <div class="news-list">
+          <a href="#" class="news-list-item">
+            <img src="https://images.unsplash.com/photo-1532094349884-543559382f3f?q=80&w=200&auto=format&fit=crop" class="news-list-img" alt=""/>
+            <div class="news-list-content">
+              <span class="news-tag">Innovación</span>
+              <h5>Premio de Innovación en Biomáquinas — Investigación y concurso de maquinaria</h5>
+              <small>7 de mayo, 2026 · Investigación</small>
             </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="fin-option">
-                <div class="fin-icon-wrap">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="8" r="7" />
-                    <polyline
-                      points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"
-                    />
-                  </svg>
-                </div>
-                <h5>Generación E</h5>
-                <p>
-                  Matrícula cero para estratos 1, 2 y 3 con buen desempeño en
-                  Saber 11. Beneficio del Ministerio de Educación.
-                </p>
-                <span class="fin-tag fin-tag-gold">Beneficio Estado</span>
-              </div>
+          </a>
+          <a href="#" class="news-list-item">
+            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=200&auto=format&fit=crop" class="news-list-img" alt=""/>
+            <div class="news-list-content">
+              <span class="news-tag">Internacional</span>
+              <h5>Estudios de Universidades en Institución Universitaria Pascual Bravo</h5>
+              <small>7 de mayo, 2026 · Convenios</small>
             </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="fin-option">
-                <div class="fin-icon-wrap">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="2" y="5" width="20" height="14" rx="2" />
-                    <line x1="2" y1="10" x2="22" y2="10" />
-                  </svg>
-                </div>
-                <h5>Crédito Institucional</h5>
-                <p>
-                  Financiación directa con la institución. Divide tu matrícula
-                  en cuotas accesibles sin intermediarios.
-                </p>
-                <span class="fin-tag fin-tag-blue"
-                  >0 % interés primeros 3 meses</span
-                >
-              </div>
+          </a>
+          <a href="#" class="news-list-item">
+            <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=200&auto=format&fit=crop" class="news-list-img" alt=""/>
+            <div class="news-list-content">
+              <span class="news-tag">Alianza del Pacífico</span>
+              <h5>Alianza con Pacífico del Medellín — Estudia en otro país</h5>
+              <small>7 de mayo, 2026 · Movilidad</small>
             </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="fin-option">
-                <div class="fin-icon-wrap">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-                  </svg>
-                </div>
-                <h5>Becas y Auxilios</h5>
-                <p>
-                  Convocatorias por mérito académico, condición socioeconómica,
-                  deporte y grupos vulnerables.
-                </p>
-                <span class="fin-tag fin-tag-green">Convocatoria abierta</span>
-              </div>
+          </a>
+          <a href="#" class="news-list-item">
+            <img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=200&auto=format&fit=crop" class="news-list-img" alt=""/>
+            <div class="news-list-content">
+              <span class="news-tag">Diseño</span>
+              <h5>Simposio Internacional de Diseño Sostenible — edición 2026</h5>
+              <small>5 de mayo, 2026 · Eventos</small>
             </div>
-          </div>
-
-          <!-- CALCULADORA + PASOS -->
-          <div class="row g-4">
-            <div class="col-lg-5">
-              <div class="calc-box">
-                <h4>Simulador de financiación</h4>
-                <p
-                  style="
-                    font-size: 0.8rem;
-                    color: var(--muted);
-                    margin-bottom: 18px;
-                  "
-                >
-                  Estima el valor de tus cuotas por periodo según el programa y
-                  la modalidad elegida.
-                </p>
-
-                <div class="calc-label">Programa de interés</div>
-                <select
-                  class="calc-input"
-                  id="calcPrograma"
-                  onchange="calcular()"
-                >
-                  <option value="1200000">
-                    Tecnología en Desarrollo de Software — $1.200.000
-                  </option>
-                  <option value="1350000">
-                    Ingeniería Electrónica — $1.350.000
-                  </option>
-                  <option value="1280000">
-                    Ingeniería Mecatrónica — $1.280.000
-                  </option>
-                  <option value="1100000">
-                    Tecnología Industrial — $1.100.000
-                  </option>
-                  <option value="900000">
-                    Tecnología Electrónica — $900.000
-                  </option>
-                </select>
-
-                <div class="calc-label">Tipo de financiación</div>
-                <select class="calc-input" id="calcTipo" onchange="calcular()">
-                  <option value="1">Pago completo (sin interés)</option>
-                  <option value="0.6">Generación E (40 % descuento)</option>
-                  <option value="1.035">
-                    Crédito institucional (3,5 % interés)
-                  </option>
-                  <option value="1.018">ICETEX (1,8 % efectivo)</option>
-                </select>
-
-                <div class="calc-label">Número de cuotas</div>
-                <select
-                  class="calc-input"
-                  id="calcCuotas"
-                  onchange="calcular()"
-                >
-                  <option value="1">1 cuota (pago total)</option>
-                  <option value="3">3 cuotas</option>
-                  <option value="6" selected>6 cuotas</option>
-                  <option value="12">12 cuotas</option>
-                </select>
-
-                <div class="calc-result">
-                  <div class="result-num" id="calcResultado">$200.000</div>
-                  <div class="result-label" id="calcResultadoLabel">
-                    por cuota · 6 cuotas
-                  </div>
-                </div>
-                <div
-                  class="text-center mt-2"
-                  style="font-size: 0.72rem; color: var(--muted)"
-                >
-                  Total a pagar:
-                  <strong id="calcTotal" style="color: var(--pb-blue)"
-                    >$1.200.000</strong
-                  >
-                </div>
-                <button class="btn-primary-solid">Solicitar información</button>
-              </div>
-            </div>
-
-            <div class="col-lg-7">
-              <div class="widget-box mb-3">
-                <span class="widget-tag">ICETEX</span>
-                <h5>¿Cómo solicitar tu crédito ICETEX?</h5>
-                <p style="margin-bottom: 16px">
-                  El proceso es sencillo. Sigue estos pasos:
-                </p>
-                <div style="display: flex; flex-direction: column; gap: 14px">
-                  <div class="step-item">
-                    <div class="step-num">1</div>
-                    <div>
-                      <div class="step-title">Verifica tu elegibilidad</div>
-                      <div class="step-desc">
-                        Estrato 1 a 4, puntaje Saber 11 mayor a 230 puntos.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="step-item">
-                    <div class="step-num">2</div>
-                    <div>
-                      <div class="step-title">Inscríbete en icetex.gov.co</div>
-                      <div class="step-desc">
-                        Crea tu usuario y selecciona el fondo para instituciones
-                        de educación superior.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="step-item">
-                    <div class="step-num">3</div>
-                    <div>
-                      <div class="step-title">Sube los documentos</div>
-                      <div class="step-desc">
-                        Cédula, recibo de servicios públicos y carta de admisión
-                        de Pascual Bravo.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="step-item">
-                    <div class="step-num gold">4</div>
-                    <div>
-                      <div class="step-title">Espera la aprobación</div>
-                      <div class="step-desc">
-                        El proceso toma entre 5 y 15 días hábiles. El desembolso
-                        va directo a la institución.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="widget-box">
-                <h5 style="margin-bottom: 14px">
-                  ¿Necesitas asesoría personalizada?
-                </h5>
-                <p style="margin-bottom: 16px">
-                  El equipo de financiación te acompaña en todo el proceso.
-                </p>
-                <div class="d-flex gap-3 flex-wrap">
-                  <div class="contact-strip" style="flex: 1; min-width: 150px">
-                    <div class="cs-label">Teléfono</div>
-                    <div class="cs-val">+57 (604) 448 0520</div>
-                  </div>
-                  <div class="contact-strip" style="flex: 1; min-width: 150px">
-                    <div class="cs-label">Correo</div>
-                    <div class="cs-val blue">
-                      financiacion@<br />pascualbravo.edu.co
-                    </div>
-                  </div>
-                  <div class="contact-strip" style="flex: 1; min-width: 150px">
-                    <div class="cs-label">Horario</div>
-                    <div class="cs-val">Lun – Vie<br />7 am – 5 pm</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </a>
         </div>
-      </section>
+      </div>
     </div>
-    <!-- /page-financiacion -->
-
-    <!-- FOOTER (compartido) -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-lg-3">
-            <img
-              src="https://pascualbravo.edu.co/wp-content/uploads/2023/06/cropped-Imagotipo-horizontal_acreditados.png"
-              class="footer-logo"
-              alt="Pascual Bravo"
-            />
-            <p class="footer-text">
-              Institución Universitaria acreditada en Alta Calidad. Medellín,
-              Colombia.
-            </p>
-            <div class="social-row">
-              <a href="#" class="soc-btn">f</a>
-              <a href="#" class="soc-btn">𝕏</a>
-              <a href="#" class="soc-btn">in</a>
-              <a href="#" class="soc-btn">▶</a>
-            </div>
-          </div>
-          <div class="col-6 col-lg-2">
-            <div class="footer-col-title">Institución</div>
-            <a href="#" class="footer-link">Programas</a>
-            <a
-              href="#"
-              class="footer-link"
-              onclick="
-                showPage('financiacion');
-                return false;
-              "
-              >Financiación</a
-            >
-            <a href="#" class="footer-link">Inscripciones</a>
-            <a href="#" class="footer-link">Movilidad académica</a>
-          </div>
-          <div class="col-6 col-lg-2">
-            <div class="footer-col-title">Programas</div>
-            <a href="#" class="footer-link">Pregrados</a>
-            <a href="#" class="footer-link">Posgrados</a>
-            <a href="#" class="footer-link">Cursos y diplomados</a>
-            <a href="#" class="footer-link">Investigación</a>
-          </div>
-          <div class="col-6 col-lg-2">
-            <div class="footer-col-title">Contacto</div>
-            <span class="footer-link" style="cursor: default"
-              >Sede Robledo</span
-            >
-            <span class="footer-link" style="cursor: default"
-              >Calle 73 # 73A – 226, Medellín</span
-            >
-            <a href="tel:+5760444805200" class="footer-link"
-              >+57 (604) 448 0520</a
-            >
-            <a href="mailto:ant@pascualbravo.edu.co" class="footer-link"
-              >ant@pascualbravo.edu.co</a
-            >
-          </div>
-          <div class="col-6 col-lg-3">
-            <div class="footer-col-title">Aliados</div>
-            <div class="d-flex flex-wrap gap-3 align-items-center mt-2">
-              <img
-                src="https://pascualbravo.edu.co/wp-content/uploads/2019/12/gov.co_.png"
-                class="partner-logo"
-                alt="gov.co"
-              />
-              <img
-                src="https://pascualbravo.edu.co/wp-content/uploads/2023/06/cropped-Imagotipo-horizontal_acreditados.png"
-                class="partner-logo"
-                alt="Pascual Bravo"
-              />
-            </div>
-            <a href="#" class="footer-link mt-3" style="font-size: 0.74rem"
-              >Mapa del sitio</a
-            >
-          </div>
+  </div>
+</section>
+ 
+<!-- PROGRAMS -->
+<section class="programs-section">
+  <div class="container">
+    <div class="row justify-content-between align-items-end mb-5">
+      <div class="col-auto">
+        <div class="section-label" style="color:var(--pb-gold)">Oferta académica</div>
+        <h2 class="section-title" style="color:#fff">Encuentra tu programa<br/>ideal</h2>
+      </div>
+      <div class="col-auto">
+        <a href="#" style="color:var(--pb-gold);font-weight:600;font-size:.88rem;text-decoration:none">
+          Ver toda la oferta →
+        </a>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <div class="program-card">
+          <div class="program-num">18</div>
+          <h5>Programas de Pregrado</h5>
+          <p>Ingenierías, tecnologías y licenciaturas con alta calidad acreditada.</p>
+          <a href="#" class="program-arrow">Explorar →</a>
         </div>
-        <hr class="footer-divider" />
-        <div
-          class="d-flex flex-wrap justify-content-between align-items-center gap-2"
-        >
-          <span class="footer-bottom"
-            >© 2026 Institución Universitaria Pascual Bravo. Todos los derechos
-            reservados.</span
-          >
-          <div class="footer-bottom">
-            <a href="#">Política de privacidad</a>
-            <a href="#">Accesibilidad</a>
-            <a href="#">Mapa del sitio</a>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="program-card">
+          <div class="program-num">12</div>
+          <h5>Programas de Posgrado</h5>
+          <p>Especializaciones y maestrías para potenciar tu desarrollo profesional.</p>
+          <a href="#" class="program-arrow">Explorar →</a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="program-card">
+          <div class="program-num">08</div>
+          <h5>Micro y Macrocredenciales</h5>
+          <p>Formación flexible y certificada alineada al mercado laboral.</p>
+          <a href="#" class="program-arrow">Explorar →</a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="program-card" style="background:rgba(245,197,24,.08);border-color:rgba(245,197,24,.25)">
+          <div class="program-num" style="color:#fff">1</div>
+          <h5>Nuevo Doctorado</h5>
+          <p>Doctorado en Ciencia y Tecnología — alianza ITM & Pascual Bravo.</p>
+          <a href="#" class="program-arrow">Conoce más →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CAMPUS EDITORIAL -->
+<section class="campus-section">
+  <div class="container">
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-7">
+        <div class="campus-visual" style="height:100%;min-height:420px">
+          <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1200&auto=format&fit=crop" alt="Campus Pascual Bravo"/>
+          <div class="campus-visual-overlay"></div>
+          <div class="campus-visual-text">
+            <div class="campus-tag">● Vida en el campus</div>
+            <h2>Un campus vivo, conectado con Medellín</h2>
+            <p>Espacios modernos, investigación aplicada y bienestar integral en el corazón tecnológico de la ciudad.</p>
+            <a href="#" class="btn-hero-primary mt-4" style="width:max-content">Conocer más</a>
           </div>
         </div>
       </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      /* ── PAGE SWITCH ── */
-      function showPage(name) {
-        document
-          .querySelectorAll(".page")
-          .forEach((p) => p.classList.remove("active"));
-        document.getElementById("page-" + name).classList.add("active");
-        window.scrollTo({ top: 0, behavior: "smooth" });
+      <div class="col-lg-5">
+        <div class="campus-info-grid" style="display:flex;flex-direction:column;gap:16px;height:100%">
+          <div class="campus-info-card" style="flex:1">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h5>Campus Verde</h5>
+            <p>Comprometidos con el ambiente. Más de 40 species de árboles y zonas bioclimáticas en nuestros espacios.</p>
+          </div>
+          <div class="campus-info-card" style="flex:1">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+            </div>
+            <h5>Laboratorios especializados</h5>
+            <p>Equipos de última generación para ingeniería, diseño, biomáquinas y tecnologías emergentes.</p>
+          </div>
+          <div class="campus-info-card" style="flex:1">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h5>Bienestar universitario</h5>
+            <p>Acompañamiento psicosocial, deportes, cultura y servicios de salud para toda la comunidad Pascual.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- EVENTS + CALENDAR -->
+<section class="events-section">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <div class="section-label">Agenda institucional</div>
+        <h2 class="section-title mb-4">Próximos eventos</h2>
+ 
+        <div class="event-row">
+          <div class="event-date-box">
+            <div class="event-date-day">24</div>
+            <div class="event-date-mon">Ene</div>
+          </div>
+          <div>
+            <p class="event-title">Calendarios de Matrículas 2026-1</p>
+            <p class="event-subtitle">Inscripciones · SICAU</p>
+          </div>
+          <span class="event-badge">Académico</span>
+        </div>
+ 
+        <div class="event-row">
+          <div class="event-date-box">
+            <div class="event-date-day">11</div>
+            <div class="event-date-mon">Jun</div>
+          </div>
+          <div>
+            <p class="event-title">Simposio Internacional de Diseño Sostenible</p>
+            <p class="event-subtitle">Presencial y virtual · Auditorio Central</p>
+          </div>
+          <span class="event-badge">Evento</span>
+        </div>
+ 
+        <div class="event-row">
+          <div class="event-date-box">
+            <div class="event-date-day">18</div>
+            <div class="event-date-mon">Jun</div>
+          </div>
+          <div>
+            <p class="event-title">Feria de Innovación e Investigación</p>
+            <p class="event-subtitle">Campus Robledo · Grupos de investigación</p>
+          </div>
+          <span class="event-badge">Investigación</span>
+        </div>
+ 
+        <div class="event-row">
+          <div class="event-date-box">
+            <div class="event-date-day">02</div>
+            <div class="event-date-mon">Jul</div>
+          </div>
+          <div>
+            <p class="event-title">Programa de comunidad — actividades campus</p>
+            <p class="event-subtitle">Bienestar universitario</p>
+          </div>
+          <span class="event-badge">Bienestar</span>
+        </div>
+ 
+        <a href="#" style="color:var(--pb-purple);font-weight:600;font-size:.85rem;text-decoration:none;margin-top:20px;display:inline-block">
+          Ver agenda completa →
+        </a>
+      </div>
+ 
+      <div class="col-lg-5">
+        <div class="section-label" style="opacity:0">.</div>
+        <h2 class="section-title mb-4" style="opacity:0;pointer-events:none">.</h2>
+        <div class="calendar-widget">
+          <div class="cal-header">
+            <h6>Mayo 2026</h6>
+            <div class="d-flex gap-3">
+              <span class="cal-nav">‹</span>
+              <span class="cal-nav">›</span>
+            </div>
+          </div>
+          <div class="cal-grid">
+            <div class="cal-day-name">Lu</div>
+            <div class="cal-day-name">Ma</div>
+            <div class="cal-day-name">Mi</div>
+            <div class="cal-day-name">Ju</div>
+            <div class="cal-day-name">Vi</div>
+            <div class="cal-day-name">Sá</div>
+            <div class="cal-day-name">Do</div>
+            <!-- Mayo 2026 empieza viernes -->
+            <div class="cal-day empty">.</div>
+            <div class="cal-day empty">.</div>
+            <div class="cal-day empty">.</div>
+            <div class="cal-day empty">.</div>
+            <div class="cal-day">1</div>
+            <div class="cal-day">2</div>
+            <div class="cal-day">3</div>
+            <div class="cal-day">4</div>
+            <div class="cal-day">5</div>
+            <div class="cal-day has-event">6</div>
+            <div class="cal-day has-event">7</div>
+            <div class="cal-day">8</div>
+            <div class="cal-day">9</div>
+            <div class="cal-day">10</div>
+            <div class="cal-day">11</div>
+            <div class="cal-day today">12</div>
+            <div class="cal-day">13</div>
+            <div class="cal-day">14</div>
+            <div class="cal-day">15</div>
+            <div class="cal-day">16</div>
+            <div class="cal-day">17</div>
+            <div class="cal-day">18</div>
+            <div class="cal-day has-event">19</div>
+            <div class="cal-day">20</div>
+            <div class="cal-day">21</div>
+            <div class="cal-day">22</div>
+            <div class="cal-day">23</div>
+            <div class="cal-day has-event">24</div>
+            <div class="cal-day">25</div>
+            <div class="cal-day">26</div>
+            <div class="cal-day">27</div>
+            <div class="cal-day">28</div>
+            <div class="cal-day">29</div>
+            <div class="cal-day">30</div>
+            <div class="cal-day">31</div>
+          </div>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span style="width:8px;height:8px;border-radius:50%;background:var(--pb-gold);display:inline-block"></span>
+              <span style="font-size:.8rem;color:var(--muted)">Evento programado</span>
+            </div>
+            <a href="#" style="color:var(--pb-purple);font-weight:600;font-size:.82rem;text-decoration:none">Ver calendario académico completo →</a>
+          </div>
+        </div>
+ 
+        <div class="campus-info-card mt-4" style="background:rgba(74,43,140,.04)">
+          <div class="d-flex align-items-center gap-3">
+            <div class="icon-wrap" style="background:rgba(74,43,140,.1);flex-shrink:0">
+              <svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div>
+              <h5 style="font-size:.95rem;margin-bottom:4px">Estado de Servicios Digitales</h5>
+              <div class="d-flex align-items-center gap-2">
+                <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block"></span>
+                <span style="font-size:.82rem;color:#16a34a;font-weight:600">Todos los servicios operativos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CTA BANNER -->
+<section class="banner-cta">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <h2>¿Listo para ser parte del<br/>Pascual Bravo?</h2>
+        <p>Las inscripciones para el segundo semestre de 2026 ya están abiertas. Descubre los programas que cambiarán tu futuro.</p>
+      </div>
+      <div class="col-lg-5 d-flex flex-wrap gap-3 justify-content-lg-end">
+        <a href="#" class="btn-cta-gold">Inscribirme ahora</a>
+        <a href="#" class="btn-cta-white">Ver oferta académica</a>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer class="footer-main">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-3">
+        <img src="https://pascualbravo.edu.co/wp-content/uploads/2023/06/cropped-Imagotipo-horizontal_acreditados.png" alt="Pascual Bravo" class="footer-logo"/>
+        <p class="footer-desc">Institución Universitaria Pascual Bravo — Acreditada en Alta Calidad. Medellín, Colombia.</p>
+        <div class="d-flex gap-2 mt-4 flex-wrap">
+          <a href="#" class="social-btn">f</a>
+          <a href="#" class="social-btn">𝕏</a>
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">▶</a>
+          <a href="#" class="social-btn">✦</a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-title">Institución</div>
+        <a href="#" class="footer-link">¿Quiénes somos?</a>
+        <a href="#" class="footer-link">Rectoría</a>
+        <a href="#" class="footer-link">Historia</a>
+        <a href="#" class="footer-link">Campus universitario</a>
+        <a href="#" class="footer-link">Fondo editorial</a>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-title">Programas</div>
+        <a href="#" class="footer-link">Pregrados</a>
+        <a href="#" class="footer-link">Posgrados</a>
+        <a href="#" class="footer-link">Macrocredenciales</a>
+        <a href="#" class="footer-link">Investigación</a>
+        <a href="#" class="footer-link">Cursos y diplomados</a>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-title">Servicios Web</div>
+        <a href="#" class="footer-link">ISolución</a>
+        <a href="#" class="footer-link">Biblioteca digital</a>
+        <a href="#" class="footer-link">Correo institucional</a>
+        <a href="#" class="footer-link">SICAU</a>
+        <a href="#" class="footer-link">Intranet</a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="footer-title">Contáctanos</div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Sede Rubledo<br/>Calle 73 # 73A – 226<br/>Medellín, Colombia</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>+57 (604) 448 0520</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>ant@pascualbravo.edu.co</span>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <span class="footer-bottom">© 2026 Institución Universitaria Pascual Bravo. Todos los derechos reservados.</span>
+      <div class="d-flex gap-4">
+        <a href="#" class="footer-link" style="margin:0;font-size:.77rem">Política de privacidad</a>
+        <a href="#" class="footer-link" style="margin:0;font-size:.77rem">Mapa del sitio</a>
+        <a href="#" class="footer-link" style="margin:0;font-size:.77rem">Accesibilidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+ 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Smooth scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
       }
-
-      /* ── HERO SLIDER ── */
-      const slides = document.querySelectorAll(".hero-slide");
-      const dots = document.querySelectorAll(".hero-dot");
-      let cur = 0,
-        timer;
-      function goTo(i) {
-        slides[cur].classList.remove("active");
-        dots[cur].classList.remove("active");
-        cur = (i + slides.length) % slides.length;
-        slides[cur].classList.add("active");
-        dots[cur].classList.add("active");
-      }
-      function autoplay() {
-        timer = setInterval(() => goTo(cur + 1), 5200);
-      }
-      function reset() {
-        clearInterval(timer);
-        autoplay();
-      }
-      document.getElementById("heroPrev").onclick = () => {
-        goTo(cur - 1);
-        reset();
-      };
-      document.getElementById("heroNext").onclick = () => {
-        goTo(cur + 1);
-        reset();
-      };
-      dots.forEach(
-        (d) =>
-          (d.onclick = () => {
-            goTo(+d.dataset.i);
-            reset();
-          }),
-      );
-      autoplay();
-
-      /* ── SEARCH ── */
-      const overlay = document.getElementById("searchOverlay");
-      document.getElementById("searchBtn").onclick = () =>
-        overlay.classList.add("open");
-      document.getElementById("searchClose").onclick = () =>
-        overlay.classList.remove("open");
-      overlay.onclick = (e) => {
-        if (e.target === overlay) overlay.classList.remove("open");
-      };
-
-      /* ── DARK MODE ── */
-      const html = document.documentElement;
-      const toggle = document.getElementById("dmToggle");
-      const label = document.getElementById("dmLabel");
-      function applyTheme(dark) {
-        html.setAttribute("data-theme", dark ? "dark" : "light");
-        label.textContent = dark ? "Oscuro" : "Claro";
-        localStorage.setItem("pb-theme", dark ? "dark" : "light");
-      }
-      toggle.onclick = () =>
-        applyTheme(html.getAttribute("data-theme") !== "dark");
-      // Restore
-      const saved = localStorage.getItem("pb-theme");
-      if (saved === "dark") applyTheme(true);
-
-      /* ── FILTER PILLS ── */
-      document.querySelectorAll(".filter-pill").forEach((p) => {
-        p.onclick = () => {
-          document
-            .querySelectorAll(".filter-pill")
-            .forEach((x) => x.classList.remove("active"));
-          p.classList.add("active");
-        };
-      });
-
-      /* ── CALCULADORA ── */
-      function calcular() {
-        const base = parseFloat(document.getElementById("calcPrograma").value);
-        const factor = parseFloat(document.getElementById("calcTipo").value);
-        const cuotas = parseInt(document.getElementById("calcCuotas").value);
-        const total = base * factor;
-        const cuota = total / cuotas;
-        const fmt = (n) => "$" + Math.round(n).toLocaleString("es-CO");
-        document.getElementById("calcResultado").textContent = fmt(cuota);
-        document.getElementById("calcResultadoLabel").textContent =
-          "por cuota · " + cuotas + (cuotas === 1 ? " pago" : " cuotas");
-        document.getElementById("calcTotal").textContent = fmt(total);
-      }
-      calcular();
-
-      /* ── SCROLL REVEAL ── */
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              e.target.style.opacity = "1";
-              e.target.style.transform = "translateY(0)";
-              io.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0.06 },
-      );
-      document.querySelectorAll(".fade-up").forEach((el) => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(14px)";
-        el.style.transition = "opacity .48s ease, transform .48s ease";
-        io.observe(el);
-      });
-    </script>
-  </body>
+    });
+  }, { threshold: 0.1 });
+ 
+  document.querySelectorAll('.news-featured, .news-list-item, .program-card, .campus-info-card, .event-row').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
 </html>
