@@ -1,1354 +1,3045 @@
 <!doctype html>
 <html lang="es" data-theme="light">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Institución Universitaria Pascual Bravo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --pb-blue:         #0047AB;
-      --pb-blue-dark:    #002F7A;
-      --pb-blue-mid:     #1565C0;
-      --pb-blue-pale:    #e8f0fe;
-      --pb-blue-pale2:   #dbeafe;
-      --pb-gold:         #F59E0B;
-      --pb-gold-dark:    #D97706;
-      --bg:              #ffffff;
-      --bg-soft:         #f4f7fc;
-      --bg-card:         #ffffff;
-      --text:            #0f172a;
-      --text-soft:       #334155;
-      --muted:           #64748b;
-      --border:          #e2e8f0;
-      --shadow-sm:       0 1px 4px rgba(0,71,171,.07);
-      --shadow-md:       0 4px 20px rgba(0,71,171,.13);
-      --shadow-lg:       0 12px 40px rgba(0,71,171,.16);
-    }
-    [data-theme="dark"] {
-      --bg:              #0c111d;
-      --bg-soft:         #111827;
-      --bg-card:         #1a2235;
-      --text:            #f1f5f9;
-      --text-soft:       #cbd5e1;
-      --muted:           #94a3b8;
-      --border:          #1e3a5f;
-      --pb-blue-pale:    #0d2545;
-      --pb-blue-pale2:   #0a1f3a;
-      --shadow-sm:       0 1px 4px rgba(0,0,0,.3);
-      --shadow-md:       0 4px 20px rgba(0,0,0,.35);
-      --shadow-lg:       0 12px 40px rgba(0,0,0,.4);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Institución Universitaria Pascual Bravo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --pb-blue: #0047ab;
+        --pb-blue-dark: #002f7a;
+        --pb-blue-mid: #1565c0;
+        --pb-blue-pale: #e8f0fe;
+        --pb-blue-pale2: #dbeafe;
+        --pb-gold: #f59e0b;
+        --pb-gold-dark: #d97706;
+        --bg: #ffffff;
+        --bg-soft: #f4f7fc;
+        --bg-card: #ffffff;
+        --text: #0f172a;
+        --text-soft: #334155;
+        --muted: #64748b;
+        --border: #e2e8f0;
+        --shadow-sm: 0 1px 4px rgba(0, 71, 171, 0.07);
+        --shadow-md: 0 4px 20px rgba(0, 71, 171, 0.13);
+        --shadow-lg: 0 12px 40px rgba(0, 71, 171, 0.16);
+      }
+      [data-theme="dark"] {
+        --bg: #0c111d;
+        --bg-soft: #111827;
+        --bg-card: #1a2235;
+        --text: #f1f5f9;
+        --text-soft: #cbd5e1;
+        --muted: #94a3b8;
+        --border: #1e3a5f;
+        --pb-blue-pale: #0d2545;
+        --pb-blue-pale2: #0a1f3a;
+        --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.35);
+        --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
+      }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { 
-      font-family: 'DM Sans', sans-serif; 
-      background: var(--bg); 
-      color: var(--text); 
-      overflow-x: hidden;
-      transition: background .3s ease, color .3s ease;
-    }
-    a { text-decoration: none; }
-    img { display: block; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        transition:
+          background 0.3s ease,
+          color 0.3s ease;
+      }
+      a {
+        text-decoration: none;
+      }
+      img {
+        display: block;
+      }
 
-    /* GOV BAR */
-    .govco-bar { background: var(--pb-blue-dark); padding: 6px 0; font-size: .72rem; }
-    .govco-bar a { color: rgba(255,255,255,.6); transition: color .15s; }
-    .govco-bar a:hover { color: #fff; }
-    .govco-bar .sep { color: rgba(255,255,255,.2); margin: 0 10px; }
-    .govco-logo { height: 15px; filter: brightness(0) invert(1); opacity: .7; }
+      /* GOV BAR */
+      .govco-bar {
+        background: var(--pb-blue-dark);
+        padding: 6px 0;
+        font-size: 0.72rem;
+      }
+      .govco-bar a {
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.15s;
+      }
+      .govco-bar a:hover {
+        color: #fff;
+      }
+      .govco-bar .sep {
+        color: rgba(255, 255, 255, 0.2);
+        margin: 0 10px;
+      }
+      .govco-logo {
+        height: 15px;
+        filter: brightness(0) invert(1);
+        opacity: 0.7;
+      }
 
-    /* UTILITY BAR */
-    .utility-bar { 
-      background: var(--bg-card); 
-      border-bottom: 1px solid var(--border); 
-      padding: 7px 0; font-size: .77rem;
-      transition: background .3s, border-color .3s;
-    }
-    .utility-bar .soy-label { color: var(--muted); font-weight: 600; margin-right: 6px; }
-    .utility-bar a { color: var(--pb-blue); font-weight: 500; margin: 0 4px; }
-    .utility-bar a:hover { color: var(--pb-blue-mid); }
-    .social-link {
-      color: var(--muted); display: inline-flex; align-items: center;
-      padding: 4px 6px; border-radius: 6px; transition: background .15s;
-    }
-    .social-link:hover { background: var(--pb-blue-pale); color: var(--pb-blue) !important; }
+      /* UTILITY BAR */
+      .utility-bar {
+        background: var(--bg-card);
+        border-bottom: 1px solid var(--border);
+        padding: 7px 0;
+        font-size: 0.77rem;
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+      }
+      .utility-bar .soy-label {
+        color: var(--muted);
+        font-weight: 600;
+        margin-right: 6px;
+      }
+      .utility-bar a {
+        color: var(--pb-blue);
+        font-weight: 500;
+        margin: 0 4px;
+      }
+      .utility-bar a:hover {
+        color: var(--pb-blue-mid);
+      }
+      .social-link {
+        color: var(--muted);
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 6px;
+        border-radius: 6px;
+        transition: background 0.15s;
+      }
+      .social-link:hover {
+        background: var(--pb-blue-pale);
+        color: var(--pb-blue) !important;
+      }
 
-    /* DARK MODE TOGGLE */
-    .dark-toggle {
-      display: flex; align-items: center; gap: 7px; cursor: pointer;
-      padding: 4px 10px; border-radius: 20px;
-      border: 1.5px solid var(--border);
-      background: var(--bg-soft);
-      transition: all .2s;
-      font-size: .72rem; font-weight: 600; color: var(--muted);
-    }
-    .dark-toggle:hover { border-color: var(--pb-blue); color: var(--pb-blue); }
-    .dark-toggle-pill {
-      width: 32px; height: 17px; background: var(--border);
-      border-radius: 10px; position: relative; transition: background .25s;
-    }
-    .dark-toggle-pill::after {
-      content: ''; position: absolute; width: 11px; height: 11px;
-      background: #fff; border-radius: 50%; top: 3px; left: 3px;
-      transition: left .25s, background .25s;
-    }
-    [data-theme="dark"] .dark-toggle-pill { background: var(--pb-blue); }
-    [data-theme="dark"] .dark-toggle-pill::after { left: 18px; }
+      /* DARK MODE TOGGLE */
+      .dark-toggle {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+        padding: 4px 10px;
+        border-radius: 20px;
+        border: 1.5px solid var(--border);
+        background: var(--bg-soft);
+        transition: all 0.2s;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .dark-toggle:hover {
+        border-color: var(--pb-blue);
+        color: var(--pb-blue);
+      }
+      .dark-toggle-pill {
+        width: 32px;
+        height: 17px;
+        background: var(--border);
+        border-radius: 10px;
+        position: relative;
+        transition: background 0.25s;
+      }
+      .dark-toggle-pill::after {
+        content: "";
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        background: #fff;
+        border-radius: 50%;
+        top: 3px;
+        left: 3px;
+        transition:
+          left 0.25s,
+          background 0.25s;
+      }
+      [data-theme="dark"] .dark-toggle-pill {
+        background: var(--pb-blue);
+      }
+      [data-theme="dark"] .dark-toggle-pill::after {
+        left: 18px;
+      }
 
-    /* MAIN NAV */
-    .main-nav {
-      background: var(--bg-card);
-      border-bottom: 2px solid var(--border);
-      position: sticky; top: 0; z-index: 999;
-      box-shadow: var(--shadow-sm);
-      transition: background .3s, border-color .3s;
-    }
-    .main-nav .inner { 
-      display: flex; align-items: center; 
-      padding: 0 24px; max-width: 1320px; margin: 0 auto; 
-    }
-    .nav-logo { height: 48px; padding: 5px 0; margin-right: 28px; }
-    [data-theme="dark"] .nav-logo { filter: brightness(0) invert(1); }
-    .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; flex: 1; }
-    .nav-menu > li > a {
-      display: block; padding: 18px 11px;
-      color: var(--text-soft); font-size: .83rem; font-weight: 600;
-      font-family: 'Sora', sans-serif;
-      position: relative; transition: color .15s; white-space: nowrap;
-    }
-    .nav-menu > li > a::after {
-      content: ''; position: absolute; bottom: 0; left: 11px; right: 11px;
-      height: 2px; background: var(--pb-blue);
-      transform: scaleX(0); transform-origin: left; transition: transform .22s;
-    }
-    .nav-menu > li > a:hover { color: var(--pb-blue); }
-    .nav-menu > li > a:hover::after { transform: scaleX(1); }
-    .nav-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
-    .btn-search {
-      background: none; border: none; color: var(--muted); cursor: pointer;
-      padding: 7px; border-radius: 8px; transition: background .15s; display: flex;
-    }
-    .btn-search:hover { background: var(--pb-blue-pale); color: var(--pb-blue); }
-    .btn-sicau {
-      background: var(--pb-blue); color: #fff;
-      font-size: .81rem; font-weight: 700; font-family: 'Sora', sans-serif;
-      padding: 8px 18px; border-radius: 8px; white-space: nowrap;
-      transition: background .2s, transform .15s;
-    }
-    .btn-sicau:hover { background: var(--pb-blue-mid); color: #fff; transform: translateY(-1px); }
+      /* MAIN NAV */
+      .main-nav {
+        background: var(--bg-card);
+        border-bottom: 2px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        box-shadow: var(--shadow-sm);
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+      }
+      .main-nav .inner {
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        max-width: 1320px;
+        margin: 0 auto;
+      }
+      .nav-logo {
+        height: 48px;
+        padding: 5px 0;
+        margin-right: 28px;
+      }
+      [data-theme="dark"] .nav-logo {
+        filter: brightness(0) invert(1);
+      }
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex: 1;
+      }
+      .nav-menu > li > a {
+        display: block;
+        padding: 18px 11px;
+        color: var(--text-soft);
+        font-size: 0.83rem;
+        font-weight: 600;
+        font-family: "Sora", sans-serif;
+        position: relative;
+        transition: color 0.15s;
+        white-space: nowrap;
+      }
+      .nav-menu > li > a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 11px;
+        right: 11px;
+        height: 2px;
+        background: var(--pb-blue);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.22s;
+      }
+      .nav-menu > li > a:hover {
+        color: var(--pb-blue);
+      }
+      .nav-menu > li > a:hover::after {
+        transform: scaleX(1);
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: auto;
+      }
+      .btn-search {
+        background: none;
+        border: none;
+        color: var(--muted);
+        cursor: pointer;
+        padding: 7px;
+        border-radius: 8px;
+        transition: background 0.15s;
+        display: flex;
+      }
+      .btn-search:hover {
+        background: var(--pb-blue-pale);
+        color: var(--pb-blue);
+      }
+      .btn-sicau {
+        background: var(--pb-blue);
+        color: #fff;
+        font-size: 0.81rem;
+        font-weight: 700;
+        font-family: "Sora", sans-serif;
+        padding: 8px 18px;
+        border-radius: 8px;
+        white-space: nowrap;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .btn-sicau:hover {
+        background: var(--pb-blue-mid);
+        color: #fff;
+        transform: translateY(-1px);
+      }
 
-    /* HERO */
-    .hero-slider { position: relative; overflow: hidden; background: var(--pb-blue-dark); min-height: 430px; }
-    .hero-slide {
-      position: absolute; inset: 0; display: flex; align-items: center;
-      opacity: 0; transition: opacity .7s ease; pointer-events: none;
-    }
-    .hero-slide.active { opacity: 1; pointer-events: auto; }
-    .hero-slide-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
-    .hero-slide-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(100deg, rgba(0,47,122,.94) 0%, rgba(0,47,122,.60) 50%, rgba(0,47,122,.18) 100%);
-    }
-    .hero-slide-content { position: relative; z-index: 2; max-width: 580px; padding: 72px 0; }
-    .hero-chip {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--pb-gold); color: #1a1200;
-      font-size: .69rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
-      font-family: 'Sora', sans-serif;
-      padding: 5px 13px; border-radius: 4px; margin-bottom: 20px;
-    }
-    .hero-slide-content h1 {
-      font-size: clamp(2rem, 4.2vw, 3.1rem); font-weight: 800; color: #fff;
-      font-family: 'Sora', sans-serif;
-      line-height: 1.1; margin-bottom: 15px; letter-spacing: -.5px;
-    }
-    .hero-slide-content p {
-      color: rgba(255,255,255,.75); font-size: .93rem; line-height: 1.78; max-width: 450px; margin-bottom: 30px;
-    }
-    .btn-hero {
-      background: var(--pb-gold); color: #1a1200; font-weight: 700; font-size: .87rem;
-      font-family: 'Sora', sans-serif;
-      padding: 12px 26px; border-radius: 8px; display: inline-block;
-      transition: transform .15s, box-shadow .15s;
-    }
-    .btn-hero:hover { 
-      transform: translateY(-2px); 
-      box-shadow: 0 8px 24px rgba(245,158,11,.45); 
-      color: #1a1200; 
-    }
-    .hero-ctrl {
-      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-      z-index: 10; display: flex; gap: 7px;
-    }
-    .hero-dot {
-      width: 28px; height: 4px; border-radius: 2px;
-      background: rgba(255,255,255,.28); cursor: pointer; border: none;
-      transition: background .2s, width .2s;
-    }
-    .hero-dot.active { background: var(--pb-gold); width: 44px; }
-    .hero-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
-      background: rgba(255,255,255,.12); backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,.18); color: #fff; border-radius: 50%;
-      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 1.15rem; transition: background .2s; user-select: none;
-    }
-    .hero-arrow:hover { background: rgba(255,255,255,.25); }
-    .hero-arrow.prev { left: 16px; }
-    .hero-arrow.next { right: 16px; }
+      /* HERO */
+      .hero-slider {
+        position: relative;
+        overflow: hidden;
+        background: var(--pb-blue-dark);
+        min-height: 430px;
+      }
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.7s ease;
+        pointer-events: none;
+      }
+      .hero-slide.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .hero-slide-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+      }
+      .hero-slide-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          100deg,
+          rgba(0, 47, 122, 0.94) 0%,
+          rgba(0, 47, 122, 0.6) 50%,
+          rgba(0, 47, 122, 0.18) 100%
+        );
+      }
+      .hero-slide-content {
+        position: relative;
+        z-index: 2;
+        max-width: 580px;
+        padding: 72px 0;
+      }
+      .hero-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--pb-gold);
+        color: #1a1200;
+        font-size: 0.69rem;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        font-family: "Sora", sans-serif;
+        padding: 5px 13px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+      .hero-slide-content h1 {
+        font-size: clamp(2rem, 4.2vw, 3.1rem);
+        font-weight: 800;
+        color: #fff;
+        font-family: "Sora", sans-serif;
+        line-height: 1.1;
+        margin-bottom: 15px;
+        letter-spacing: -0.5px;
+      }
+      .hero-slide-content p {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.93rem;
+        line-height: 1.78;
+        max-width: 450px;
+        margin-bottom: 30px;
+      }
+      .btn-hero {
+        background: var(--pb-gold);
+        color: #1a1200;
+        font-weight: 700;
+        font-size: 0.87rem;
+        font-family: "Sora", sans-serif;
+        padding: 12px 26px;
+        border-radius: 8px;
+        display: inline-block;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+      }
+      .btn-hero:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(245, 158, 11, 0.45);
+        color: #1a1200;
+      }
+      .hero-ctrl {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        display: flex;
+        gap: 7px;
+      }
+      .hero-dot {
+        width: 28px;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.28);
+        cursor: pointer;
+        border: none;
+        transition:
+          background 0.2s,
+          width 0.2s;
+      }
+      .hero-dot.active {
+        background: var(--pb-gold);
+        width: 44px;
+      }
+      .hero-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #fff;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.15rem;
+        transition: background 0.2s;
+        user-select: none;
+      }
+      .hero-arrow:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .hero-arrow.prev {
+        left: 16px;
+      }
+      .hero-arrow.next {
+        right: 16px;
+      }
 
-    /* STATS BAR */
-    .stats-bar {
-      background: var(--pb-blue);
-      padding: 0;
-    }
-    .stat-item {
-      flex: 1; padding: 16px 20px; text-align: center;
-      border-right: 1px solid rgba(255,255,255,.15);
-      transition: background .2s;
-    }
-    .stat-item:last-child { border-right: none; }
-    .stat-item:hover { background: rgba(255,255,255,.08); }
-    .stat-num { font-size: 1.5rem; font-weight: 800; color: #fff; font-family: 'Sora', sans-serif; line-height: 1; }
-    .stat-label { font-size: .72rem; color: rgba(255,255,255,.65); margin-top: 3px; }
+      /* STATS BAR */
+      .stats-bar {
+        background: var(--pb-blue);
+        padding: 0;
+      }
+      .stat-item {
+        flex: 1;
+        padding: 16px 20px;
+        text-align: center;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        transition: background 0.2s;
+      }
+      .stat-item:last-child {
+        border-right: none;
+      }
+      .stat-item:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .stat-num {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #fff;
+        font-family: "Sora", sans-serif;
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 3px;
+      }
 
-    /* PROFILES */
-    .profiles-section { background: var(--bg-card); border-bottom: 1px solid var(--border); transition: background .3s, border-color .3s; }
-    .profile-grid { display: flex; }
-    .profile-item {
-      flex: 1; display: flex; flex-direction: column; align-items: center;
-      gap: 7px; padding: 20px 10px;
-      border-right: 1px solid var(--border); transition: background .15s; cursor: pointer;
-    }
-    .profile-item:last-child { border-right: none; }
-    .profile-item:hover { background: var(--pb-blue-pale); }
-    .profile-item:hover .profile-icon-wrap { background: var(--pb-blue); }
-    .profile-item:hover .profile-icon-wrap svg { stroke: #fff; }
-    .profile-item:hover .profile-name { color: var(--pb-blue); }
-    .profile-icon-wrap {
-      width: 46px; height: 46px; border-radius: 13px; background: var(--pb-blue-pale);
-      display: flex; align-items: center; justify-content: center; transition: background .15s;
-    }
-    .profile-icon-wrap svg { width: 22px; height: 22px; stroke: var(--pb-blue); fill: none; stroke-width: 1.8; }
-    .profile-name { font-size: .8rem; font-weight: 700; font-family: 'Sora', sans-serif; color: var(--text); }
-    .profile-desc { font-size: .69rem; color: var(--muted); text-align: center; line-height: 1.35; }
-    .profile-btn {
-      font-size: .69rem; font-weight: 700; color: var(--pb-blue); font-family: 'Sora', sans-serif;
-      background: transparent; border: 1.5px solid var(--pb-blue);
-      border-radius: 6px; padding: 3px 10px; transition: background .15s, color .15s; margin-top: 2px;
-    }
-    .profile-btn:hover { background: var(--pb-blue); color: #fff; }
+      /* PROFILES */
+      .profiles-section {
+        background: var(--bg-card);
+        border-bottom: 1px solid var(--border);
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+      }
+      .profile-grid {
+        display: flex;
+      }
+      .profile-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 7px;
+        padding: 20px 10px;
+        border-right: 1px solid var(--border);
+        transition: background 0.15s;
+        cursor: pointer;
+      }
+      .profile-item:last-child {
+        border-right: none;
+      }
+      .profile-item:hover {
+        background: var(--pb-blue-pale);
+      }
+      .profile-item:hover .profile-icon-wrap {
+        background: var(--pb-blue);
+      }
+      .profile-item:hover .profile-icon-wrap svg {
+        stroke: #fff;
+      }
+      .profile-item:hover .profile-name {
+        color: var(--pb-blue);
+      }
+      .profile-icon-wrap {
+        width: 46px;
+        height: 46px;
+        border-radius: 13px;
+        background: var(--pb-blue-pale);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.15s;
+      }
+      .profile-icon-wrap svg {
+        width: 22px;
+        height: 22px;
+        stroke: var(--pb-blue);
+        fill: none;
+        stroke-width: 1.8;
+      }
+      .profile-name {
+        font-size: 0.8rem;
+        font-weight: 700;
+        font-family: "Sora", sans-serif;
+        color: var(--text);
+      }
+      .profile-desc {
+        font-size: 0.69rem;
+        color: var(--muted);
+        text-align: center;
+        line-height: 1.35;
+      }
+      .profile-btn {
+        font-size: 0.69rem;
+        font-weight: 700;
+        color: var(--pb-blue);
+        font-family: "Sora", sans-serif;
+        background: transparent;
+        border: 1.5px solid var(--pb-blue);
+        border-radius: 6px;
+        padding: 3px 10px;
+        transition:
+          background 0.15s,
+          color 0.15s;
+        margin-top: 2px;
+      }
+      .profile-btn:hover {
+        background: var(--pb-blue);
+        color: #fff;
+      }
 
-    /* MAIN SECTION */
-    .main-section { padding: 36px 0 56px; background: var(--bg-soft); transition: background .3s; }
-    .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
-    .section-head h2 { 
-      font-size: .93rem; font-weight: 800; text-transform: uppercase; 
-      letter-spacing: .6px; font-family: 'Sora', sans-serif; color: var(--text);
-    }
-    .section-head h2 span { color: var(--pb-blue); }
-    .see-all { font-size: .77rem; font-weight: 600; color: var(--pb-blue); }
-    .see-all:hover { text-decoration: underline; }
+      /* MAIN SECTION */
+      .main-section {
+        padding: 36px 0 56px;
+        background: var(--bg-soft);
+        transition: background 0.3s;
+      }
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 18px;
+      }
+      .section-head h2 {
+        font-size: 0.93rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        font-family: "Sora", sans-serif;
+        color: var(--text);
+      }
+      .section-head h2 span {
+        color: var(--pb-blue);
+      }
+      .see-all {
+        font-size: 0.77rem;
+        font-weight: 600;
+        color: var(--pb-blue);
+      }
+      .see-all:hover {
+        text-decoration: underline;
+      }
 
-    /* NEWS CARDS */
-    .news-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
-      box-shadow: var(--shadow-sm); transition: box-shadow .2s, transform .2s, background .3s, border-color .3s;
-      height: 100%; display: flex; flex-direction: column;
-    }
-    .news-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-    .news-card-img-wrap { position: relative; overflow: hidden; height: 155px; }
-    .news-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-    .news-card:hover .news-card-img { transform: scale(1.05); }
-    .news-card-body { padding: 15px 16px; flex: 1; display: flex; flex-direction: column; }
-    .news-badge {
-      font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .9px;
-      color: var(--pb-blue); background: var(--pb-blue-pale);
-      padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 9px;
-      font-family: 'Sora', sans-serif;
-    }
-    .news-card-body h4 { 
-      font-size: .86rem; font-weight: 600; line-height: 1.5; flex: 1; 
-      color: var(--text); font-family: 'Sora', sans-serif;
-    }
-    .news-card-body small { font-size: .71rem; color: var(--muted); margin-top: 10px; display: block; }
-    .news-link { font-size: .75rem; font-weight: 700; color: var(--pb-blue); margin-top: 10px; display: inline-block; font-family: 'Sora', sans-serif; }
-    .news-link:hover { text-decoration: underline; }
+      /* NEWS CARDS */
+      .news-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s,
+          background 0.3s,
+          border-color 0.3s;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .news-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-4px);
+      }
+      .news-card-img-wrap {
+        position: relative;
+        overflow: hidden;
+        height: 155px;
+      }
+      .news-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+      }
+      .news-card:hover .news-card-img {
+        transform: scale(1.05);
+      }
+      .news-card-body {
+        padding: 15px 16px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .news-badge {
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.9px;
+        color: var(--pb-blue);
+        background: var(--pb-blue-pale);
+        padding: 3px 8px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 9px;
+        font-family: "Sora", sans-serif;
+      }
+      .news-card-body h4 {
+        font-size: 0.86rem;
+        font-weight: 600;
+        line-height: 1.5;
+        flex: 1;
+        color: var(--text);
+        font-family: "Sora", sans-serif;
+      }
+      .news-card-body small {
+        font-size: 0.71rem;
+        color: var(--muted);
+        margin-top: 10px;
+        display: block;
+      }
+      .news-link {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--pb-blue);
+        margin-top: 10px;
+        display: inline-block;
+        font-family: "Sora", sans-serif;
+      }
+      .news-link:hover {
+        text-decoration: underline;
+      }
 
-    /* WIDGETS */
-    .widget-box {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
-      padding: 18px; box-shadow: var(--shadow-sm);
-      transition: background .3s, border-color .3s;
-    }
-    .widget-box h5 { font-size: .9rem; font-weight: 700; margin-bottom: 7px; font-family: 'Sora', sans-serif; color: var(--text); }
-    .widget-box p { font-size: .81rem; color: var(--muted); line-height: 1.65; }
-    .widget-tag {
-      display: inline-block; font-size: .65rem; font-weight: 700; letter-spacing: .9px; 
-      text-transform: uppercase; font-family: 'Sora', sans-serif;
-      color: var(--pb-blue); background: var(--pb-blue-pale); padding: 3px 8px; border-radius: 4px; margin-bottom: 9px;
-    }
+      /* WIDGETS */
+      .widget-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px;
+        box-shadow: var(--shadow-sm);
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+      }
+      .widget-box h5 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 7px;
+        font-family: "Sora", sans-serif;
+        color: var(--text);
+      }
+      .widget-box p {
+        font-size: 0.81rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .widget-tag {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.9px;
+        text-transform: uppercase;
+        font-family: "Sora", sans-serif;
+        color: var(--pb-blue);
+        background: var(--pb-blue-pale);
+        padding: 3px 8px;
+        border-radius: 4px;
+        margin-bottom: 9px;
+      }
 
-    /* QUICK SERVICES */
-    .quick-services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    .qs-item {
-      background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 12px; padding: 16px 10px;
-      display: flex; flex-direction: column; align-items: center; gap: 9px;
-      box-shadow: var(--shadow-sm); transition: border-color .15s, box-shadow .15s, transform .15s, background .3s;
-      cursor: pointer; text-align: center;
-    }
-    .qs-item:hover { border-color: var(--pb-blue); box-shadow: var(--shadow-md); transform: translateY(-3px); }
-    .qs-icon {
-      width: 44px; height: 44px; border-radius: 12px; background: var(--pb-blue-pale);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .qs-icon svg { width: 20px; height: 20px; stroke: var(--pb-blue); fill: none; stroke-width: 1.8; }
-    .qs-item span { font-size: .74rem; font-weight: 600; color: var(--text); line-height: 1.3; font-family: 'Sora', sans-serif; }
+      /* QUICK SERVICES */
+      .quick-services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .qs-item {
+        background: var(--bg-card);
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        padding: 16px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 9px;
+        box-shadow: var(--shadow-sm);
+        transition:
+          border-color 0.15s,
+          box-shadow 0.15s,
+          transform 0.15s,
+          background 0.3s;
+        cursor: pointer;
+        text-align: center;
+      }
+      .qs-item:hover {
+        border-color: var(--pb-blue);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-3px);
+      }
+      .qs-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: var(--pb-blue-pale);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .qs-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--pb-blue);
+        fill: none;
+        stroke-width: 1.8;
+      }
+      .qs-item span {
+        font-size: 0.74rem;
+        font-weight: 600;
+        color: var(--text);
+        line-height: 1.3;
+        font-family: "Sora", sans-serif;
+      }
 
-    /* CAMPUS CARDS */
-    .campus-card {
-      border-radius: 13px; overflow: hidden; position: relative; min-height: 165px; 
-      box-shadow: var(--shadow-sm); cursor: pointer;
-    }
-    .campus-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-    .campus-card:hover img { transform: scale(1.06); }
-    .campus-card-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,47,122,.85) 0%, transparent 60%);
-    }
-    .campus-card-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 13px 15px; }
-    .campus-card-text h5 { font-size: .8rem; font-weight: 700; color: #fff; margin: 0; font-family: 'Sora', sans-serif; }
-    .campus-card.tall { min-height: 346px; }
+      /* CAMPUS CARDS */
+      .campus-card {
+        border-radius: 13px;
+        overflow: hidden;
+        position: relative;
+        min-height: 165px;
+        box-shadow: var(--shadow-sm);
+        cursor: pointer;
+      }
+      .campus-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+      }
+      .campus-card:hover img {
+        transform: scale(1.06);
+      }
+      .campus-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 47, 122, 0.85) 0%,
+          transparent 60%
+        );
+      }
+      .campus-card-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 13px 15px;
+      }
+      .campus-card-text h5 {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #fff;
+        margin: 0;
+        font-family: "Sora", sans-serif;
+      }
+      .campus-card.tall {
+        min-height: 346px;
+      }
 
-    /* SERVICE LIST */
-    .service-list-item {
-      display: flex; align-items: center; gap: 10px; color: var(--text-soft);
-      font-size: .81rem; font-weight: 500; padding: 9px 0;
-      border-bottom: 1px solid var(--border); transition: color .15s;
-    }
-    .service-list-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .service-list-item:hover { color: var(--pb-blue); }
+      /* SERVICE LIST */
+      .service-list-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-soft);
+        font-size: 0.81rem;
+        font-weight: 500;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--border);
+        transition: color 0.15s;
+      }
+      .service-list-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .service-list-item:hover {
+        color: var(--pb-blue);
+      }
 
-    /* ANNOUNCEMENT BANNER */
-    .announce-bar {
-      background: linear-gradient(90deg, var(--pb-blue) 0%, var(--pb-blue-mid) 100%);
-      color: #fff; font-size: .8rem; font-weight: 500; padding: 9px 0;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .announce-badge {
-      background: var(--pb-gold); color: #1a1200;
-      font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .8px;
-      padding: 2px 8px; border-radius: 3px; flex-shrink: 0; font-family: 'Sora', sans-serif;
-    }
+      /* ANNOUNCEMENT BANNER */
+      .announce-bar {
+        background: linear-gradient(
+          90deg,
+          var(--pb-blue) 0%,
+          var(--pb-blue-mid) 100%
+        );
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 9px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .announce-badge {
+        background: var(--pb-gold);
+        color: #1a1200;
+        font-size: 0.65rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        padding: 2px 8px;
+        border-radius: 3px;
+        flex-shrink: 0;
+        font-family: "Sora", sans-serif;
+      }
 
-    /* FOOTER */
-    .site-footer { 
-      background: var(--pb-blue-dark); padding: 48px 0 22px;
-      transition: background .3s;
-    }
-    [data-theme="dark"] .site-footer { background: #060e1c; }
-    .footer-logo { height: 36px; filter: brightness(0) invert(1); opacity: .8; margin-bottom: 14px; }
-    .footer-text { font-size: .79rem; color: rgba(255,255,255,.42); line-height: 1.7; max-width: 240px; }
-    .footer-col-title { 
-      font-size: .72rem; font-weight: 800; color: rgba(255,255,255,.85); 
-      text-transform: uppercase; letter-spacing: .8px; margin-bottom: 15px;
-      font-family: 'Sora', sans-serif;
-    }
-    .footer-link { display: block; font-size: .79rem; color: rgba(255,255,255,.42); margin-bottom: 7px; transition: color .15s; }
-    .footer-link:hover { color: var(--pb-gold); }
-    .footer-divider { border-color: rgba(255,255,255,.08); margin: 28px 0 15px; }
-    .footer-bottom { font-size: .72rem; color: rgba(255,255,255,.28); }
-    .footer-bottom a { color: rgba(255,255,255,.35); margin-left: 14px; }
-    .footer-bottom a:hover { color: rgba(255,255,255,.7); }
-    .social-row { display: flex; gap: 7px; margin-top: 16px; }
-    .soc-btn {
-      width: 31px; height: 31px; border-radius: 8px; background: rgba(255,255,255,.07);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.48); font-size: .78rem; font-weight: 700;
-      transition: background .15s, color .15s;
-    }
-    .soc-btn:hover { background: var(--pb-gold); color: #1a1200; }
+      /* FOOTER */
+      .site-footer {
+        background: var(--pb-blue-dark);
+        padding: 48px 0 22px;
+        transition: background 0.3s;
+      }
+      [data-theme="dark"] .site-footer {
+        background: #060e1c;
+      }
+      .footer-logo {
+        height: 36px;
+        filter: brightness(0) invert(1);
+        opacity: 0.8;
+        margin-bottom: 14px;
+      }
+      .footer-text {
+        font-size: 0.79rem;
+        color: rgba(255, 255, 255, 0.42);
+        line-height: 1.7;
+        max-width: 240px;
+      }
+      .footer-col-title {
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.85);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-bottom: 15px;
+        font-family: "Sora", sans-serif;
+      }
+      .footer-link {
+        display: block;
+        font-size: 0.79rem;
+        color: rgba(255, 255, 255, 0.42);
+        margin-bottom: 7px;
+        transition: color 0.15s;
+      }
+      .footer-link:hover {
+        color: var(--pb-gold);
+      }
+      .footer-divider {
+        border-color: rgba(255, 255, 255, 0.08);
+        margin: 28px 0 15px;
+      }
+      .footer-bottom {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.28);
+      }
+      .footer-bottom a {
+        color: rgba(255, 255, 255, 0.35);
+        margin-left: 14px;
+      }
+      .footer-bottom a:hover {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .social-row {
+        display: flex;
+        gap: 7px;
+        margin-top: 16px;
+      }
+      .soc-btn {
+        width: 31px;
+        height: 31px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.07);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.48);
+        font-size: 0.78rem;
+        font-weight: 700;
+        transition:
+          background 0.15s,
+          color 0.15s;
+      }
+      .soc-btn:hover {
+        background: var(--pb-gold);
+        color: #1a1200;
+      }
 
-    /* SEARCH OVERLAY */
-    .search-overlay {
-      position: fixed; inset: 0; background: rgba(0,10,30,.6);
-      z-index: 2000; display: none; align-items: flex-start; justify-content: center; padding-top: 100px;
-    }
-    .search-overlay.open { display: flex; }
-    .search-box {
-      background: var(--bg-card); border-radius: 16px; padding: 24px; width: 100%; max-width: 580px;
-      box-shadow: 0 24px 80px rgba(0,0,0,.3); position: relative;
-    }
-    .search-box input {
-      width: 100%; border: 2px solid var(--border); border-radius: 10px; background: var(--bg-soft);
-      padding: 13px 16px; font-size: .95rem; font-family: inherit; outline: none;
-      transition: border-color .15s; color: var(--text);
-    }
-    .search-box input:focus { border-color: var(--pb-blue); }
-    .search-close { position: absolute; top: 12px; right: 14px; background: none; border: none; cursor: pointer; color: var(--muted); font-size: 1.1rem; }
+      /* SEARCH OVERLAY */
+      .search-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 10, 30, 0.6);
+        z-index: 2000;
+        display: none;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 100px;
+      }
+      .search-overlay.open {
+        display: flex;
+      }
+      .search-box {
+        background: var(--bg-card);
+        border-radius: 16px;
+        padding: 24px;
+        width: 100%;
+        max-width: 580px;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+      .search-box input {
+        width: 100%;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg-soft);
+        padding: 13px 16px;
+        font-size: 0.95rem;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.15s;
+        color: var(--text);
+      }
+      .search-box input:focus {
+        border-color: var(--pb-blue);
+      }
+      .search-close {
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--muted);
+        font-size: 1.1rem;
+      }
 
-    /* PAGE NAV */
-    .page-nav-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
-    .page-nav-btn {
-      font-size: .76rem; font-weight: 700; font-family: 'Sora', sans-serif;
-      padding: 7px 16px; border-radius: 8px; border: 1.5px solid var(--pb-blue);
-      color: var(--pb-blue); background: transparent; cursor: pointer;
-      transition: background .15s, color .15s, transform .15s;
-    }
-    .page-nav-btn:hover, .page-nav-btn.active { background: var(--pb-blue); color: #fff; transform: translateY(-1px); }
+      /* PAGE NAV */
+      .page-nav-btns {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+      }
+      .page-nav-btn {
+        font-size: 0.76rem;
+        font-weight: 700;
+        font-family: "Sora", sans-serif;
+        padding: 7px 16px;
+        border-radius: 8px;
+        border: 1.5px solid var(--pb-blue);
+        color: var(--pb-blue);
+        background: transparent;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          color 0.15s,
+          transform 0.15s;
+      }
+      .page-nav-btn:hover,
+      .page-nav-btn.active {
+        background: var(--pb-blue);
+        color: #fff;
+        transform: translateY(-1px);
+      }
 
-    /* PAGES */
-    .page { display: none; }
-    .page.active { display: block; }
+      /* PAGES */
+      .page {
+        display: none;
+      }
+      .page.active {
+        display: block;
+      }
 
-    /* FINANCIACION PAGE */
-    .fin-hero {
-      background: linear-gradient(135deg, var(--pb-blue-dark) 0%, var(--pb-blue) 100%);
-      padding: 56px 0 48px; color: #fff; position: relative; overflow: hidden;
-    }
-    .fin-hero::before {
-      content: ''; position: absolute; right: -60px; top: -60px;
-      width: 380px; height: 380px; border-radius: 50%;
-      background: rgba(255,255,255,.04);
-    }
-    .fin-hero h1 { font-family: 'Sora', sans-serif; font-size: 2.2rem; font-weight: 800; letter-spacing: -.5px; }
-    .fin-hero p { color: rgba(255,255,255,.7); font-size: .94rem; line-height: 1.75; max-width: 520px; }
-    .fin-option-card {
-      background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 16px; padding: 24px;
-      transition: border-color .2s, box-shadow .2s, transform .2s, background .3s;
-      cursor: pointer; height: 100%;
-    }
-    .fin-option-card:hover { border-color: var(--pb-blue); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-    .fin-option-card .fin-icon {
-      width: 52px; height: 52px; border-radius: 14px; background: var(--pb-blue-pale);
-      display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
-    }
-    .fin-option-card .fin-icon svg { width: 24px; height: 24px; stroke: var(--pb-blue); fill: none; stroke-width: 1.8; }
-    .fin-option-card h5 { font-family: 'Sora', sans-serif; font-size: .95rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-    .fin-option-card p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
-    .fin-option-card .fin-tag {
-      display: inline-block; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .8px;
-      padding: 3px 9px; border-radius: 4px; margin-top: 12px; font-family: 'Sora', sans-serif;
-    }
-    .fin-tag.green { background: #dcfce7; color: #166534; }
-    .fin-tag.blue { background: var(--pb-blue-pale); color: var(--pb-blue); }
-    .fin-tag.gold { background: #fef3c7; color: #92400e; }
-    [data-theme="dark"] .fin-tag.green { background: #052e16; color: #4ade80; }
-    [data-theme="dark"] .fin-tag.gold { background: #1c1200; color: #fcd34d; }
-    .calc-box {
-      background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 16px; padding: 28px;
-      transition: background .3s, border-color .3s;
-    }
-    .calc-box h4 { font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 18px; }
-    .calc-label { font-size: .79rem; font-weight: 600; color: var(--text-soft); margin-bottom: 6px; font-family: 'Sora', sans-serif; }
-    .calc-input {
-      width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 9px;
-      font-size: .88rem; font-family: inherit; background: var(--bg-soft); color: var(--text);
-      outline: none; transition: border-color .15s;
-      margin-bottom: 14px;
-    }
-    .calc-input:focus { border-color: var(--pb-blue); }
-    .calc-result {
-      background: var(--pb-blue-pale2); border: 1.5px solid var(--pb-blue); border-radius: 10px;
-      padding: 16px; text-align: center; margin-top: 4px;
-    }
-    .calc-result .result-num { font-family: 'Sora', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--pb-blue); }
-    .calc-result .result-label { font-size: .75rem; color: var(--muted); margin-top: 3px; }
-    .btn-blue {
-      background: var(--pb-blue); color: #fff; font-weight: 700; font-size: .85rem;
-      font-family: 'Sora', sans-serif; padding: 11px 22px; border-radius: 9px;
-      border: none; cursor: pointer; width: 100%; margin-top: 12px;
-      transition: background .2s, transform .15s;
-    }
-    .btn-blue:hover { background: var(--pb-blue-mid); transform: translateY(-1px); }
+      /* FINANCIACION PAGE */
+      .fin-hero {
+        background: linear-gradient(
+          135deg,
+          var(--pb-blue-dark) 0%,
+          var(--pb-blue) 100%
+        );
+        padding: 56px 0 48px;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      .fin-hero::before {
+        content: "";
+        position: absolute;
+        right: -60px;
+        top: -60px;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .fin-hero h1 {
+        font-family: "Sora", sans-serif;
+        font-size: 2.2rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+      .fin-hero p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.94rem;
+        line-height: 1.75;
+        max-width: 520px;
+      }
+      .fin-option-card {
+        background: var(--bg-card);
+        border: 1.5px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s,
+          transform 0.2s,
+          background 0.3s;
+        cursor: pointer;
+        height: 100%;
+      }
+      .fin-option-card:hover {
+        border-color: var(--pb-blue);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-4px);
+      }
+      .fin-option-card .fin-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: var(--pb-blue-pale);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+      }
+      .fin-option-card .fin-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke: var(--pb-blue);
+        fill: none;
+        stroke-width: 1.8;
+      }
+      .fin-option-card h5 {
+        font-family: "Sora", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+      .fin-option-card p {
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .fin-option-card .fin-tag {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        padding: 3px 9px;
+        border-radius: 4px;
+        margin-top: 12px;
+        font-family: "Sora", sans-serif;
+      }
+      .fin-tag.green {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .fin-tag.blue {
+        background: var(--pb-blue-pale);
+        color: var(--pb-blue);
+      }
+      .fin-tag.gold {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      [data-theme="dark"] .fin-tag.green {
+        background: #052e16;
+        color: #4ade80;
+      }
+      [data-theme="dark"] .fin-tag.gold {
+        background: #1c1200;
+        color: #fcd34d;
+      }
+      .calc-box {
+        background: var(--bg-card);
+        border: 1.5px solid var(--border);
+        border-radius: 16px;
+        padding: 28px;
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+      }
+      .calc-box h4 {
+        font-family: "Sora", sans-serif;
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--text);
+        margin-bottom: 18px;
+      }
+      .calc-label {
+        font-size: 0.79rem;
+        font-weight: 600;
+        color: var(--text-soft);
+        margin-bottom: 6px;
+        font-family: "Sora", sans-serif;
+      }
+      .calc-input {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1.5px solid var(--border);
+        border-radius: 9px;
+        font-size: 0.88rem;
+        font-family: inherit;
+        background: var(--bg-soft);
+        color: var(--text);
+        outline: none;
+        transition: border-color 0.15s;
+        margin-bottom: 14px;
+      }
+      .calc-input:focus {
+        border-color: var(--pb-blue);
+      }
+      .calc-result {
+        background: var(--pb-blue-pale2);
+        border: 1.5px solid var(--pb-blue);
+        border-radius: 10px;
+        padding: 16px;
+        text-align: center;
+        margin-top: 4px;
+      }
+      .calc-result .result-num {
+        font-family: "Sora", sans-serif;
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var(--pb-blue);
+      }
+      .calc-result .result-label {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-top: 3px;
+      }
+      .btn-blue {
+        background: var(--pb-blue);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.85rem;
+        font-family: "Sora", sans-serif;
+        padding: 11px 22px;
+        border-radius: 9px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 12px;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .btn-blue:hover {
+        background: var(--pb-blue-mid);
+        transform: translateY(-1px);
+      }
 
-    /* NOTICIAS PAGE */
-    .noticias-hero {
-      background: linear-gradient(135deg, #0f172a 0%, var(--pb-blue-dark) 100%);
-      padding: 48px 0 40px; color: #fff;
-    }
-    [data-theme="dark"] .noticias-hero { background: linear-gradient(135deg, #040810 0%, #001850 100%); }
-    .noticias-hero h1 { font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 800; }
-    .noticias-hero p { color: rgba(255,255,255,.65); font-size: .9rem; }
-    .filter-bar {
-      background: var(--bg-card); border-bottom: 1px solid var(--border);
-      padding: 14px 0; transition: background .3s, border-color .3s;
-    }
-    .filter-pill {
-      font-size: .75rem; font-weight: 700; font-family: 'Sora', sans-serif;
-      padding: 6px 15px; border-radius: 20px; border: 1.5px solid var(--border);
-      color: var(--muted); background: transparent; cursor: pointer;
-      transition: all .15s;
-    }
-    .filter-pill:hover, .filter-pill.active { border-color: var(--pb-blue); background: var(--pb-blue); color: #fff; }
-    .news-big-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
-      box-shadow: var(--shadow-sm); transition: box-shadow .2s, transform .2s, background .3s;
-      display: flex; flex-direction: column; height: 100%;
-    }
-    .news-big-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-    .news-big-img { width: 100%; height: 220px; object-fit: cover; transition: transform .4s; }
-    .news-big-card:hover .news-big-img { transform: scale(1.04); }
-    .news-big-img-wrap { overflow: hidden; }
-    .news-big-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .news-big-body h3 { font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text); line-height: 1.45; margin-bottom: 10px; }
-    .news-big-body p { font-size: .83rem; color: var(--muted); line-height: 1.7; flex: 1; }
-    .news-big-body small { font-size: .72rem; color: var(--muted); display: block; margin-top: 12px; }
-    .news-list-item {
-      display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border);
-      transition: background .1s; cursor: pointer;
-    }
-    .news-list-item:last-child { border-bottom: none; }
-    .news-list-item:hover { background: var(--pb-blue-pale); margin: 0 -12px; padding: 14px 12px; border-radius: 8px; }
-    .news-list-img { width: 80px; height: 72px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
-    .news-list-body h6 { font-family: 'Sora', sans-serif; font-size: .82rem; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 4px; }
-    .news-list-body small { font-size: .7rem; color: var(--muted); }
+      /* NOTICIAS PAGE */
+      .noticias-hero {
+        background: linear-gradient(
+          135deg,
+          #0f172a 0%,
+          var(--pb-blue-dark) 100%
+        );
+        padding: 48px 0 40px;
+        color: #fff;
+      }
+      [data-theme="dark"] .noticias-hero {
+        background: linear-gradient(135deg, #040810 0%, #001850 100%);
+      }
+      .noticias-hero h1 {
+        font-family: "Sora", sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+      }
+      .noticias-hero p {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.9rem;
+      }
+      .filter-bar {
+        background: var(--bg-card);
+        border-bottom: 1px solid var(--border);
+        padding: 14px 0;
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+      }
+      .filter-pill {
+        font-size: 0.75rem;
+        font-weight: 700;
+        font-family: "Sora", sans-serif;
+        padding: 6px 15px;
+        border-radius: 20px;
+        border: 1.5px solid var(--border);
+        color: var(--muted);
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .filter-pill:hover,
+      .filter-pill.active {
+        border-color: var(--pb-blue);
+        background: var(--pb-blue);
+        color: #fff;
+      }
+      .news-big-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s,
+          background 0.3s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .news-big-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-3px);
+      }
+      .news-big-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.4s;
+      }
+      .news-big-card:hover .news-big-img {
+        transform: scale(1.04);
+      }
+      .news-big-img-wrap {
+        overflow: hidden;
+      }
+      .news-big-body {
+        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .news-big-body h3 {
+        font-family: "Sora", sans-serif;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.45;
+        margin-bottom: 10px;
+      }
+      .news-big-body p {
+        font-size: 0.83rem;
+        color: var(--muted);
+        line-height: 1.7;
+        flex: 1;
+      }
+      .news-big-body small {
+        font-size: 0.72rem;
+        color: var(--muted);
+        display: block;
+        margin-top: 12px;
+      }
+      .news-list-item {
+        display: flex;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+        transition: background 0.1s;
+        cursor: pointer;
+      }
+      .news-list-item:last-child {
+        border-bottom: none;
+      }
+      .news-list-item:hover {
+        background: var(--pb-blue-pale);
+        margin: 0 -12px;
+        padding: 14px 12px;
+        border-radius: 8px;
+      }
+      .news-list-img {
+        width: 80px;
+        height: 72px;
+        border-radius: 8px;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+      .news-list-body h6 {
+        font-family: "Sora", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.4;
+        margin-bottom: 4px;
+      }
+      .news-list-body small {
+        font-size: 0.7rem;
+        color: var(--muted);
+      }
 
-    /* RESPONSIVE */
-    @media (max-width: 991px) {
-      .profile-grid { flex-wrap: wrap; }
-      .profile-item { flex: 1 1 33%; border-bottom: 1px solid var(--border); }
-      .quick-services-grid { grid-template-columns: repeat(2, 1fr); }
-      .nav-menu { display: none; }
-      .stat-item { padding: 12px 8px; }
-      .stat-num { font-size: 1.2rem; }
-    }
-    @media (max-width: 575px) {
-      .profile-item { flex: 1 1 50%; }
-      .stats-bar .d-flex { flex-wrap: wrap; }
-    }
+      /* RESPONSIVE */
+      @media (max-width: 991px) {
+        .profile-grid {
+          flex-wrap: wrap;
+        }
+        .profile-item {
+          flex: 1 1 33%;
+          border-bottom: 1px solid var(--border);
+        }
+        .quick-services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .nav-menu {
+          display: none;
+        }
+        .stat-item {
+          padding: 12px 8px;
+        }
+        .stat-num {
+          font-size: 1.2rem;
+        }
+      }
+      @media (max-width: 575px) {
+        .profile-item {
+          flex: 1 1 50%;
+        }
+        .stats-bar .d-flex {
+          flex-wrap: wrap;
+        }
+      }
 
-    /* ANIMATIONS */
-    @keyframes fadeUp { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform:none; } }
-    .fade-up { animation: fadeUp .5s ease both; }
-    .d1 { animation-delay: .08s; } .d2 { animation-delay: .16s; } .d3 { animation-delay: .24s; }
-  </style>
-</head>
-<body>
-
-<!-- ANNOUNCE BAR -->
-<div class="announce-bar">
-  <div class="container d-flex align-items-center gap-3 flex-wrap">
-    <span class="announce-badge">Nuevo</span>
-    <span>Inscripciones 2026-2 abiertas — Pregrados, Posgrados y Educación Continua</span>
-    <a href="#" style="color:var(--pb-gold);font-weight:700;font-size:.8rem;margin-left:auto">Inscríbete →</a>
-  </div>
-</div>
-
-<!-- GOV.CO -->
-<div class="govco-bar">
-  <div class="container d-flex align-items-center justify-content-between py-1">
-    <div class="d-flex align-items-center gap-3 flex-wrap">
-      <img src="https://pascualbravo.edu.co/wp-content/uploads/2019/12/gov.co_.png" class="govco-logo" alt="gov.co"/>
-      <a href="#">Transparencia y acceso a la información pública</a>
-      <span class="sep d-none d-md-inline">|</span>
-      <a href="#" class="d-none d-md-inline">Atención y servicios a la ciudadanía</a>
-      <span class="sep d-none d-lg-inline">|</span>
-      <a href="#" class="d-none d-lg-inline">Participa</a>
-    </div>
-  </div>
-</div>
-
-<!-- UTILITY -->
-<div class="utility-bar d-none d-lg-block">
-  <div class="container d-flex align-items-center justify-content-between">
-    <div class="d-flex align-items-center gap-1 flex-wrap">
-      <span class="soy-label">Soy:</span>
-      <a href="#">Estudiante</a>
-      <a href="#">Aspirante</a>
-      <a href="#">Egresado</a>
-      <a href="#">Docente/Empleado</a>
-      <a href="#">Niño</a>
-    </div>
-    <div class="d-flex align-items-center gap-2">
-      <a href="#" class="social-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-      <a href="#" class="social-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
-      <a href="#" class="social-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
-      <a href="#" class="social-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-1.94C18.88 4 12 4 12 4s-6.88 0-8.6.48A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.94 1.94C5.12 20 12 20 12 20s6.88 0 8.6-.48a2.78 2.78 0 001.94-1.94A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor"/></svg></a>
-      <div style="width:1px;height:14px;background:var(--border);margin:0 4px"></div>
-      <!-- DARK MODE TOGGLE -->
-      <div class="dark-toggle" id="darkToggle">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="sunIcon"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <div class="dark-toggle-pill"></div>
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      /* ANIMATIONS */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .fade-up {
+        animation: fadeUp 0.5s ease both;
+      }
+      .d1 {
+        animation-delay: 0.08s;
+      }
+      .d2 {
+        animation-delay: 0.16s;
+      }
+      .d3 {
+        animation-delay: 0.24s;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ANNOUNCE BAR -->
+    <div class="announce-bar">
+      <div class="container d-flex align-items-center gap-3 flex-wrap">
+        <span class="announce-badge">Nuevo</span>
+        <span
+          >Inscripciones 2026-2 abiertas — Pregrados, Posgrados y Educación
+          Continua</span
+        >
+        <a
+          href="#"
+          style="
+            color: var(--pb-gold);
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-left: auto;
+          "
+          >Inscríbete →</a
+        >
       </div>
     </div>
-  </div>
-</div>
 
-<!-- NAV -->
-<nav class="main-nav">
-  <div class="inner">
-    <a href="#" onclick="showPage('home')">
-      <img src="https://pascualbravo.edu.co/wp-content/uploads/2023/06/cropped-Imagotipo-horizontal_acreditados.png" class="nav-logo" alt="Pascual Bravo"/>
-    </a>
-    <ul class="nav-menu">
-      <li><a href="#" onclick="showPage('home')">Estudia con nosotros</a></li>
-      <li><a href="#">Institucional</a></li>
-      <li><a href="#">Académico</a></li>
-      <li><a href="#">Bienestar</a></li>
-      <li><a href="#">Investigación</a></li>
-      <li><a href="#">Extensión</a></li>
-      <li><a href="#" onclick="showPage('noticias')">Noticias</a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="btn-search" id="searchBtn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-      </button>
-      <a href="#" class="btn-sicau">Acceso SICAU</a>
-    </div>
-  </div>
-</nav>
-
-<!-- SEARCH OVERLAY -->
-<div class="search-overlay" id="searchOverlay">
-  <div class="search-box">
-    <button class="search-close" id="searchClose">✕</button>
-    <p style="font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;font-family:'Sora',sans-serif">¿Qué estás buscando?</p>
-    <input type="text" placeholder="Busca programas, noticias, servicios..."/>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- PAGE: HOME -->
-<!-- ============================================================ -->
-<div id="page-home" class="page active">
-
-  <!-- HERO -->
-  <div class="hero-slider" style="min-height:430px">
-    <div class="hero-slide active">
-      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1800&auto=format&fit=crop')"></div>
-      <div class="hero-slide-overlay"></div>
-      <div class="container"><div class="hero-slide-content fade-up">
-        <div class="hero-chip">✦ Inscripciones 2026 — abiertas</div>
-        <h1>Innovación,<br>Tradición, Futuro</h1>
-        <p>Formamos líderes en ingeniería y tecnología con alta calidad académica acreditada en Medellín.</p>
-        <a href="#" class="btn-hero">Ver nuestra oferta de pregrados</a>
-      </div></div>
-    </div>
-    <div class="hero-slide">
-      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1800&auto=format&fit=crop')"></div>
-      <div class="hero-slide-overlay"></div>
-      <div class="container"><div class="hero-slide-content">
-        <div class="hero-chip">⚗ Investigación</div>
-        <h1>Nuevo Doctorado en Ciencia y Tecnología</h1>
-        <p>Ofertado en alianza con la Institución Universitaria ITM.</p>
-        <a href="#" class="btn-hero">Conoce más</a>
-      </div></div>
-    </div>
-    <div class="hero-slide">
-      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1800&auto=format&fit=crop')"></div>
-      <div class="hero-slide-overlay"></div>
-      <div class="container"><div class="hero-slide-content">
-        <div class="hero-chip">✈ Movilidad Internacional</div>
-        <h1>Conecta en otro país — Alianza del Pacífico</h1>
-        <p>Estudia un semestre en el exterior con apoyo institucional.</p>
-        <a href="#" class="btn-hero">Ver convocatoria</a>
-      </div></div>
-    </div>
-    <button class="hero-arrow prev" id="heroPrev">&#8249;</button>
-    <button class="hero-arrow next" id="heroNext">&#8250;</button>
-    <div class="hero-ctrl">
-      <button class="hero-dot active" data-i="0"></button>
-      <button class="hero-dot" data-i="1"></button>
-      <button class="hero-dot" data-i="2"></button>
-    </div>
-  </div>
-
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="container">
-      <div class="d-flex">
-        <div class="stat-item">
-          <div class="stat-num">+8.000</div>
-          <div class="stat-label">Estudiantes activos</div>
+    <!-- GOV.CO -->
+    <div class="govco-bar">
+      <div
+        class="container d-flex align-items-center justify-content-between py-1"
+      >
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+          <img
+            src="https://pascualbravo.edu.co/wp-content/uploads/2019/12/gov.co_.png"
+            class="govco-logo"
+            alt="gov.co"
+          />
+          <a href="#">Transparencia y acceso a la información pública</a>
+          <span class="sep d-none d-md-inline">|</span>
+          <a href="#" class="d-none d-md-inline"
+            >Atención y servicios a la ciudadanía</a
+          >
+          <span class="sep d-none d-lg-inline">|</span>
+          <a href="#" class="d-none d-lg-inline">Participa</a>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">42</div>
-          <div class="stat-label">Programas acreditados</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">+50</div>
-          <div class="stat-label">Grupos de investigación</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">+25k</div>
-          <div class="stat-label">Egresados activos</div>
-        </div>
-        <div class="stat-item d-none d-md-block">
-          <div class="stat-num">99</div>
-          <div class="stat-label">Años de excelencia</div>
-        </div>
       </div>
     </div>
-  </div>
 
-  <!-- PROFILES -->
-  <section class="profiles-section">
-    <div class="profile-grid">
-      <div class="profile-item">
-        <div class="profile-icon-wrap"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <div class="profile-name">Aspirante</div>
-        <div class="profile-desc">Inscríbete en la institución</div>
-        <a href="#" class="profile-btn">Inscríbete</a>
-      </div>
-      <div class="profile-item">
-        <div class="profile-icon-wrap"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-        <div class="profile-name">Estudiante</div>
-        <div class="profile-desc">Acompañamiento y servicios</div>
-        <a href="#" class="profile-btn">Mi portal</a>
-      </div>
-      <div class="profile-item">
-        <div class="profile-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <div class="profile-name">Egresado</div>
-        <div class="profile-desc">Programas para egresados</div>
-        <a href="#" class="profile-btn">Proyectos actuales</a>
-      </div>
-      <div class="profile-item">
-        <div class="profile-icon-wrap"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="profile-name">Docente/Empleado</div>
-        <div class="profile-desc">Portal institucional docente</div>
-        <a href="#" class="profile-btn">Acceder</a>
-      </div>
-      <div class="profile-item">
-        <div class="profile-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-5 0-8 2-8 4v2h16v-2c0-2-3-4-8-4z"/></svg></div>
-        <div class="profile-name">Niño</div>
-        <div class="profile-desc">Microcredenciales para jóvenes</div>
-        <a href="#" class="profile-btn">Inscríbete</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAIN CONTENT -->
-  <section class="main-section">
-    <div class="container">
-
-      <!-- PAGE NAV -->
-      <div class="page-nav-btns mb-4">
-        <button class="page-nav-btn active" onclick="showPage('home')">Inicio</button>
-        <button class="page-nav-btn" onclick="showPage('noticias')">Noticias</button>
-        <button class="page-nav-btn" onclick="showPage('financiacion')">Financiación</button>
-      </div>
-
-      <div class="row g-4">
-        <!-- LEFT -->
-        <div class="col-lg-8">
-          <!-- Noticias -->
-          <div class="section-head">
-            <h2><span>Últimas</span> noticias</h2>
-            <a href="#" class="see-all" onclick="showPage('noticias')">Ver todas →</a>
+    <!-- UTILITY -->
+    <div class="utility-bar d-none d-lg-block">
+      <div class="container d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-1 flex-wrap">
+          <span class="soy-label">Soy:</span>
+          <a href="#">Estudiante</a>
+          <a href="#">Aspirante</a>
+          <a href="#">Egresado</a>
+          <a href="#">Docente/Empleado</a>
+          <a href="#">Niño</a>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <a href="#" class="social-link"
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+              /></svg
+          ></a>
+          <a href="#" class="social-link"
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+              /></svg
+          ></a>
+          <a href="#" class="social-link"
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" /></svg
+          ></a>
+          <a href="#" class="social-link"
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M22.54 6.42a2.78 2.78 0 00-1.94-1.94C18.88 4 12 4 12 4s-6.88 0-8.6.48A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.94 1.94C5.12 20 12 20 12 20s6.88 0 8.6-.48a2.78 2.78 0 001.94-1.94A29 29 0 0023 12a29 29 0 00-.46-5.58z"
+              />
+              <polygon
+                points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                fill="currentColor"
+              /></svg
+          ></a>
+          <div
+            style="
+              width: 1px;
+              height: 14px;
+              background: var(--border);
+              margin: 0 4px;
+            "
+          ></div>
+          <!-- DARK MODE TOGGLE -->
+          <div class="dark-toggle" id="darkToggle">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              id="sunIcon"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+            <div class="dark-toggle-pill"></div>
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
           </div>
-          <div class="row g-3 mb-4">
-            <div class="col-md-4 fade-up">
+        </div>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="main-nav">
+      <div class="inner">
+        <a href="#" onclick="showPage('home')">
+          <img
+            src="https://pascualbravo.edu.co/wp-content/uploads/2023/06/cropped-Imagotipo-horizontal_acreditados.png"
+            class="nav-logo"
+            alt="Pascual Bravo"
+          />
+        </a>
+        <ul class="nav-menu">
+          <li>
+            <a href="#" onclick="showPage('home')">Estudia con nosotros</a>
+          </li>
+          <li><a href="#">Institucional</a></li>
+          <li><a href="#">Académico</a></li>
+          <li><a href="#">Bienestar</a></li>
+          <li><a href="#">Investigación</a></li>
+          <li><a href="#">Extensión</a></li>
+          <li><a href="#" onclick="showPage('noticias')">Noticias</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-search" id="searchBtn">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+          </button>
+          <a href="#" class="btn-sicau">Acceso SICAU</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-box">
+        <button class="search-close" id="searchClose">✕</button>
+        <p
+          style="
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 10px;
+            font-family: &quot;Sora&quot;, sans-serif;
+          "
+        >
+          ¿Qué estás buscando?
+        </p>
+        <input
+          type="text"
+          placeholder="Busca programas, noticias, servicios..."
+        />
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PAGE: HOME -->
+    <!-- ============================================================ -->
+    <div id="page-home" class="page active">
+      <!-- HERO -->
+      <div class="hero-slider" style="min-height: 430px">
+        <div class="hero-slide active">
+          <div
+            class="hero-slide-bg"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1800&auto=format&fit=crop&quot;);
+            "
+          ></div>
+          <div class="hero-slide-overlay"></div>
+          <div class="container">
+            <div class="hero-slide-content fade-up">
+              <div class="hero-chip">✦ Inscripciones 2026 — abiertas</div>
+              <h1>Innovación,<br />Tradición, Futuro</h1>
+              <p>
+                Formamos líderes en ingeniería y tecnología con alta calidad
+                académica acreditada en Medellín.
+              </p>
+              <a href="#" class="btn-hero">Ver nuestra oferta de pregrados</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-slide">
+          <div
+            class="hero-slide-bg"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1800&auto=format&fit=crop&quot;);
+            "
+          ></div>
+          <div class="hero-slide-overlay"></div>
+          <div class="container">
+            <div class="hero-slide-content">
+              <div class="hero-chip">⚗ Investigación</div>
+              <h1>Nuevo Doctorado en Ciencia y Tecnología</h1>
+              <p>Ofertado en alianza con la Institución Universitaria ITM.</p>
+              <a href="#" class="btn-hero">Conoce más</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-slide">
+          <div
+            class="hero-slide-bg"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1800&auto=format&fit=crop&quot;);
+            "
+          ></div>
+          <div class="hero-slide-overlay"></div>
+          <div class="container">
+            <div class="hero-slide-content">
+              <div class="hero-chip">✈ Movilidad Internacional</div>
+              <h1>Conecta en otro país — Alianza del Pacífico</h1>
+              <p>Estudia un semestre en el exterior con apoyo institucional.</p>
+              <a href="#" class="btn-hero">Ver convocatoria</a>
+            </div>
+          </div>
+        </div>
+        <button class="hero-arrow prev" id="heroPrev">&#8249;</button>
+        <button class="hero-arrow next" id="heroNext">&#8250;</button>
+        <div class="hero-ctrl">
+          <button class="hero-dot active" data-i="0"></button>
+          <button class="hero-dot" data-i="1"></button>
+          <button class="hero-dot" data-i="2"></button>
+        </div>
+      </div>
+
+      <!-- STATS BAR -->
+      <div class="stats-bar">
+        <div class="container">
+          <div class="d-flex">
+            <div class="stat-item">
+              <div class="stat-num">+8.000</div>
+              <div class="stat-label">Estudiantes activos</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">42</div>
+              <div class="stat-label">Programas acreditados</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">+50</div>
+              <div class="stat-label">Grupos de investigación</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">+25k</div>
+              <div class="stat-label">Egresados activos</div>
+            </div>
+            <div class="stat-item d-none d-md-block">
+              <div class="stat-num">99</div>
+              <div class="stat-label">Años de excelencia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFILES -->
+      <section class="profiles-section">
+        <div class="profile-grid">
+          <div class="profile-item">
+            <div class="profile-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+            <div class="profile-name">Aspirante</div>
+            <div class="profile-desc">Inscríbete en la institución</div>
+            <a href="#" class="profile-btn">Inscríbete</a>
+          </div>
+          <div class="profile-item">
+            <div class="profile-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+              </svg>
+            </div>
+            <div class="profile-name">Estudiante</div>
+            <div class="profile-desc">Acompañamiento y servicios</div>
+            <a href="#" class="profile-btn">Mi portal</a>
+          </div>
+          <div class="profile-item">
+            <div class="profile-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+              </svg>
+            </div>
+            <div class="profile-name">Egresado</div>
+            <div class="profile-desc">Programas para egresados</div>
+            <a href="#" class="profile-btn">Proyectos actuales</a>
+          </div>
+          <div class="profile-item">
+            <div class="profile-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+              </svg>
+            </div>
+            <div class="profile-name">Docente/Empleado</div>
+            <div class="profile-desc">Portal institucional docente</div>
+            <a href="#" class="profile-btn">Acceder</a>
+          </div>
+          <div class="profile-item">
+            <div class="profile-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M12 14c-5 0-8 2-8 4v2h16v-2c0-2-3-4-8-4z" />
+              </svg>
+            </div>
+            <div class="profile-name">Niño</div>
+            <div class="profile-desc">Microcredenciales para jóvenes</div>
+            <a href="#" class="profile-btn">Inscríbete</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAIN CONTENT -->
+      <section class="main-section">
+        <div class="container">
+          <!-- PAGE NAV -->
+          <div class="page-nav-btns mb-4">
+            <button class="page-nav-btn active" onclick="showPage('home')">
+              Inicio
+            </button>
+            <button class="page-nav-btn" onclick="showPage('noticias')">
+              Noticias
+            </button>
+            <button class="page-nav-btn" onclick="showPage('financiacion')">
+              Financiación
+            </button>
+          </div>
+
+          <div class="row g-4">
+            <!-- LEFT -->
+            <div class="col-lg-8">
+              <!-- Noticias -->
+              <div class="section-head">
+                <h2><span>Últimas</span> noticias</h2>
+                <a href="#" class="see-all" onclick="showPage('noticias')"
+                  >Ver todas →</a
+                >
+              </div>
+              <div class="row g-3 mb-4">
+                <div class="col-md-4 fade-up">
+                  <div class="news-card">
+                    <div class="news-card-img-wrap">
+                      <img
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop"
+                        class="news-card-img"
+                        alt=""
+                      />
+                    </div>
+                    <div class="news-card-body">
+                      <span class="news-badge">Tecnología</span>
+                      <h4>
+                        Tecnología en Desarrollo de Software renueva
+                        acreditación de Alta Calidad
+                      </h4>
+                      <small>7 mayo, 2026</small>
+                      <a href="#" class="news-link">Conoce más →</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 fade-up d1">
+                  <div class="news-card">
+                    <div class="news-card-img-wrap">
+                      <img
+                        src="https://images.unsplash.com/photo-1532094349884-543559382f3f?q=80&w=600&auto=format&fit=crop"
+                        class="news-card-img"
+                        alt=""
+                      />
+                    </div>
+                    <div class="news-card-body">
+                      <span class="news-badge">Innovación</span>
+                      <h4>
+                        Premio de Innovación de Biomáquinas — Investigación y
+                        concurso
+                      </h4>
+                      <small>5 mayo, 2026</small>
+                      <a href="#" class="news-link">Conoce más →</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 fade-up d2">
+                  <div class="news-card">
+                    <div class="news-card-img-wrap">
+                      <img
+                        src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=600&auto=format&fit=crop"
+                        class="news-card-img"
+                        alt=""
+                      />
+                    </div>
+                    <div class="news-card-body">
+                      <span class="news-badge">Internacional</span>
+                      <h4>
+                        Alianza Alianza del Pacífico: convocatoria de movilidad
+                        2026
+                      </h4>
+                      <small>2 mayo, 2026</small>
+                      <a href="#" class="news-link">Conoce más →</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Servicios rápidos -->
+              <div class="section-head">
+                <h2><span>Servicios</span> rápidos</h2>
+              </div>
+              <div class="quick-services-grid mb-4 fade-up d1">
+                <div class="qs-item">
+                  <div class="qs-icon">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                  </div>
+                  <span>Correo Institucional</span>
+                </div>
+                <div
+                  class="qs-item"
+                  onclick="showPage('financiacion')"
+                  style="cursor: pointer"
+                >
+                  <div class="qs-icon">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="8" r="7" />
+                      <polyline
+                        points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"
+                      />
+                    </svg>
+                  </div>
+                  <span>Financiación</span>
+                </div>
+                <div class="qs-item">
+                  <div class="qs-icon">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                  </div>
+                  <span>Calendario Académico</span>
+                </div>
+                <div class="qs-item">
+                  <div class="qs-icon">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                      <path
+                        d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"
+                      />
+                    </svg>
+                  </div>
+                  <span>Catálogo Virtual</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="col-lg-4">
+              <div class="widget-box mb-3 fade-up">
+                <span class="widget-tag">Ecosistema Digital</span>
+                <h5>CampusFlow: Nuevo Portal Estudiantil</h5>
+                <p>
+                  Accede a todos tus servicios académicos, certificados, notas y
+                  más desde un solo lugar.
+                </p>
+                <a href="#" class="news-link mt-2">Conoce más →</a>
+              </div>
+
+              <div class="widget-box mb-3 fade-up d1">
+                <h5 style="margin-bottom: 12px">Servicios al Estudiante</h5>
+                <a href="#" class="service-list-item">
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--pb-blue)"
+                    stroke-width="2"
+                  >
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                  Calendario académico
+                </a>
+                <a href="#" class="service-list-item">
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--pb-blue)"
+                    stroke-width="2"
+                  >
+                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                    <path
+                      d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"
+                    />
+                  </svg>
+                  Biblioteca
+                </a>
+                <a href="#" class="service-list-item">
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--pb-blue)"
+                    stroke-width="2"
+                  >
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  </svg>
+                  Acceso SICAU
+                </a>
+                <a
+                  href="#"
+                  class="service-list-item"
+                  onclick="showPage('financiacion')"
+                >
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--pb-blue)"
+                    stroke-width="2"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                  Financiación y becas
+                </a>
+              </div>
+
+              <!-- Vida en el campus -->
+              <div class="section-head mt-1">
+                <h2 style="font-size: 0.88rem">
+                  <span>Vida</span> en el campus
+                </h2>
+                <a href="#" class="see-all">Ver más →</a>
+              </div>
+              <div class="row g-2 fade-up d2">
+                <div class="col-7">
+                  <div class="campus-card tall">
+                    <img
+                      src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&auto=format&fit=crop"
+                      alt="Eventos"
+                    />
+                    <div class="campus-card-overlay"></div>
+                    <div class="campus-card-text">
+                      <h5>Eventos y vida en el campus</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-5 d-flex flex-column gap-2">
+                  <div class="campus-card" style="flex: 1; min-height: 168px">
+                    <img
+                      src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop"
+                      alt="Talleres"
+                    />
+                    <div class="campus-card-overlay"></div>
+                    <div class="campus-card-text">
+                      <h5>Eventos y talleres</h5>
+                    </div>
+                  </div>
+                  <div class="campus-card" style="flex: 1; min-height: 168px">
+                    <img
+                      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=400&auto=format&fit=crop"
+                      alt="Bienestar"
+                    />
+                    <div class="campus-card-overlay"></div>
+                    <div class="campus-card-text">
+                      <h5>Bienestar estudiantil</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PAGE: NOTICIAS -->
+    <!-- ============================================================ -->
+    <div id="page-noticias" class="page">
+      <div class="noticias-hero">
+        <div class="container">
+          <nav style="font-size: 0.78rem; margin-bottom: 12px">
+            <a
+              href="#"
+              onclick="showPage('home')"
+              style="color: rgba(255, 255, 255, 0.5)"
+              >Inicio</a
+            >
+            <span style="color: rgba(255, 255, 255, 0.25); margin: 0 8px"
+              >/</span
+            >
+            <span style="color: rgba(255, 255, 255, 0.85)">Noticias</span>
+          </nav>
+          <h1 class="mb-2">Noticias</h1>
+          <p>
+            Entérate de todo lo que pasa en la Institución Universitaria Pascual
+            Bravo
+          </p>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <div class="container d-flex gap-2 flex-wrap align-items-center">
+          <button class="filter-pill active">Todas</button>
+          <button class="filter-pill">Académico</button>
+          <button class="filter-pill">Investigación</button>
+          <button class="filter-pill">Institucional</button>
+          <button class="filter-pill">Internacional</button>
+          <button class="filter-pill">Bienestar</button>
+          <button class="filter-pill">Innovación</button>
+        </div>
+      </div>
+
+      <section
+        style="
+          padding: 36px 0 56px;
+          background: var(--bg-soft);
+          transition: background 0.3s;
+        "
+      >
+        <div class="container">
+          <div class="page-nav-btns mb-4">
+            <button class="page-nav-btn" onclick="showPage('home')">
+              Inicio
+            </button>
+            <button class="page-nav-btn active" onclick="showPage('noticias')">
+              Noticias
+            </button>
+            <button class="page-nav-btn" onclick="showPage('financiacion')">
+              Financiación
+            </button>
+          </div>
+
+          <!-- FEATURED -->
+          <div class="row g-4 mb-4">
+            <div class="col-lg-7">
+              <div class="news-big-card">
+                <div class="news-big-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=900&auto=format&fit=crop"
+                    class="news-big-img"
+                    alt=""
+                  />
+                </div>
+                <div class="news-big-body">
+                  <span class="news-badge">Destacado · Institucional</span>
+                  <h3>
+                    Pascual Bravo celebra 99 años formando ingenieros y
+                    tecnólogos para el país
+                  </h3>
+                  <p>
+                    La institución conmemora casi un siglo de trayectoria
+                    académica con eventos especiales, exposiciones y un acto
+                    solemne en el auditorio principal con la participación de
+                    egresados destacados del sector industrial antioqueño.
+                  </p>
+                  <small>12 mayo, 2026 · Por Oficina de Comunicaciones</small>
+                  <a href="#" class="news-link mt-2" style="margin-top: 14px"
+                    >Leer artículo completo →</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div
+                class="widget-box h-100"
+                style="display: flex; flex-direction: column"
+              >
+                <h5 style="margin-bottom: 16px">Noticias recientes</h5>
+                <div class="news-list-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=200&auto=format&fit=crop"
+                    class="news-list-img"
+                    alt=""
+                  />
+                  <div class="news-list-body">
+                    <span
+                      class="news-badge"
+                      style="font-size: 0.6rem; padding: 2px 6px"
+                      >Tecnología</span
+                    >
+                    <h6>
+                      Tecnología en Desarrollo de Software renueva acreditación
+                      de Alta Calidad
+                    </h6>
+                    <small>7 mayo, 2026</small>
+                  </div>
+                </div>
+                <div class="news-list-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1532094349884-543559382f3f?q=80&w=200&auto=format&fit=crop"
+                    class="news-list-img"
+                    alt=""
+                  />
+                  <div class="news-list-body">
+                    <span
+                      class="news-badge"
+                      style="font-size: 0.6rem; padding: 2px 6px"
+                      >Innovación</span
+                    >
+                    <h6>
+                      Premio de Innovación de Biomáquinas 2026 — Convocatoria
+                      abierta
+                    </h6>
+                    <small>5 mayo, 2026</small>
+                  </div>
+                </div>
+                <div class="news-list-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=200&auto=format&fit=crop"
+                    class="news-list-img"
+                    alt=""
+                  />
+                  <div class="news-list-body">
+                    <span
+                      class="news-badge"
+                      style="font-size: 0.6rem; padding: 2px 6px"
+                      >Internacional</span
+                    >
+                    <h6>
+                      Convocatoria de movilidad Alianza del Pacífico — 2026-2
+                    </h6>
+                    <small>2 mayo, 2026</small>
+                  </div>
+                </div>
+                <div class="news-list-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=200&auto=format&fit=crop"
+                    class="news-list-img"
+                    alt=""
+                  />
+                  <div class="news-list-body">
+                    <span
+                      class="news-badge"
+                      style="font-size: 0.6rem; padding: 2px 6px"
+                      >Investigación</span
+                    >
+                    <h6>
+                      Nuevo Doctorado en Ciencia y Tecnología inicia
+                      inscripciones
+                    </h6>
+                    <small>28 abril, 2026</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GRID -->
+          <div class="section-head">
+            <h2><span>Todas</span> las noticias</h2>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-4 col-sm-6">
               <div class="news-card">
                 <div class="news-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop" class="news-card-img" alt=""/>
+                  <img
+                    src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=600&auto=format&fit=crop"
+                    class="news-card-img"
+                    alt=""
+                  />
+                </div>
+                <div class="news-card-body">
+                  <span class="news-badge">Académico</span>
+                  <h4>
+                    Nuevos laboratorios de robótica e inteligencia artificial
+                    inaugurados
+                  </h4>
+                  <small>25 abril, 2026</small>
+                  <a href="#" class="news-link">Leer más →</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="news-card">
+                <div class="news-card-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&auto=format&fit=crop"
+                    class="news-card-img"
+                    alt=""
+                  />
+                </div>
+                <div class="news-card-body">
+                  <span class="news-badge">Bienestar</span>
+                  <h4>
+                    Semana de la salud mental: actividades gratuitas para todos
+                    los estudiantes
+                  </h4>
+                  <small>20 abril, 2026</small>
+                  <a href="#" class="news-link">Leer más →</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="news-card">
+                <div class="news-card-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
+                    class="news-card-img"
+                    alt=""
+                  />
+                </div>
+                <div class="news-card-body">
+                  <span class="news-badge">Egresados</span>
+                  <h4>
+                    Egresado Pascual Bravo lidera startup de energía solar en
+                    Latinoamérica
+                  </h4>
+                  <small>15 abril, 2026</small>
+                  <a href="#" class="news-link">Leer más →</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="news-card">
+                <div class="news-card-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=600&auto=format&fit=crop"
+                    class="news-card-img"
+                    alt=""
+                  />
                 </div>
                 <div class="news-card-body">
                   <span class="news-badge">Tecnología</span>
-                  <h4>Tecnología en Desarrollo de Software renueva acreditación de Alta Calidad</h4>
-                  <small>7 mayo, 2026</small>
-                  <a href="#" class="news-link">Conoce más →</a>
+                  <h4>
+                    Hackathon Pascual 2026: 72 horas de innovación y tecnología
+                  </h4>
+                  <small>10 abril, 2026</small>
+                  <a href="#" class="news-link">Leer más →</a>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 fade-up d1">
+            <div class="col-md-4 col-sm-6">
               <div class="news-card">
                 <div class="news-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1532094349884-543559382f3f?q=80&w=600&auto=format&fit=crop" class="news-card-img" alt=""/>
+                  <img
+                    src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?q=80&w=600&auto=format&fit=crop"
+                    class="news-card-img"
+                    alt=""
+                  />
                 </div>
                 <div class="news-card-body">
-                  <span class="news-badge">Innovación</span>
-                  <h4>Premio de Innovación de Biomáquinas — Investigación y concurso</h4>
-                  <small>5 mayo, 2026</small>
-                  <a href="#" class="news-link">Conoce más →</a>
+                  <span class="news-badge">Institucional</span>
+                  <h4>
+                    Pascual Bravo escala en rankings nacionales de instituciones
+                    técnicas
+                  </h4>
+                  <small>5 abril, 2026</small>
+                  <a href="#" class="news-link">Leer más →</a>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 fade-up d2">
+            <div class="col-md-4 col-sm-6">
               <div class="news-card">
                 <div class="news-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=600&auto=format&fit=crop" class="news-card-img" alt=""/>
+                  <img
+                    src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=600&auto=format&fit=crop"
+                    class="news-card-img"
+                    alt=""
+                  />
                 </div>
                 <div class="news-card-body">
-                  <span class="news-badge">Internacional</span>
-                  <h4>Alianza Alianza del Pacífico: convocatoria de movilidad 2026</h4>
-                  <small>2 mayo, 2026</small>
-                  <a href="#" class="news-link">Conoce más →</a>
+                  <span class="news-badge">Extensión</span>
+                  <h4>
+                    Diplomado en Gestión de Proyectos con certificación
+                    internacional PMI
+                  </h4>
+                  <small>1 abril, 2026</small>
+                  <a href="#" class="news-link">Leer más →</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Servicios rápidos -->
-          <div class="section-head"><h2><span>Servicios</span> rápidos</h2></div>
-          <div class="quick-services-grid mb-4 fade-up d1">
-            <div class="qs-item">
-              <div class="qs-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-              <span>Correo Institucional</span>
-            </div>
-            <div class="qs-item" onclick="showPage('financiacion')" style="cursor:pointer">
-              <div class="qs-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
-              <span>Financiación</span>
-            </div>
-            <div class="qs-item">
-              <div class="qs-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-              <span>Calendario Académico</span>
-            </div>
-            <div class="qs-item">
-              <div class="qs-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-              <span>Catálogo Virtual</span>
-            </div>
+          <div class="text-center mt-4">
+            <button class="btn-blue" style="width: auto; padding: 11px 36px">
+              Cargar más noticias
+            </button>
           </div>
         </div>
-
-        <!-- RIGHT -->
-        <div class="col-lg-4">
-          <div class="widget-box mb-3 fade-up">
-            <span class="widget-tag">Ecosistema Digital</span>
-            <h5>CampusFlow: Nuevo Portal Estudiantil</h5>
-            <p>Accede a todos tus servicios académicos, certificados, notas y más desde un solo lugar.</p>
-            <a href="#" class="news-link mt-2">Conoce más →</a>
-          </div>
-
-          <div class="widget-box mb-3 fade-up d1">
-            <h5 style="margin-bottom:12px">Servicios al Estudiante</h5>
-            <a href="#" class="service-list-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--pb-blue)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Calendario académico
-            </a>
-            <a href="#" class="service-list-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--pb-blue)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-              Biblioteca
-            </a>
-            <a href="#" class="service-list-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--pb-blue)" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg>
-              Acceso SICAU
-            </a>
-            <a href="#" class="service-list-item" onclick="showPage('financiacion')">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--pb-blue)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              Financiación y becas
-            </a>
-          </div>
-
-          <!-- Vida en el campus -->
-          <div class="section-head mt-1"><h2 style="font-size:.88rem"><span>Vida</span> en el campus</h2><a href="#" class="see-all">Ver más →</a></div>
-          <div class="row g-2 fade-up d2">
-            <div class="col-7">
-              <div class="campus-card tall">
-                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&auto=format&fit=crop" alt="Eventos"/>
-                <div class="campus-card-overlay"></div>
-                <div class="campus-card-text"><h5>Eventos y vida en el campus</h5></div>
-              </div>
-            </div>
-            <div class="col-5 d-flex flex-column gap-2">
-              <div class="campus-card" style="flex:1;min-height:168px">
-                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop" alt="Talleres"/>
-                <div class="campus-card-overlay"></div>
-                <div class="campus-card-text"><h5>Eventos y talleres</h5></div>
-              </div>
-              <div class="campus-card" style="flex:1;min-height:168px">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=400&auto=format&fit=crop" alt="Bienestar"/>
-                <div class="campus-card-overlay"></div>
-                <div class="campus-card-text"><h5>Bienestar estudiantil</h5></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
-  </section>
-</div>
 
-<!-- ============================================================ -->
-<!-- PAGE: NOTICIAS -->
-<!-- ============================================================ -->
-<div id="page-noticias" class="page">
-  <div class="noticias-hero">
-    <div class="container">
-      <nav style="font-size:.78rem;margin-bottom:12px">
-        <a href="#" onclick="showPage('home')" style="color:rgba(255,255,255,.5)">Inicio</a>
-        <span style="color:rgba(255,255,255,.25);margin:0 8px">/</span>
-        <span style="color:rgba(255,255,255,.85)">Noticias</span>
-      </nav>
-      <h1 class="mb-2">Noticias</h1>
-      <p>Entérate de todo lo que pasa en la Institución Universitaria Pascual Bravo</p>
-    </div>
-  </div>
-
-  <div class="filter-bar">
-    <div class="container d-flex gap-2 flex-wrap align-items-center">
-      <button class="filter-pill active">Todas</button>
-      <button class="filter-pill">Académico</button>
-      <button class="filter-pill">Investigación</button>
-      <button class="filter-pill">Institucional</button>
-      <button class="filter-pill">Internacional</button>
-      <button class="filter-pill">Bienestar</button>
-      <button class="filter-pill">Innovación</button>
-    </div>
-  </div>
-
-  <section style="padding:36px 0 56px;background:var(--bg-soft);transition:background .3s">
-    <div class="container">
-
-      <div class="page-nav-btns mb-4">
-        <button class="page-nav-btn" onclick="showPage('home')">Inicio</button>
-        <button class="page-nav-btn active" onclick="showPage('noticias')">Noticias</button>
-        <button class="page-nav-btn" onclick="showPage('financiacion')">Financiación</button>
+    <!-- ============================================================ -->
+    <!-- PAGE: FINANCIACIÓN -->
+    <!-- ============================================================ -->
+    <div id="page-financiacion" class="page">
+      <div class="fin-hero">
+        <div class="container" style="position: relative; z-index: 2">
+          <nav style="font-size: 0.78rem; margin-bottom: 12px">
+            <a
+              href="#"
+              onclick="showPage('home')"
+              style="color: rgba(255, 255, 255, 0.5)"
+              >Inicio</a
+            >
+            <span style="color: rgba(255, 255, 255, 0.25); margin: 0 8px"
+              >/</span
+            >
+            <span style="color: rgba(255, 255, 255, 0.85)">Financiación</span>
+          </nav>
+          <div class="hero-chip" style="margin-bottom: 18px">
+            Opciones de financiación 2026
+          </div>
+          <h1 class="mb-3">Financia tu educación</h1>
+          <p>
+            Tienes varias opciones para estudiar en Pascual Bravo. Encuentra la
+            que mejor se adapte a tu situación económica y cumple tu sueño de
+            ser profesional.
+          </p>
+        </div>
       </div>
 
-      <!-- FEATURED -->
-      <div class="row g-4 mb-4">
-        <div class="col-lg-7">
-          <div class="news-big-card">
-            <div class="news-big-img-wrap">
-              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=900&auto=format&fit=crop" class="news-big-img" alt=""/>
-            </div>
-            <div class="news-big-body">
-              <span class="news-badge">Destacado · Institucional</span>
-              <h3>Pascual Bravo celebra 99 años formando ingenieros y tecnólogos para el país</h3>
-              <p>La institución conmemora casi un siglo de trayectoria académica con eventos especiales, exposiciones y un acto solemne en el auditorio principal con la participación de egresados destacados del sector industrial antioqueño.</p>
-              <small>📅 12 mayo, 2026 · Por Oficina de Comunicaciones</small>
-              <a href="#" class="news-link mt-2" style="margin-top:14px">Leer artículo completo →</a>
-            </div>
+      <section
+        style="
+          padding: 40px 0 60px;
+          background: var(--bg-soft);
+          transition: background 0.3s;
+        "
+      >
+        <div class="container">
+          <div class="page-nav-btns mb-4">
+            <button class="page-nav-btn" onclick="showPage('home')">
+              Inicio
+            </button>
+            <button class="page-nav-btn" onclick="showPage('noticias')">
+              Noticias
+            </button>
+            <button
+              class="page-nav-btn active"
+              onclick="showPage('financiacion')"
+            >
+              Financiación
+            </button>
           </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="widget-box h-100" style="display:flex;flex-direction:column">
-            <h5 style="margin-bottom:16px">Noticias recientes</h5>
-            <div class="news-list-item">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=200&auto=format&fit=crop" class="news-list-img" alt=""/>
-              <div class="news-list-body">
-                <span class="news-badge" style="font-size:.6rem;padding:2px 6px">Tecnología</span>
-                <h6>Tecnología en Desarrollo de Software renueva acreditación de Alta Calidad</h6>
-                <small>7 mayo, 2026</small>
+
+          <!-- OPCIONES -->
+          <div class="section-head">
+            <h2><span>Opciones</span> de financiación</h2>
+          </div>
+          <div class="row g-3 mb-5">
+            <div class="col-md-6 col-lg-3">
+              <div class="fin-option-card">
+                <div class="fin-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                  </svg>
+                </div>
+                <h5>ICETEX</h5>
+                <p>
+                  Crédito educativo con tasas subsidiadas para estratos 1, 2, 3
+                  y 4. Paga mientras estudias o después de graduarte.
+                </p>
+                <span class="fin-tag green">✓ Más solicitado</span>
               </div>
             </div>
-            <div class="news-list-item">
-              <img src="https://images.unsplash.com/photo-1532094349884-543559382f3f?q=80&w=200&auto=format&fit=crop" class="news-list-img" alt=""/>
-              <div class="news-list-body">
-                <span class="news-badge" style="font-size:.6rem;padding:2px 6px">Innovación</span>
-                <h6>Premio de Innovación de Biomáquinas 2026 — Convocatoria abierta</h6>
-                <small>5 mayo, 2026</small>
+            <div class="col-md-6 col-lg-3">
+              <div class="fin-option-card">
+                <div class="fin-icon">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="7" />
+                    <polyline
+                      points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"
+                    />
+                  </svg>
+                </div>
+                <h5>Generación E</h5>
+                <p>
+                  Matrícula cero para estratos 1, 2 y 3 con buen desempeño
+                  académico en Saber 11. Beneficio del Ministerio de Educación.
+                </p>
+                <span class="fin-tag gold">★ Beneficio estado</span>
               </div>
             </div>
-            <div class="news-list-item">
-              <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=200&auto=format&fit=crop" class="news-list-img" alt=""/>
-              <div class="news-list-body">
-                <span class="news-badge" style="font-size:.6rem;padding:2px 6px">Internacional</span>
-                <h6>Convocatoria de movilidad Alianza del Pacífico — 2026-2</h6>
-                <small>2 mayo, 2026</small>
+            <div class="col-md-6 col-lg-3">
+              <div class="fin-option-card">
+                <div class="fin-icon">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                    <line x1="2" y1="10" x2="22" y2="10" />
+                  </svg>
+                </div>
+                <h5>Crédito Institucional</h5>
+                <p>
+                  Financiación directa con la institución. Divide tu matrícula
+                  en cuotas accesibles sin intermediarios.
+                </p>
+                <span class="fin-tag blue">0% interés primeros 3 meses</span>
               </div>
             </div>
-            <div class="news-list-item">
-              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=200&auto=format&fit=crop" class="news-list-img" alt=""/>
-              <div class="news-list-body">
-                <span class="news-badge" style="font-size:.6rem;padding:2px 6px">Investigación</span>
-                <h6>Nuevo Doctorado en Ciencia y Tecnología inicia inscripciones</h6>
-                <small>28 abril, 2026</small>
+            <div class="col-md-6 col-lg-3">
+              <div class="fin-option-card">
+                <div class="fin-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
+                  </svg>
+                </div>
+                <h5>Becas y Auxilios</h5>
+                <p>
+                  Convocatorias de becas por mérito académico, condición
+                  socioeconómica, deportes y grupos vulnerables.
+                </p>
+                <span class="fin-tag green">Convocatoria abierta</span>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- GRID -->
-      <div class="section-head"><h2><span>Todas</span> las noticias</h2></div>
-      <div class="row g-3">
-        <div class="col-md-4 col-sm-6">
-          <div class="news-card">
-            <div class="news-card-img-wrap"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=600&auto=format&fit=crop" class="news-card-img" alt=""/></div>
-            <div class="news-card-body">
-              <span class="news-badge">Académico</span>
-              <h4>Nuevos laboratorios de robótica e inteligencia artificial inaugurados</h4>
-              <small>25 abril, 2026</small>
-              <a href="#" class="news-link">Leer más →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="news-card">
-            <div class="news-card-img-wrap"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&auto=format&fit=crop" class="news-card-img" alt=""/></div>
-            <div class="news-card-body">
-              <span class="news-badge">Bienestar</span>
-              <h4>Semana de la salud mental: actividades gratuitas para todos los estudiantes</h4>
-              <small>20 abril, 2026</small>
-              <a href="#" class="news-link">Leer más →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="news-card">
-            <div class="news-card-img-wrap"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" class="news-card-img" alt=""/></div>
-            <div class="news-card-body">
-              <span class="news-badge">Egresados</span>
-              <h4>Egresado Pascual Bravo lidera startup de energía solar en Latinoamérica</h4>
-              <small>15 abril, 2026</small>
-              <a href="#" class="news-link">Leer más →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="news-card">
-            <div class="news-card-img-wrap"><img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=600&auto=format&fit=crop" class="news-card-img" alt=""/></div>
-            <div class="news-card-body">
-              <span class="news-badge">Tecnología</span>
-              <h4>Hackathon Pascual 2026: 72 horas de innovación y tecnología</h4>
-              <small>10 abril, 2026</small>
-              <a href="#" class="news-link">Leer más →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="news-card">
-            <div class="news-card-img-wrap"><img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?q=80&w=600&auto=format&fit=crop" class="news-card-img" alt=""/></div>
-            <div class="news-card-body">
-              <span class="news-badge">Institucional</span>
-              <h4>Pascual Bravo escala en rankings nacionales de instituciones técnicas</h4>
-              <small>5 abril, 2026</small>
-              <a href="#" class="news-link">Leer más →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="news-card">
-            <div class="news-card-img-wrap"><img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=600&auto=format&fit=crop" class="news-card-img" alt=""/></div>
-            <div class="news-card-body">
-              <span class="news-badge">Extensión</span>
-              <h4>Diplomado en Gestión de Proyectos con certificación internacional PMI</h4>
-              <small>1 abril, 2026</small>
-              <a href="#" class="news-link">Leer más →</a>
-            </div>
-          </div>
-        </div>
-      </div>
+          <!-- CALCULADORA + INFO -->
+          <div class="row g-4">
+            <div class="col-lg-5">
+              <div class="calc-box">
+                <h4>Simulador de financiación</h4>
+                <p
+                  style="
+                    font-size: 0.8rem;
+                    color: var(--muted);
+                    margin-bottom: 18px;
+                  "
+                >
+                  Estima cuánto pagarías por periodo según tu opción de
+                  financiación.
+                </p>
 
-      <div class="text-center mt-4">
-        <button class="btn-blue" style="width:auto;padding:11px 36px">Cargar más noticias</button>
-      </div>
-    </div>
-  </section>
-</div>
+                <div class="calc-label">Programa de interés</div>
+                <select
+                  class="calc-input"
+                  id="calcPrograma"
+                  onchange="calcular()"
+                >
+                  <option value="1200000">
+                    Tecnología en Desarrollo de Software — $1.200.000
+                  </option>
+                  <option value="1350000">Ing. Electrónica — $1.350.000</option>
+                  <option value="1280000">Ing. Mecatrónica — $1.280.000</option>
+                  <option value="1100000">
+                    Tecnología Industrial — $1.100.000
+                  </option>
+                  <option value="900000">
+                    Tecnología Electrónica — $900.000
+                  </option>
+                </select>
 
-<!-- ============================================================ -->
-<!-- PAGE: FINANCIACIÓN -->
-<!-- ============================================================ -->
-<div id="page-financiacion" class="page">
-  <div class="fin-hero">
-    <div class="container" style="position:relative;z-index:2">
-      <nav style="font-size:.78rem;margin-bottom:12px">
-        <a href="#" onclick="showPage('home')" style="color:rgba(255,255,255,.5)">Inicio</a>
-        <span style="color:rgba(255,255,255,.25);margin:0 8px">/</span>
-        <span style="color:rgba(255,255,255,.85)">Financiación</span>
-      </nav>
-      <div class="hero-chip" style="margin-bottom:18px">💰 Opciones de financiación 2026</div>
-      <h1 class="mb-3">Financia tu educación</h1>
-      <p>Tienes varias opciones para estudiar en Pascual Bravo. Encuentra la que mejor se adapte a tu situación económica y cumple tu sueño de ser profesional.</p>
-    </div>
-  </div>
+                <div class="calc-label">Tipo de financiación</div>
+                <select class="calc-input" id="calcTipo" onchange="calcular()">
+                  <option value="1">Pago completo (sin interés)</option>
+                  <option value="0.6">Generación E (40% descuento)</option>
+                  <option value="1.035">
+                    Crédito institucional (3.5% interés)
+                  </option>
+                  <option value="1.018">ICETEX (1.8% interés efectivo)</option>
+                </select>
 
-  <section style="padding:40px 0 60px;background:var(--bg-soft);transition:background .3s">
-    <div class="container">
+                <div class="calc-label">Número de cuotas</div>
+                <select
+                  class="calc-input"
+                  id="calcCuotas"
+                  onchange="calcular()"
+                >
+                  <option value="1">1 cuota (pago total)</option>
+                  <option value="3">3 cuotas</option>
+                  <option value="6" selected>6 cuotas</option>
+                  <option value="12">12 cuotas</option>
+                </select>
 
-      <div class="page-nav-btns mb-4">
-        <button class="page-nav-btn" onclick="showPage('home')">Inicio</button>
-        <button class="page-nav-btn" onclick="showPage('noticias')">Noticias</button>
-        <button class="page-nav-btn active" onclick="showPage('financiacion')">Financiación</button>
-      </div>
-
-      <!-- OPCIONES -->
-      <div class="section-head"><h2><span>Opciones</span> de financiación</h2></div>
-      <div class="row g-3 mb-5">
-        <div class="col-md-6 col-lg-3">
-          <div class="fin-option-card">
-            <div class="fin-icon">
-              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <div class="calc-result">
+                  <div class="result-num" id="calcResultado">$200.000</div>
+                  <div class="result-label" id="calcResultadoLabel">
+                    por cuota · 6 cuotas
+                  </div>
+                </div>
+                <div
+                  class="text-center mt-2"
+                  style="font-size: 0.72rem; color: var(--muted)"
+                >
+                  Total a pagar:
+                  <strong id="calcTotal" style="color: var(--pb-blue)"
+                    >$1.200.000</strong
+                  >
+                </div>
+                <button class="btn-blue">Solicitar información →</button>
+              </div>
             </div>
-            <h5>ICETEX</h5>
-            <p>Crédito educativo con tasas subsidiadas para estratos 1, 2, 3 y 4. Paga mientras estudias o después de graduarte.</p>
-            <span class="fin-tag green">✓ Más solicitado</span>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="fin-option-card">
-            <div class="fin-icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-            </div>
-            <h5>Generación E</h5>
-            <p>Matrícula cero para estratos 1, 2 y 3 con buen desempeño académico en Saber 11. Beneficio del Ministerio de Educación.</p>
-            <span class="fin-tag gold">★ Beneficio estado</span>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="fin-option-card">
-            <div class="fin-icon">
-              <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-            </div>
-            <h5>Crédito Institucional</h5>
-            <p>Financiación directa con la institución. Divide tu matrícula en cuotas accesibles sin intermediarios.</p>
-            <span class="fin-tag blue">0% interés primeros 3 meses</span>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="fin-option-card">
-            <div class="fin-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <h5>Becas y Auxilios</h5>
-            <p>Convocatorias de becas por mérito académico, condición socioeconómica, deportes y grupos vulnerables.</p>
-            <span class="fin-tag green">Convocatoria abierta</span>
-          </div>
-        </div>
-      </div>
 
-      <!-- CALCULADORA + INFO -->
-      <div class="row g-4">
-        <div class="col-lg-5">
-          <div class="calc-box">
-            <h4>🧮 Simulador de financiación</h4>
-            <p style="font-size:.8rem;color:var(--muted);margin-bottom:18px">Estima cuánto pagarías por periodo según tu opción de financiación.</p>
-            
-            <div class="calc-label">Programa de interés</div>
-            <select class="calc-input" id="calcPrograma" onchange="calcular()">
-              <option value="1200000">Tecnología en Desarrollo de Software — $1.200.000</option>
-              <option value="1350000">Ing. Electrónica — $1.350.000</option>
-              <option value="1280000">Ing. Mecatrónica — $1.280.000</option>
-              <option value="1100000">Tecnología Industrial — $1.100.000</option>
-              <option value="900000">Tecnología Electrónica — $900.000</option>
-            </select>
-
-            <div class="calc-label">Tipo de financiación</div>
-            <select class="calc-input" id="calcTipo" onchange="calcular()">
-              <option value="1">Pago completo (sin interés)</option>
-              <option value="0.6">Generación E (40% descuento)</option>
-              <option value="1.035">Crédito institucional (3.5% interés)</option>
-              <option value="1.018">ICETEX (1.8% interés efectivo)</option>
-            </select>
-
-            <div class="calc-label">Número de cuotas</div>
-            <select class="calc-input" id="calcCuotas" onchange="calcular()">
-              <option value="1">1 cuota (pago total)</option>
-              <option value="3">3 cuotas</option>
-              <option value="6" selected>6 cuotas</option>
-              <option value="12">12 cuotas</option>
-            </select>
-
-            <div class="calc-result">
-              <div class="result-num" id="calcResultado">$200.000</div>
-              <div class="result-label" id="calcResultadoLabel">por cuota · 6 cuotas</div>
-            </div>
-            <div class="text-center mt-2" style="font-size:.72rem;color:var(--muted)">
-              Total a pagar: <strong id="calcTotal" style="color:var(--pb-blue)">$1.200.000</strong>
-            </div>
-            <button class="btn-blue">Solicitar información →</button>
-          </div>
-        </div>
-
-        <div class="col-lg-7">
-          <div class="widget-box mb-3">
-            <span class="widget-tag">ICETEX</span>
-            <h5>¿Cómo solicitar tu crédito ICETEX?</h5>
-            <p style="margin-bottom:12px">El proceso es sencillo. Aquí los pasos básicos:</p>
-            <div style="display:flex;flex-direction:column;gap:10px">
-              <div style="display:flex;gap:12px;align-items:flex-start">
-                <div style="width:26px;height:26px;border-radius:50%;background:var(--pb-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;font-family:'Sora',sans-serif">1</div>
-                <div>
-                  <div style="font-size:.82rem;font-weight:700;color:var(--text);font-family:'Sora',sans-serif">Verifica tu elegibilidad</div>
-                  <div style="font-size:.78rem;color:var(--muted)">Estrato 1 a 4, puntaje Saber 11 mayor a 230 puntos.</div>
+            <div class="col-lg-7">
+              <div class="widget-box mb-3">
+                <span class="widget-tag">ICETEX</span>
+                <h5>¿Cómo solicitar tu crédito ICETEX?</h5>
+                <p style="margin-bottom: 12px">
+                  El proceso es sencillo. Aquí los pasos básicos:
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 10px">
+                  <div
+                    style="display: flex; gap: 12px; align-items: flex-start"
+                  >
+                    <div
+                      style="
+                        width: 26px;
+                        height: 26px;
+                        border-radius: 50%;
+                        background: var(--pb-blue);
+                        color: #fff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.72rem;
+                        font-weight: 800;
+                        flex-shrink: 0;
+                        font-family: &quot;Sora&quot;, sans-serif;
+                      "
+                    >
+                      1
+                    </div>
+                    <div>
+                      <div
+                        style="
+                          font-size: 0.82rem;
+                          font-weight: 700;
+                          color: var(--text);
+                          font-family: &quot;Sora&quot;, sans-serif;
+                        "
+                      >
+                        Verifica tu elegibilidad
+                      </div>
+                      <div style="font-size: 0.78rem; color: var(--muted)">
+                        Estrato 1 a 4, puntaje Saber 11 mayor a 230 puntos.
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style="display: flex; gap: 12px; align-items: flex-start"
+                  >
+                    <div
+                      style="
+                        width: 26px;
+                        height: 26px;
+                        border-radius: 50%;
+                        background: var(--pb-blue);
+                        color: #fff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.72rem;
+                        font-weight: 800;
+                        flex-shrink: 0;
+                        font-family: &quot;Sora&quot;, sans-serif;
+                      "
+                    >
+                      2
+                    </div>
+                    <div>
+                      <div
+                        style="
+                          font-size: 0.82rem;
+                          font-weight: 700;
+                          color: var(--text);
+                          font-family: &quot;Sora&quot;, sans-serif;
+                        "
+                      >
+                        Inscríbete en icetex.gov.co
+                      </div>
+                      <div style="font-size: 0.78rem; color: var(--muted)">
+                        Crea tu usuario y selecciona el fondo para instituciones
+                        de educación superior.
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style="display: flex; gap: 12px; align-items: flex-start"
+                  >
+                    <div
+                      style="
+                        width: 26px;
+                        height: 26px;
+                        border-radius: 50%;
+                        background: var(--pb-blue);
+                        color: #fff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.72rem;
+                        font-weight: 800;
+                        flex-shrink: 0;
+                        font-family: &quot;Sora&quot;, sans-serif;
+                      "
+                    >
+                      3
+                    </div>
+                    <div>
+                      <div
+                        style="
+                          font-size: 0.82rem;
+                          font-weight: 700;
+                          color: var(--text);
+                          font-family: &quot;Sora&quot;, sans-serif;
+                        "
+                      >
+                        Sube los documentos
+                      </div>
+                      <div style="font-size: 0.78rem; color: var(--muted)">
+                        Cédula, recibo de servicios, carta de admisión de
+                        Pascual Bravo.
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style="display: flex; gap: 12px; align-items: flex-start"
+                  >
+                    <div
+                      style="
+                        width: 26px;
+                        height: 26px;
+                        border-radius: 50%;
+                        background: var(--pb-gold);
+                        color: #1a1200;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.72rem;
+                        font-weight: 800;
+                        flex-shrink: 0;
+                        font-family: &quot;Sora&quot;, sans-serif;
+                      "
+                    >
+                      4
+                    </div>
+                    <div>
+                      <div
+                        style="
+                          font-size: 0.82rem;
+                          font-weight: 700;
+                          color: var(--text);
+                          font-family: &quot;Sora&quot;, sans-serif;
+                        "
+                      >
+                        Espera la aprobación
+                      </div>
+                      <div style="font-size: 0.78rem; color: var(--muted)">
+                        El proceso toma entre 5 y 15 días hábiles. El desembolso
+                        va directo a la institución.
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="display:flex;gap:12px;align-items:flex-start">
-                <div style="width:26px;height:26px;border-radius:50%;background:var(--pb-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;font-family:'Sora',sans-serif">2</div>
-                <div>
-                  <div style="font-size:.82rem;font-weight:700;color:var(--text);font-family:'Sora',sans-serif">Inscríbete en icetex.gov.co</div>
-                  <div style="font-size:.78rem;color:var(--muted)">Crea tu usuario y selecciona el fondo para instituciones de educación superior.</div>
-                </div>
-              </div>
-              <div style="display:flex;gap:12px;align-items:flex-start">
-                <div style="width:26px;height:26px;border-radius:50%;background:var(--pb-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;font-family:'Sora',sans-serif">3</div>
-                <div>
-                  <div style="font-size:.82rem;font-weight:700;color:var(--text);font-family:'Sora',sans-serif">Sube los documentos</div>
-                  <div style="font-size:.78rem;color:var(--muted)">Cédula, recibo de servicios, carta de admisión de Pascual Bravo.</div>
-                </div>
-              </div>
-              <div style="display:flex;gap:12px;align-items:flex-start">
-                <div style="width:26px;height:26px;border-radius:50%;background:var(--pb-gold);color:#1a1200;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;font-family:'Sora',sans-serif">4</div>
-                <div>
-                  <div style="font-size:.82rem;font-weight:700;color:var(--text);font-family:'Sora',sans-serif">Espera la aprobación</div>
-                  <div style="font-size:.78rem;color:var(--muted)">El proceso toma entre 5 y 15 días hábiles. El desembolso va directo a la institución.</div>
+
+              <div class="widget-box">
+                <h5 style="margin-bottom: 12px">
+                  ¿Necesitas asesoría personalizada?
+                </h5>
+                <p style="margin-bottom: 14px">
+                  El equipo de financiación de Pascual Bravo te acompaña en el
+                  proceso.
+                </p>
+                <div class="d-flex gap-3 flex-wrap">
+                  <div
+                    style="
+                      flex: 1;
+                      min-width: 160px;
+                      background: var(--bg-soft);
+                      border-radius: 10px;
+                      padding: 12px;
+                      transition: background 0.3s;
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 0.7rem;
+                        color: var(--muted);
+                        font-weight: 600;
+                        margin-bottom: 4px;
+                        font-family: &quot;Sora&quot;, sans-serif;
+                      "
+                    >
+                      TELÉFONO
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.88rem;
+                        font-weight: 700;
+                        color: var(--text);
+                      "
+                    >
+                      +57 (604) 448 0520
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      flex: 1;
+                      min-width: 160px;
+                      background: var(--bg-soft);
+                      border-radius: 10px;
+                      padding: 12px;
+                      transition: background 0.3s;
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 0.7rem;
+                        color: var(--muted);
+                        font-weight: 600;
+                        margin-bottom: 4px;
+                        font-family: &quot;Sora&quot;, sans-serif;
+                      "
+                    >
+                      CORREO
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.82rem;
+                        font-weight: 700;
+                        color: var(--pb-blue);
+                      "
+                    >
+                      financiacion@pascualbravo.edu.co
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      flex: 1;
+                      min-width: 160px;
+                      background: var(--bg-soft);
+                      border-radius: 10px;
+                      padding: 12px;
+                      transition: background 0.3s;
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 0.7rem;
+                        color: var(--muted);
+                        font-weight: 600;
+                        margin-bottom: 4px;
+                        font-family: &quot;Sora&quot;, sans-serif;
+                      "
+                    >
+                      HORARIO
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.82rem;
+                        font-weight: 700;
+                        color: var(--text);
+                      "
+                    >
+                      Lun – Vie 7am – 5pm
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+    </div>
 
-          <div class="widget-box">
-            <h5 style="margin-bottom:12px">📞 ¿Necesitas asesoría personalizada?</h5>
-            <p style="margin-bottom:14px">El equipo de financiación de Pascual Bravo te acompaña en el proceso.</p>
-            <div class="d-flex gap-3 flex-wrap">
-              <div style="flex:1;min-width:160px;background:var(--bg-soft);border-radius:10px;padding:12px;transition:background .3s">
-                <div style="font-size:.7rem;color:var(--muted);font-weight:600;margin-bottom:4px;font-family:'Sora',sans-serif">TELÉFONO</div>
-                <div style="font-size:.88rem;font-weight:700;color:var(--text)">+57 (604) 448 0520</div>
-              </div>
-              <div style="flex:1;min-width:160px;background:var(--bg-soft);border-radius:10px;padding:12px;transition:background .3s">
-                <div style="font-size:.7rem;color:var(--muted);font-weight:600;margin-bottom:4px;font-family:'Sora',sans-serif">CORREO</div>
-                <div style="font-size:.82rem;font-weight:700;color:var(--pb-blue)">financiacion@pascualbravo.edu.co</div>
-              </div>
-              <div style="flex:1;min-width:160px;background:var(--bg-soft);border-radius:10px;padding:12px;transition:background .3s">
-                <div style="font-size:.7rem;color:var(--muted);font-weight:600;margin-bottom:4px;font-family:'Sora',sans-serif">HORARIO</div>
-                <div style="font-size:.82rem;font-weight:700;color:var(--text)">Lun – Vie 7am – 5pm</div>
-              </div>
+    <!-- FOOTER (shared) -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-3">
+            <img
+              src="https://pascualbravo.edu.co/wp-content/uploads/2023/06/cropped-Imagotipo-horizontal_acreditados.png"
+              class="footer-logo"
+              alt="Pascual Bravo"
+            />
+            <p class="footer-text">
+              Institución Universitaria acreditada en Alta Calidad. Medellín,
+              Colombia.
+            </p>
+            <div class="social-row">
+              <a href="#" class="soc-btn">f</a>
+              <a href="#" class="soc-btn">𝕏</a>
+              <a href="#" class="soc-btn">in</a>
+              <a href="#" class="soc-btn">▶</a>
+              <a href="#" class="soc-btn">✦</a>
             </div>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="footer-col-title">Institución</div>
+            <a href="#" class="footer-link">Programas</a>
+            <a href="#" class="footer-link" onclick="showPage('financiacion')"
+              >Financiación</a
+            >
+            <a href="#" class="footer-link">Inscripciones</a>
+            <a href="#" class="footer-link">Movilidad académica</a>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="footer-col-title">Programas</div>
+            <a href="#" class="footer-link">Pregrados</a>
+            <a href="#" class="footer-link">Posgrados</a>
+            <a href="#" class="footer-link">Cursos y diplomados</a>
+            <a href="#" class="footer-link">Investigación</a>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="footer-col-title">Contacto</div>
+            <span class="footer-link" style="cursor: default"
+              >Sede Robledo</span
+            >
+            <span class="footer-link" style="cursor: default"
+              >Calle 73 # 73A – 226, Medellín</span
+            >
+            <a href="tel:+5760444805200" class="footer-link"
+              >+57 (604) 448 0520</a
+            >
+            <a href="mailto:ant@pascualbravo.edu.co" class="footer-link"
+              >ant@pascualbravo.edu.co</a
+            >
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="footer-col-title">Aliados</div>
+            <div class="d-flex flex-wrap gap-3 align-items-center mt-2">
+              <img
+                src="https://pascualbravo.edu.co/wp-content/uploads/2019/12/gov.co_.png"
+                style="
+                  height: 28px;
+                  filter: brightness(0) invert(1);
+                  opacity: 0.35;
+                "
+                alt="gov.co"
+              />
+              <img
+                src="https://pascualbravo.edu.co/wp-content/uploads/2023/06/cropped-Imagotipo-horizontal_acreditados.png"
+                style="
+                  height: 28px;
+                  filter: brightness(0) invert(1);
+                  opacity: 0.35;
+                "
+                alt="Pascual Bravo"
+              />
+            </div>
+            <a href="#" class="footer-link mt-3" style="font-size: 0.73rem"
+              >Mapa del sitio</a
+            >
+          </div>
+        </div>
+        <hr class="footer-divider" />
+        <div
+          class="d-flex flex-wrap justify-content-between align-items-center gap-2"
+        >
+          <span class="footer-bottom"
+            >© 2026 Institución Universitaria Pascual Bravo. Todos los derechos
+            reservados.</span
+          >
+          <div class="footer-bottom">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Accesibilidad</a>
+            <a href="#">Mapa del sitio</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-</div>
+    </footer>
 
-<!-- FOOTER (shared) -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-lg-3">
-        <img src="https://pascualbravo.edu.co/wp-content/uploads/2023/06/cropped-Imagotipo-horizontal_acreditados.png" class="footer-logo" alt="Pascual Bravo"/>
-        <p class="footer-text">Institución Universitaria acreditada en Alta Calidad. Medellín, Colombia.</p>
-        <div class="social-row">
-          <a href="#" class="soc-btn">f</a>
-          <a href="#" class="soc-btn">𝕏</a>
-          <a href="#" class="soc-btn">in</a>
-          <a href="#" class="soc-btn">▶</a>
-          <a href="#" class="soc-btn">✦</a>
-        </div>
-      </div>
-      <div class="col-6 col-lg-2">
-        <div class="footer-col-title">Institución</div>
-        <a href="#" class="footer-link">Programas</a>
-        <a href="#" class="footer-link" onclick="showPage('financiacion')">Financiación</a>
-        <a href="#" class="footer-link">Inscripciones</a>
-        <a href="#" class="footer-link">Movilidad académica</a>
-      </div>
-      <div class="col-6 col-lg-2">
-        <div class="footer-col-title">Programas</div>
-        <a href="#" class="footer-link">Pregrados</a>
-        <a href="#" class="footer-link">Posgrados</a>
-        <a href="#" class="footer-link">Cursos y diplomados</a>
-        <a href="#" class="footer-link">Investigación</a>
-      </div>
-      <div class="col-6 col-lg-2">
-        <div class="footer-col-title">Contacto</div>
-        <span class="footer-link" style="cursor:default">Sede Robledo</span>
-        <span class="footer-link" style="cursor:default">Calle 73 # 73A – 226, Medellín</span>
-        <a href="tel:+5760444805200" class="footer-link">+57 (604) 448 0520</a>
-        <a href="mailto:ant@pascualbravo.edu.co" class="footer-link">ant@pascualbravo.edu.co</a>
-      </div>
-      <div class="col-6 col-lg-3">
-        <div class="footer-col-title">Aliados</div>
-        <div class="d-flex flex-wrap gap-3 align-items-center mt-2">
-          <img src="https://pascualbravo.edu.co/wp-content/uploads/2019/12/gov.co_.png" style="height:28px;filter:brightness(0) invert(1);opacity:.35" alt="gov.co"/>
-          <img src="https://pascualbravo.edu.co/wp-content/uploads/2023/06/cropped-Imagotipo-horizontal_acreditados.png" style="height:28px;filter:brightness(0) invert(1);opacity:.35" alt="Pascual Bravo"/>
-        </div>
-        <a href="#" class="footer-link mt-3" style="font-size:.73rem">Mapa del sitio</a>
-      </div>
-    </div>
-    <hr class="footer-divider"/>
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-      <span class="footer-bottom">© 2026 Institución Universitaria Pascual Bravo. Todos los derechos reservados.</span>
-      <div class="footer-bottom">
-        <a href="#">Política de privacidad</a>
-        <a href="#">Accesibilidad</a>
-        <a href="#">Mapa del sitio</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  // ── PAGE NAVIGATION ──
-  function showPage(name) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + name).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    // update nav btns
-    document.querySelectorAll('.page-nav-btn').forEach(b => {
-      b.classList.toggle('active', b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + name + "'"));
-    });
-  }
-
-  // ── HERO SLIDER ──
-  const slides = document.querySelectorAll('.hero-slide');
-  const dots   = document.querySelectorAll('.hero-dot');
-  let cur = 0, timer;
-  function goTo(i) {
-    slides[cur].classList.remove('active'); dots[cur].classList.remove('active');
-    cur = (i + slides.length) % slides.length;
-    slides[cur].classList.add('active'); dots[cur].classList.add('active');
-  }
-  function autoplay() { timer = setInterval(() => goTo(cur + 1), 5500); }
-  function reset() { clearInterval(timer); autoplay(); }
-  document.getElementById('heroPrev').onclick = () => { goTo(cur - 1); reset(); };
-  document.getElementById('heroNext').onclick = () => { goTo(cur + 1); reset(); };
-  dots.forEach(d => d.onclick = () => { goTo(+d.dataset.i); reset(); });
-  autoplay();
-
-  // ── SEARCH ──
-  const overlay = document.getElementById('searchOverlay');
-  document.getElementById('searchBtn').onclick  = () => overlay.classList.add('open');
-  document.getElementById('searchClose').onclick = () => overlay.classList.remove('open');
-  overlay.onclick = e => { if (e.target === overlay) overlay.classList.remove('open'); };
-
-  // ── DARK MODE ──
-  const toggle = document.getElementById('darkToggle');
-  toggle.onclick = () => {
-    const html = document.documentElement;
-    const isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    localStorage.setItem('pb-theme', isDark ? 'light' : 'dark');
-  };
-  // Restore preference
-  const saved = localStorage.getItem('pb-theme');
-  if (saved) document.documentElement.setAttribute('data-theme', saved);
-
-  // ── FILTER PILLS ──
-  document.querySelectorAll('.filter-pill').forEach(pill => {
-    pill.onclick = () => {
-      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-    };
-  });
-
-  // ── CALCULADORA ──
-  function calcular() {
-    const base = parseFloat(document.getElementById('calcPrograma').value);
-    const tipo = parseFloat(document.getElementById('calcTipo').value);
-    const cuotas = parseInt(document.getElementById('calcCuotas').value);
-    const total = base * tipo;
-    const cuota = total / cuotas;
-    const fmt = n => '$' + Math.round(n).toLocaleString('es-CO');
-    document.getElementById('calcResultado').textContent = fmt(cuota);
-    document.getElementById('calcResultadoLabel').textContent = 'por cuota · ' + cuotas + (cuotas === 1 ? ' pago' : ' cuotas');
-    document.getElementById('calcTotal').textContent = fmt(total);
-  }
-  calcular();
-
-  // ── SCROLL REVEAL ──
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-        io.unobserve(e.target);
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // ── PAGE NAVIGATION ──
+      function showPage(name) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("active"));
+        document.getElementById("page-" + name).classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        // update nav btns
+        document.querySelectorAll(".page-nav-btn").forEach((b) => {
+          b.classList.toggle(
+            "active",
+            b.getAttribute("onclick") &&
+              b.getAttribute("onclick").includes("'" + name + "'"),
+          );
+        });
       }
-    });
-  }, { threshold: 0.05 });
-  document.querySelectorAll('.fade-up').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(16px)';
-    el.style.transition = 'opacity .48s ease, transform .48s ease';
-    io.observe(el);
-  });
-</script>
-</body>
+
+      // ── HERO SLIDER ──
+      const slides = document.querySelectorAll(".hero-slide");
+      const dots = document.querySelectorAll(".hero-dot");
+      let cur = 0,
+        timer;
+      function goTo(i) {
+        slides[cur].classList.remove("active");
+        dots[cur].classList.remove("active");
+        cur = (i + slides.length) % slides.length;
+        slides[cur].classList.add("active");
+        dots[cur].classList.add("active");
+      }
+      function autoplay() {
+        timer = setInterval(() => goTo(cur + 1), 5500);
+      }
+      function reset() {
+        clearInterval(timer);
+        autoplay();
+      }
+      document.getElementById("heroPrev").onclick = () => {
+        goTo(cur - 1);
+        reset();
+      };
+      document.getElementById("heroNext").onclick = () => {
+        goTo(cur + 1);
+        reset();
+      };
+      dots.forEach(
+        (d) =>
+          (d.onclick = () => {
+            goTo(+d.dataset.i);
+            reset();
+          }),
+      );
+      autoplay();
+
+      // ── SEARCH ──
+      const overlay = document.getElementById("searchOverlay");
+      document.getElementById("searchBtn").onclick = () =>
+        overlay.classList.add("open");
+      document.getElementById("searchClose").onclick = () =>
+        overlay.classList.remove("open");
+      overlay.onclick = (e) => {
+        if (e.target === overlay) overlay.classList.remove("open");
+      };
+
+      // ── DARK MODE ──
+      const toggle = document.getElementById("darkToggle");
+      toggle.onclick = () => {
+        const html = document.documentElement;
+        const isDark = html.getAttribute("data-theme") === "dark";
+        html.setAttribute("data-theme", isDark ? "light" : "dark");
+        localStorage.setItem("pb-theme", isDark ? "light" : "dark");
+      };
+      // Restore preference
+      const saved = localStorage.getItem("pb-theme");
+      if (saved) document.documentElement.setAttribute("data-theme", saved);
+
+      // ── FILTER PILLS ──
+      document.querySelectorAll(".filter-pill").forEach((pill) => {
+        pill.onclick = () => {
+          document
+            .querySelectorAll(".filter-pill")
+            .forEach((p) => p.classList.remove("active"));
+          pill.classList.add("active");
+        };
+      });
+
+      // ── CALCULADORA ──
+      function calcular() {
+        const base = parseFloat(document.getElementById("calcPrograma").value);
+        const tipo = parseFloat(document.getElementById("calcTipo").value);
+        const cuotas = parseInt(document.getElementById("calcCuotas").value);
+        const total = base * tipo;
+        const cuota = total / cuotas;
+        const fmt = (n) => "$" + Math.round(n).toLocaleString("es-CO");
+        document.getElementById("calcResultado").textContent = fmt(cuota);
+        document.getElementById("calcResultadoLabel").textContent =
+          "por cuota · " + cuotas + (cuotas === 1 ? " pago" : " cuotas");
+        document.getElementById("calcTotal").textContent = fmt(total);
+      }
+      calcular();
+
+      // ── SCROLL REVEAL ──
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.style.opacity = "1";
+              e.target.style.transform = "translateY(0)";
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.05 },
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(16px)";
+        el.style.transition = "opacity .48s ease, transform .48s ease";
+        io.observe(el);
+      });
+    </script>
+  </body>
 </html>
