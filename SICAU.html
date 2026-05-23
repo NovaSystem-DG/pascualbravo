@@ -1,0 +1,1222 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SICAU — Pascual Bravo</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="SICAU.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="sb-brand">
+          <div class="b-name">SICAU</div>
+          <div class="b-sub">Pascual Bravo · Sistema Académico</div>
+        </div>
+        <div class="sb-user">
+          <div class="av" id="sidebarAv"><span class="av-text">NA</span></div>
+          <div>
+            <div class="u-name">Nichole Andrade</div>
+            <div class="u-prog">Ing. Software · Nivel 1</div>
+          </div>
+        </div>
+        <nav class="sb-nav">
+          <div class="nav-item active" onclick="goTo('dashboard', this)">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+            </svg>
+            Dashboard
+          </div>
+          <div class="nav-item" onclick="goTo('materias', this)">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"
+              />
+            </svg>
+            Materias
+          </div>
+          <div class="nav-item" onclick="goTo('notas', this)">
+            <svg viewBox="0 0 24 24">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+            Notas
+          </div>
+          <div class="nav-item" onclick="goTo('encuestas', this)">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+            </svg>
+            Encuestas
+          </div>
+          <div class="nav-item" onclick="goTo('perfil', this)">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            Perfil
+          </div>
+          <div class="nav-item" onclick="goTo('mensajes', this)">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"
+              />
+            </svg>
+            Mensajes
+          </div>
+        </nav>
+        <div class="sb-bottom">
+          <div class="logout">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            Cerrar sesión
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN -->
+      <div class="main">
+        <div class="topbar">
+          <div class="topbar-title" id="pageTitle">Hola, Nichole!</div>
+          <div class="topbar-right">
+            <input type="text" class="search" placeholder="Buscar..." />
+            <div class="icon-btn">
+              <svg viewBox="0 0 24 24">
+                <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                <path d="M13.73 21a2 2 0 01-3.46 0" />
+              </svg>
+              <div class="notif-dot"></div>
+            </div>
+            <div class="icon-btn">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+                <circle cx="5" cy="12" r="1" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- DASHBOARD -->
+        <div id="page-dashboard" class="page active">
+          <div class="dash-grid">
+            <div class="left-col">
+              <div class="g2">
+                <div class="card">
+                  <div class="card-head">
+                    <span class="card-title">Docentes vinculados</span
+                    ><span class="card-link">Ver más</span>
+                  </div>
+                  <div class="sub-row">
+                    <div
+                      class="mini-av"
+                      style="
+                        background: #eff6ff;
+                        color: #3b82f6;
+                        font-size: 15px;
+                        font-weight: 400;
+                      "
+                    >
+                      OL
+                    </div>
+                    <div>
+                      <strong>Olivia Miller</strong
+                      ><small>Mentor · Ing. Software</small>
+                    </div>
+                    <span class="ml-auto chat-ic"
+                      ><svg viewBox="0 0 24 24">
+                        <path
+                          d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"
+                        /></svg
+                    ></span>
+                  </div>
+                  <div class="sub-row">
+                    <div
+                      class="mini-av"
+                      style="
+                        background: #ecfdf5;
+                        color: #10b981;
+                        font-size: 11px;
+                      "
+                    >
+                      LG
+                    </div>
+                    <div>
+                      <strong>Liam Garcia</strong
+                      ><small>Docente · Cálculo</small>
+                    </div>
+                    <span class="ml-auto chat-ic"
+                      ><svg viewBox="0 0 24 24">
+                        <path
+                          d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"
+                        /></svg
+                    ></span>
+                  </div>
+                  <div class="sub-row">
+                    <div
+                      class="mini-av"
+                      style="
+                        background: #fef3c7;
+                        color: #d97706;
+                        font-size: 11px;
+                      "
+                    >
+                      JL
+                    </div>
+                    <div>
+                      <strong>Jackson López</strong
+                      ><small>Docente · Física</small>
+                    </div>
+                    <span class="ml-auto chat-ic"
+                      ><svg viewBox="0 0 24 24">
+                        <path
+                          d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"
+                        /></svg
+                    ></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-head">
+                    <span class="card-title">Próximos eventos</span
+                    ><span class="card-link">Ver más</span>
+                  </div>
+                  <div class="sub-row">
+                    <div
+                      class="mini-av"
+                      style="
+                        background: #fffbeb;
+                        font-size: 11px;
+                        color: #92400e;
+                        font-weight: 400;
+                      "
+                    >
+                      RF
+                    </div>
+                    <div>
+                      <strong>Robot Fest · 2026</strong
+                      ><small>22 May 2026 · 13:00</small>
+                    </div>
+                  </div>
+                  <div class="sub-row">
+                    <div
+                      class="mini-av"
+                      style="
+                        background: #f0f9ff;
+                        font-size: 11px;
+                        color: #0369a1;
+                      "
+                    >
+                      IA
+                    </div>
+                    <div>
+                      <strong>Webinar Herramientas IA</strong
+                      ><small>28 May 2026 · 17:00</small>
+                    </div>
+                  </div>
+                  <div class="sub-row">
+                    <div
+                      class="mini-av"
+                      style="
+                        background: #fdf4ff;
+                        font-size: 11px;
+                        color: #7e22ce;
+                      "
+                    >
+                      CG
+                    </div>
+                    <div>
+                      <strong>Ceremonia de Grados</strong
+                      ><small>15 Jun 2026 · 09:00</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-head">
+                  <span class="card-title">Mi horario</span>
+                </div>
+                <div class="cal-wrap">
+                  <div class="mini-cal">
+                    <div class="cal-header">
+                      <div class="cal-nav">
+                        <svg viewBox="0 0 24 24">
+                          <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                      </div>
+                      <span>Mayo 2026</span>
+                      <div class="cal-nav">
+                        <svg viewBox="0 0 24 24">
+                          <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="cal-days">
+                      <span class="day-lbl">L</span
+                      ><span class="day-lbl">M</span
+                      ><span class="day-lbl">X</span
+                      ><span class="day-lbl">J</span
+                      ><span class="day-lbl">V</span
+                      ><span class="day-lbl">S</span
+                      ><span class="day-lbl">D</span> <span class="day">1</span
+                      ><span class="day">2</span><span class="day">3</span
+                      ><span class="day">4</span><span class="day">5</span
+                      ><span class="day">6</span><span class="day">7</span>
+                      <span class="day">8</span><span class="day">9</span
+                      ><span class="day">10</span><span class="day">11</span
+                      ><span class="day">12</span><span class="day">13</span
+                      ><span class="day">14</span> <span class="day">15</span
+                      ><span class="day">16</span><span class="day">17</span
+                      ><span class="day has-event">18</span
+                      ><span class="day has-event">19</span
+                      ><span class="day today">22</span
+                      ><span class="day">21</span> <span class="day">22</span
+                      ><span class="day has-event">23</span
+                      ><span class="day">24</span><span class="day">25</span
+                      ><span class="day">26</span><span class="day">27</span
+                      ><span class="day">28</span>
+                    </div>
+                  </div>
+                  <div class="sched-list">
+                    <div class="sched-item">
+                      <span class="sched-date">18</span
+                      ><span class="sched-name">Robótica</span
+                      ><span class="sched-time">19:30</span>
+                    </div>
+                    <div class="sched-item">
+                      <span class="sched-date">19</span
+                      ><span class="sched-name">Electrónica Digital</span
+                      ><span class="sched-time">16:00</span>
+                    </div>
+                    <div class="sched-item">
+                      <span class="sched-date">23</span
+                      ><span class="sched-name">Parcial Cálculo II</span
+                      ><span class="sched-time">08:00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT INDICATORS -->
+            <div class="right-panel" id="progPanel">
+              <div class="ind-card">
+                <div class="ind-label">Asistencia</div>
+                <div class="ring-wrap">
+                  <svg viewBox="0 0 44 44">
+                    <circle class="ring-bg" cx="22" cy="22" r="18" />
+                    <circle
+                      class="ring-fill"
+                      id="ring-asist"
+                      cx="22"
+                      cy="22"
+                      r="18"
+                      stroke="#3b82f6"
+                      stroke-dasharray="113.1"
+                      stroke-dashoffset="113.1"
+                      transform="rotate(-90 22 22)"
+                    />
+                  </svg>
+                  <div class="ring-pct" style="color: #3b82f6">60%</div>
+                </div>
+              </div>
+              <div class="ind-card">
+                <div class="ind-label">Tareas</div>
+                <div class="ring-wrap">
+                  <svg viewBox="0 0 44 44">
+                    <circle class="ring-bg" cx="22" cy="22" r="18" />
+                    <circle
+                      class="ring-fill"
+                      id="ring-tareas"
+                      cx="22"
+                      cy="22"
+                      r="18"
+                      stroke="#10b981"
+                      stroke-dasharray="113.1"
+                      stroke-dashoffset="113.1"
+                      transform="rotate(-90 22 22)"
+                    />
+                  </svg>
+                  <div class="ring-pct" style="color: #10b981">90%</div>
+                </div>
+              </div>
+              <div class="ind-card">
+                <div class="ind-label">Promedio</div>
+                <div class="ring-wrap">
+                  <svg viewBox="0 0 44 44">
+                    <circle class="ring-bg" cx="22" cy="22" r="18" />
+                    <circle
+                      class="ring-fill"
+                      id="ring-prom"
+                      cx="22"
+                      cy="22"
+                      r="18"
+                      stroke="#f59e0b"
+                      stroke-dasharray="113.1"
+                      stroke-dashoffset="113.1"
+                      transform="rotate(-90 22 22)"
+                    />
+                  </svg>
+                  <div class="ring-pct" style="color: #f59e0b">3.8</div>
+                </div>
+              </div>
+              <div class="ind-card">
+                <div class="ind-label">Actividades</div>
+                <div class="ring-wrap">
+                  <svg viewBox="0 0 44 44">
+                    <circle class="ring-bg" cx="22" cy="22" r="18" />
+                    <circle
+                      class="ring-fill"
+                      id="ring-act"
+                      cx="22"
+                      cy="22"
+                      r="18"
+                      stroke="#8b5cf6"
+                      stroke-dasharray="113.1"
+                      stroke-dashoffset="113.1"
+                      transform="rotate(-90 22 22)"
+                    />
+                  </svg>
+                  <div class="ring-pct" style="color: #8b5cf6">45%</div>
+                </div>
+              </div>
+              <div class="see-more-btn" onclick="goTo('notas', null)">
+                Ver notas
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOTAS -->
+        <div id="page-notas" class="page">
+          <div class="page-subhead">
+            <div>
+              <h2>Historial académico</h2>
+              <small>1018242509 · Ing. Software · SNIES 10/2/6</small>
+            </div>
+            <select
+              style="
+                font-size: 11px;
+                padding: 6px 10px;
+                border: 1.5px solid var(--border);
+                border-radius: 8px;
+                background: var(--card);
+                color: var(--text);
+                outline: none;
+              "
+            >
+              <option>Todos los periodos</option>
+              <option>2026-1</option>
+              <option>2025-2</option>
+            </select>
+          </div>
+          <div class="alert-banner">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            <div>
+              <strong>Periodo actual: 2026-1</strong>
+              <span>— Promedio semestral: 0.0 (en curso)</span>
+            </div>
+          </div>
+          <div class="notas-wrap">
+            <div class="semester-block">
+              <div class="sem-header">
+                <span class="sem-title">Periodo 2026-1 — En curso</span
+                ><span class="sem-avg">Prom: 0.0</span>
+              </div>
+              <table class="notas-table">
+                <thead>
+                  <tr>
+                    <th>Asignatura</th>
+                    <th>Tipo</th>
+                    <th>Créditos</th>
+                    <th>Estado</th>
+                    <th>Nota</th>
+                    <th>Concepto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>F98111 — CIENCIA, TECNOLOGÍA Y DESARROLLO</td>
+                    <td>Form. Humanística</td>
+                    <td>2</td>
+                    <td>
+                      <span class="status-dot dot-yellow"></span>Matriculada
+                    </td>
+                    <td>—</td>
+                    <td><span class="nota-pill nota-p">En curso</span></td>
+                  </tr>
+                  <tr>
+                    <td>F87111 — LENGUAJE Y CULTURA</td>
+                    <td>Form. Humanística</td>
+                    <td>2</td>
+                    <td>
+                      <span class="status-dot dot-yellow"></span>Matriculada
+                    </td>
+                    <td>—</td>
+                    <td><span class="nota-pill nota-p">En curso</span></td>
+                  </tr>
+                  <tr>
+                    <td>F82111 — PENSAMIENTO CREATIVO</td>
+                    <td>Form. Humanística</td>
+                    <td>2</td>
+                    <td>
+                      <span class="status-dot dot-yellow"></span>Matriculada
+                    </td>
+                    <td>—</td>
+                    <td><span class="nota-pill nota-p">En curso</span></td>
+                  </tr>
+                  <tr>
+                    <td>F87311 — RAZONAMIENTO MATEMÁTICO Y ANALÍTICO</td>
+                    <td>Fund. Básica</td>
+                    <td>3</td>
+                    <td>
+                      <span class="status-dot dot-yellow"></span>Matriculada
+                    </td>
+                    <td>—</td>
+                    <td><span class="nota-pill nota-p">En curso</span></td>
+                  </tr>
+                  <tr>
+                    <td>F88111 — INGLÉS 1</td>
+                    <td>Form. Humanística</td>
+                    <td>2</td>
+                    <td>
+                      <span class="status-dot dot-yellow"></span>Matriculada
+                    </td>
+                    <td>—</td>
+                    <td><span class="nota-pill nota-p">En curso</span></td>
+                  </tr>
+                  <tr>
+                    <td>SU1001 — DESARROLLO DE PENSAMIENTO COMPUTACIONAL</td>
+                    <td>Fund. Básica Prof.</td>
+                    <td>4</td>
+                    <td>
+                      <span class="status-dot dot-yellow"></span>Matriculada
+                    </td>
+                    <td>—</td>
+                    <td><span class="nota-pill nota-p">En curso</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px"
+            >
+              <div class="info-card">
+                <h3>Resumen académico</h3>
+                <div class="info-row">
+                  <span class="info-lbl">Estado</span
+                  ><span class="info-val">Matriculado</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-lbl">PCS</span
+                  ><span class="info-val">0.0</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-lbl">PCA</span
+                  ><span class="info-val">0.0</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-lbl">Nivel</span
+                  ><span class="info-val">1</span>
+                </div>
+              </div>
+              <div class="info-card">
+                <h3>Créditos</h3>
+                <div class="info-row">
+                  <span class="info-lbl">Cursados</span
+                  ><span class="info-val">0</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-lbl">Aprobados</span
+                  ><span class="info-val">0</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-lbl">Faltantes</span
+                  ><span class="info-val">160</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-lbl">Totales</span
+                  ><span class="info-val">160</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MATERIAS -->
+        <div id="page-materias" class="page">
+          <div class="page-subhead">
+            <h2>Mis materias</h2>
+            <small>Periodo 2026-1 · 6 asignaturas · 15 créditos</small>
+          </div>
+          <div class="tabs">
+            <button class="tab active">Actuales</button>
+            <button class="tab">Cancelar asignatura</button>
+            <button class="tab">Malla curricular</button>
+          </div>
+          <div class="materias-wrap">
+            <div class="materia-card">
+              <div class="mat-head">
+                <div
+                  class="mat-icon"
+                  style="
+                    background: #eff6ff;
+                    color: #3b82f6;
+                    font-size: 18px;
+                    font-weight: 800;
+                  "
+                >
+                  M
+                </div>
+                <span
+                  class="mat-chip"
+                  style="background: #dbeafe; color: #1d4ed8"
+                  >2 créditos</span
+                >
+              </div>
+              <div class="mat-code">F87311</div>
+              <div class="mat-name">Razonamiento Matemático y Analítico</div>
+              <div class="mat-teacher">Dr. Jorge Restrepo · Lunes 7–9am</div>
+              <div class="mat-progress-bar">
+                <div
+                  class="mat-fill"
+                  style="width: 35%; background: #3b82f6"
+                ></div>
+              </div>
+              <div class="mat-footer">
+                <span class="mat-credits">Avance</span
+                ><span class="mat-pct" style="color: #3b82f6">35%</span>
+              </div>
+            </div>
+            <div class="materia-card">
+              <div class="mat-head">
+                <div
+                  class="mat-icon"
+                  style="
+                    background: #ecfdf5;
+                    color: #059669;
+                    font-size: 18px;
+                    font-weight: 800;
+                  "
+                >
+                  C
+                </div>
+                <span
+                  class="mat-chip"
+                  style="background: #dcfce7; color: #15803d"
+                  >4 créditos</span
+                >
+              </div>
+              <div class="mat-code">SU1001</div>
+              <div class="mat-name">
+                Desarrollo de Pensamiento Computacional
+              </div>
+              <div class="mat-teacher">Ing. Valentina Torres · Mar 14–16h</div>
+              <div class="mat-progress-bar">
+                <div
+                  class="mat-fill"
+                  style="width: 42%; background: #10b981"
+                ></div>
+              </div>
+              <div class="mat-footer">
+                <span class="mat-credits">Avance</span
+                ><span class="mat-pct" style="color: #10b981">42%</span>
+              </div>
+            </div>
+            <div class="materia-card">
+              <div class="mat-head">
+                <div
+                  class="mat-icon"
+                  style="
+                    background: #fffbeb;
+                    color: #d97706;
+                    font-size: 18px;
+                    font-weight: 800;
+                  "
+                >
+                  L
+                </div>
+                <span
+                  class="mat-chip"
+                  style="background: #fef3c7; color: #92400e"
+                  >2 créditos</span
+                >
+              </div>
+              <div class="mat-code">F87111</div>
+              <div class="mat-name">Lenguaje y Cultura</div>
+              <div class="mat-teacher">Prof. Ana Gómez · Mié 10–12h</div>
+              <div class="mat-progress-bar">
+                <div
+                  class="mat-fill"
+                  style="width: 28%; background: #f59e0b"
+                ></div>
+              </div>
+              <div class="mat-footer">
+                <span class="mat-credits">Avance</span
+                ><span class="mat-pct" style="color: #f59e0b">28%</span>
+              </div>
+            </div>
+            <div class="materia-card">
+              <div class="mat-head">
+                <div
+                  class="mat-icon"
+                  style="
+                    background: #fdf4ff;
+                    color: #7e22ce;
+                    font-size: 18px;
+                    font-weight: 800;
+                  "
+                >
+                  T
+                </div>
+                <span
+                  class="mat-chip"
+                  style="background: #f3e8ff; color: #7e22ce"
+                  >2 créditos</span
+                >
+              </div>
+              <div class="mat-code">F98111</div>
+              <div class="mat-name">Ciencia, Tecnología y Desarrollo</div>
+              <div class="mat-teacher">Dr. Luis Herrera · Jue 8–10h</div>
+              <div class="mat-progress-bar">
+                <div
+                  class="mat-fill"
+                  style="width: 50%; background: #8b5cf6"
+                ></div>
+              </div>
+              <div class="mat-footer">
+                <span class="mat-credits">Avance</span
+                ><span class="mat-pct" style="color: #8b5cf6">50%</span>
+              </div>
+            </div>
+            <div class="materia-card">
+              <div class="mat-head">
+                <div
+                  class="mat-icon"
+                  style="
+                    background: #fef2f2;
+                    color: #b91c1c;
+                    font-size: 18px;
+                    font-weight: 800;
+                  "
+                >
+                  P
+                </div>
+                <span
+                  class="mat-chip"
+                  style="background: #fee2e2; color: #b91c1c"
+                  >2 créditos</span
+                >
+              </div>
+              <div class="mat-code">F82111</div>
+              <div class="mat-name">Pensamiento Creativo</div>
+              <div class="mat-teacher">Lic. Marcela Ruiz · Vie 13–15h</div>
+              <div class="mat-progress-bar">
+                <div
+                  class="mat-fill"
+                  style="width: 20%; background: #f43f5e"
+                ></div>
+              </div>
+              <div class="mat-footer">
+                <span class="mat-credits">Avance</span
+                ><span class="mat-pct" style="color: #f43f5e">20%</span>
+              </div>
+            </div>
+            <div class="materia-card">
+              <div class="mat-head">
+                <div
+                  class="mat-icon"
+                  style="
+                    background: #f0fdf4;
+                    color: #065f46;
+                    font-size: 18px;
+                    font-weight: 800;
+                  "
+                >
+                  I
+                </div>
+                <span
+                  class="mat-chip"
+                  style="background: #d1fae5; color: #065f46"
+                  >2 créditos</span
+                >
+              </div>
+              <div class="mat-code">F88111</div>
+              <div class="mat-name">Inglés 1</div>
+              <div class="mat-teacher">Teacher Mike Brown · Lun 16–18h</div>
+              <div class="mat-progress-bar">
+                <div
+                  class="mat-fill"
+                  style="width: 60%; background: #10b981"
+                ></div>
+              </div>
+              <div class="mat-footer">
+                <span class="mat-credits">Avance</span
+                ><span class="mat-pct" style="color: #10b981">60%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENCUESTAS -->
+        <div id="page-encuestas" class="page">
+          <div class="page-subhead">
+            <h2>Encuestas</h2>
+            <small>3 pendientes · 2 completadas</small>
+          </div>
+          <div class="encuestas-wrap">
+            <div class="survey-card">
+              <div class="surv-icon" style="background: #fef2f2">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#b91c1c"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"
+                  />
+                  <polyline points="14,2 14,8 20,8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                </svg>
+              </div>
+              <div class="surv-body">
+                <div class="surv-title">
+                  Encuesta de satisfacción docente 2026-1
+                </div>
+                <div class="surv-meta">
+                  Evaluación · Todas las asignaturas · Anónima
+                </div>
+                <div class="surv-deadline" style="color: #b91c1c">
+                  Vence: 30 mayo, 2026
+                </div>
+              </div>
+              <div class="surv-actions">
+                <span class="badge-urgent">Urgente</span
+                ><button class="btn-surv">Responder</button>
+              </div>
+            </div>
+            <div class="survey-card">
+              <div class="surv-icon" style="background: #eff6ff">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1d4ed8"
+                  stroke-width="1.8"
+                >
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                  <polyline points="9,22 9,12 15,12 15,22" />
+                </svg>
+              </div>
+              <div class="surv-body">
+                <div class="surv-title">
+                  Caracterización socioeconómica — Matrícula cero 2026-1
+                </div>
+                <div class="surv-meta">
+                  Apoyo económico · Formulario de inscripción
+                </div>
+                <div class="surv-deadline" style="color: #92400e">
+                  Vence: 6 junio, 2026
+                </div>
+              </div>
+              <div class="surv-actions">
+                <span class="badge-open">Abierta</span
+                ><button class="btn-surv">Diligenciar</button>
+              </div>
+            </div>
+            <div class="survey-card">
+              <div class="surv-icon" style="background: #ecfdf5">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#059669"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+                  />
+                </svg>
+              </div>
+              <div class="surv-body">
+                <div class="surv-title">
+                  Encuesta de bienestar estudiantil — Primer semestre
+                </div>
+                <div class="surv-meta">
+                  Bienestar · Salud mental y condiciones de vida
+                </div>
+                <div class="surv-deadline" style="color: #15803d">
+                  Vence: 15 junio, 2026
+                </div>
+              </div>
+              <div class="surv-actions">
+                <span class="badge-open">Abierta</span
+                ><button class="btn-surv">Responder</button>
+              </div>
+            </div>
+            <div class="survey-card" style="opacity: 0.65">
+              <div class="surv-icon" style="background: #f8fafc">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#64748b"
+                  stroke-width="1.8"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <div class="surv-body">
+                <div class="surv-title">
+                  Encuesta de inducción institucional 2026
+                </div>
+                <div class="surv-meta">
+                  Institucional · Orientación a nuevos estudiantes
+                </div>
+                <div class="surv-deadline" style="color: var(--muted)">
+                  Completada: 2 feb, 2026
+                </div>
+              </div>
+              <div class="surv-actions">
+                <span class="badge-closed">Cerrada</span
+                ><button class="btn-surv-outline">Ver respuestas</button>
+              </div>
+            </div>
+            <div class="survey-card" style="opacity: 0.65">
+              <div class="surv-icon" style="background: #f8fafc">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#64748b"
+                  stroke-width="1.8"
+                >
+                  <line x1="18" y1="20" x2="18" y2="10" />
+                  <line x1="12" y1="20" x2="12" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="14" />
+                </svg>
+              </div>
+              <div class="surv-body">
+                <div class="surv-title">
+                  Evaluación de actividades de bienestar 2025-2
+                </div>
+                <div class="surv-meta">Bienestar · Semestre anterior</div>
+                <div class="surv-deadline" style="color: var(--muted)">
+                  Completada: 15 dic, 2025
+                </div>
+              </div>
+              <div class="surv-actions">
+                <span class="badge-closed">Cerrada</span
+                ><button class="btn-surv-outline">Ver respuestas</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PERFIL -->
+        <div id="page-perfil" class="page">
+          <div class="page-subhead">
+            <h2>Perfil</h2>
+            <small>Gestiona tu información personal</small>
+          </div>
+          <div class="profile-layout">
+            <div class="profile-left">
+              <div class="profile-hero">
+                <div
+                  class="profile-av"
+                  id="profileAv"
+                  onclick="document.getElementById('avatarInput').click()"
+                >
+                  <span class="av-text-big" id="profileInitials">NA</span>
+                  <div class="av-overlay">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"
+                      />
+                      <circle cx="12" cy="13" r="4" />
+                    </svg>
+                  </div>
+                </div>
+                <input
+                  type="file"
+                  id="avatarInput"
+                  accept="image/*"
+                  style="display: none"
+                  onchange="changeAvatar(this)"
+                />
+                <div class="p-name">Nichole Andrade Córdoba</div>
+                <div class="p-id">ID: 1018242509</div>
+                <div class="p-prog">Ingeniería de Software · JORNADA ÚNICA</div>
+                <div class="p-stats">
+                  <div class="p-stat">
+                    <div class="p-stat-num">1</div>
+                    <div class="p-stat-lbl">Nivel</div>
+                  </div>
+                  <div class="p-stat">
+                    <div class="p-stat-num">15</div>
+                    <div class="p-stat-lbl">Créditos</div>
+                  </div>
+                  <div class="p-stat">
+                    <div class="p-stat-num">6</div>
+                    <div class="p-stat-lbl">Materias</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <h3>
+                  Datos personales
+                  <span
+                    style="
+                      font-size: 11px;
+                      font-weight: 600;
+                      color: var(--blue);
+                      cursor: pointer;
+                    "
+                    onclick="toggleEditMode()"
+                    >Editar</span
+                  >
+                </h3>
+                <div class="info-row">
+                  <span class="info-lbl">Documento</span
+                  ><span class="info-val">C.C. 1018242509</span>
+                </div>
+                <div class="info-row" id="row-email">
+                  <span class="info-lbl">Correo institucional</span>
+                  <span
+                    class="info-val editable"
+                    onclick="
+                      editField(
+                        'email',
+                        'nichole.andrade509@pascualbravo.edu.co',
+                      )
+                    "
+                    >nichole.andrade509@pascualbravo.edu.co</span
+                  >
+                </div>
+                <div class="info-row" id="row-phone">
+                  <span class="info-lbl">Teléfono</span>
+                  <span
+                    class="info-val editable"
+                    onclick="editField('phone', '+57 312 000 0000')"
+                    >+57 312 000 0000</span
+                  >
+                </div>
+                <div class="info-row" id="row-city">
+                  <span class="info-lbl">Ciudad</span>
+                  <span
+                    class="info-val editable"
+                    onclick="editField('city', 'Medellín, Antioquia')"
+                    >Medellín, Antioquia</span
+                  >
+                </div>
+                <div class="info-row" id="row-estrato">
+                  <span class="info-lbl">Estrato</span>
+                  <span
+                    class="info-val editable"
+                    onclick="editField('estrato', '2')"
+                    >2</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-right">
+              <div class="work-card">
+                <h3>
+                  Información laboral <span onclick="saveWork()">Guardar</span>
+                </h3>
+                <div class="work-field">
+                  <label>Empresa / Lugar de trabajo</label>
+                  <input
+                    type="text"
+                    placeholder="Ej. Empresa XYZ, Freelance, No trabajo actualmente..."
+                    id="work-empresa"
+                  />
+                </div>
+                <div class="work-field">
+                  <label>Cargo o rol</label>
+                  <input
+                    type="text"
+                    placeholder="Ej. Desarrollador junior, Practicante..."
+                    id="work-cargo"
+                  />
+                </div>
+                <div class="work-field">
+                  <label>Horario laboral</label>
+                  <div class="work-schedule">
+                    <div>
+                      <label
+                        style="
+                          font-size: 10px;
+                          color: var(--muted);
+                          margin-bottom: 3px;
+                          display: block;
+                        "
+                        >Entrada</label
+                      >
+                      <input type="time" id="work-entrada" value="08:00" />
+                    </div>
+                    <div>
+                      <label
+                        style="
+                          font-size: 10px;
+                          color: var(--muted);
+                          margin-bottom: 3px;
+                          display: block;
+                        "
+                        >Salida</label
+                      >
+                      <input type="time" id="work-salida" value="17:00" />
+                    </div>
+                  </div>
+                </div>
+                <div class="work-field">
+                  <label>Dias laborales</label>
+                  <div
+                    style="display: flex; gap: 5px; flex-wrap: wrap"
+                    id="dias-container"
+                  >
+                    <span
+                      class="dia-chip"
+                      data-day="L"
+                      onclick="toggleDia(this)"
+                      >L</span
+                    >
+                    <span
+                      class="dia-chip"
+                      data-day="M"
+                      onclick="toggleDia(this)"
+                      >M</span
+                    >
+                    <span
+                      class="dia-chip"
+                      data-day="X"
+                      onclick="toggleDia(this)"
+                      >X</span
+                    >
+                    <span
+                      class="dia-chip"
+                      data-day="J"
+                      onclick="toggleDia(this)"
+                      >J</span
+                    >
+                    <span
+                      class="dia-chip"
+                      data-day="V"
+                      onclick="toggleDia(this)"
+                      >V</span
+                    >
+                    <span
+                      class="dia-chip"
+                      data-day="S"
+                      onclick="toggleDia(this)"
+                      >S</span
+                    >
+                    <span
+                      class="dia-chip"
+                      data-day="D"
+                      onclick="toggleDia(this)"
+                      >D</span
+                    >
+                  </div>
+                </div>
+                <div class="work-field">
+                  <label>Observaciones</label>
+                  <textarea
+                    rows="2"
+                    placeholder="Ej. Trabajo remoto, turnos rotativos..."
+                    id="work-obs"
+                  ></textarea>
+                </div>
+                <button class="btn-save-work" onclick="saveWork()">
+                  Guardar información laboral
+                </button>
+              </div>
+
+              <div class="info-card" id="work-saved" style="display: none">
+                <h3>Datos laborales guardados</h3>
+                <div id="work-saved-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MENSAJES -->
+        <div id="page-mensajes" class="page">
+          <div class="page-subhead">
+            <h2>Mensajes</h2>
+            <small>3 sin leer</small>
+          </div>
+          <div class="empty-state">
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            >
+              <path
+                d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"
+              />
+            </svg>
+            <span style="font-size: 13px; font-weight: 600"
+              >Módulo de mensajes próximamente</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .dia-chip {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        background: var(--sub);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        transition: all 0.15s;
+      }
+      .dia-chip.active {
+        background: var(--blue);
+        color: #fff;
+        border-color: var(--blue);
+      }
+    </style>
+
+    <script src="SICAU.js"></script>
+  </body>
+</html>
+
