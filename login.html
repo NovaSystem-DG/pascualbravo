@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login SICAU</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+<div class="login-container">
+
+  <div class="login-card">
+
+    <div class="logo-area">
+      <div class="logo-circle">S</div>
+      <h1>SICAU</h1>
+      <p>Sistema académico Pascual Bravo</p>
+    </div>
+
+    <!-- PREVIEW DEL USUARIO -->
+    <div class="profile-preview" id="profilePreview">
+
+      <img id="previewImg"
+      src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
+
+      <div class="profile-info">
+        <h3 id="previewName">Usuario</h3>
+        <span id="previewCareer">Carrera</span>
+      </div>
+
+    </div>
+
+    <!-- USUARIO -->
+    <div class="input-group">
+
+      <label>Correo institucional</label>
+
+      <div class="user-input-wrap">
+
+        <input
+          type="text"
+          id="usuario"
+          placeholder="usuario"
+        >
+
+        <div class="domain-box">
+          @pascualbravo.edu.co
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="input-group">
+
+      <label>Contraseña</label>
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Ingresa tu contraseña"
+      >
+
+    </div>
+
+    <button class="login-btn" onclick="login()">
+      Ingresar
+    </button>
+
+    <div class="error-msg" id="errorMsg"></div>
+
+  </div>
+
+</div>
+
+<script src="usuarios.js"></script>
+<script src="login.js"></script>
+
+</body>
+</html>

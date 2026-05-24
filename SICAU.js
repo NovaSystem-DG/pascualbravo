@@ -17,6 +17,59 @@
    NAVEGACIÓN ENTRE PÁGINAS
 ========================================================= */
 
+const usuario = JSON.parse(
+  localStorage.getItem("usuarioActivo")
+);
+
+if(usuario){
+
+  // SIDEBAR
+
+  document.querySelector(".u-name").innerText =
+    usuario.nombre;
+
+  document.querySelector(".u-prog").innerText =
+    usuario.carrera + " · " + usuario.nivel;
+
+  // PERFIL
+
+  document.querySelector(".p-name").innerText =
+    usuario.nombre;
+
+  document.querySelector(".p-prog").innerText =
+    usuario.carrera;
+
+  // FOTO SIDEBAR
+
+  document.getElementById("sidebarAv").innerHTML = `
+    <img
+      src="${usuario.foto}"
+      style="
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        border-radius:50%;
+      "
+    >
+  `;
+
+  // FOTO PERFIL
+
+  document.getElementById("profileAv").innerHTML = `
+    <img
+      src="${usuario.foto}"
+      style="
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        border-radius:50%;
+      "
+    >
+  `;
+
+}
+
+
 function goTo(page, el){
 
   // Oculta todas las páginas
@@ -515,3 +568,51 @@ window.addEventListener('load', () => {
   loadLastPage();
 
 });
+
+
+function changeAvatar(input) {
+  const file = input.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    const imageData = e.target.result;
+
+    // FOTO PERFIL GRANDE
+    const profileAv = document.getElementById("profileAv");
+    profileAv.innerHTML = `<img src="${imageData}" alt="avatar">`;
+
+    // FOTO SIDEBAR
+    const sidebarAv = document.getElementById("sidebarAv");
+    sidebarAv.innerHTML = `<img src="${imageData}" alt="avatar">`;
+
+    // GUARDAR EN LOCALSTORAGE
+    localStorage.setItem("userAvatar", imageData);
+  };
+
+  reader.readAsDataURL(file);
+}
+// CARGAR FOTO GUARDADA
+window.addEventListener("load", () => {
+  const savedAvatar = localStorage.getItem("userAvatar");
+
+  if (savedAvatar) {
+    const profileAv = document.getElementById("profileAv");
+
+    if (profileAv) {
+      profileAv.innerHTML = `<img src="${savedAvatar}" alt="avatar">`;
+    }
+
+    const sidebarAv = document.getElementById("sidebarAv");
+
+    if (sidebarAv) {
+      sidebarAv.innerHTML = `<img src="${savedAvatar}" alt="avatar">`;
+    }
+  }
+});
+
+function cerrarSesion() {
+  window.location.href = "Login.html";
+}
