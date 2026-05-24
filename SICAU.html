@@ -1216,7 +1216,16 @@
       }
     </style>
 
+    <script>
+      function cerrarSesion() {
+        // borrar usuario guardado
+        localStorage.removeItem("usuarioActivo");
+
+        // enviar al login
+        window.location.href = "login.html";
+      }
+    </script>
+
     <script src="SICAU.js"></script>
   </body>
 </html>
-
