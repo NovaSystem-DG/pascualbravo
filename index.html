@@ -1385,6 +1385,66 @@
       .d3 {
         animation-delay: 0.24s;
       }
+
+      /* =========================
+   RESPONSIVE
+========================= */
+
+      @media (max-width: 768px) {
+        .nota-card {
+          width: 95%;
+          padding: 20px;
+          border-radius: 20px;
+        }
+
+        .nota-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+
+        .nota-header h2 {
+          font-size: 1.4rem;
+        }
+
+        .nota-info {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .nota-info div {
+          width: 100%;
+        }
+
+        .nota-contenido {
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+
+        .nota-footer {
+          flex-direction: column;
+          gap: 12px;
+          align-items: stretch;
+        }
+
+        .nota-footer button {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nota-card {
+          padding: 16px;
+        }
+
+        .nota-header h2 {
+          font-size: 1.2rem;
+        }
+
+        .nota-contenido {
+          font-size: 0.9rem;
+        }
+      }
     </style>
   </head>
   <body>
