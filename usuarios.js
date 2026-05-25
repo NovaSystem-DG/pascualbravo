@@ -1,9 +1,9 @@
 const usuarios = [
 
   {
-    usuario: "n.andrade",
+    usuario: "n.williams",
     password: "12345",
-    nombre: "Nichole Andrade Córdoba",
+    nombre: "Alejandro Campos Hernandez",
     carrera: "Ingeniería de Software",
     nivel: "Nivel 1",
     foto: "https://i.pravatar.cc/150?img=32"
