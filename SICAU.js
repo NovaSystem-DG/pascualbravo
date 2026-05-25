@@ -92,13 +92,13 @@ function goTo(page, el){
 
   // Cambia el título superior
   const titles = {
-    dashboard : 'Hola, Nichole!',
-    materias  : 'Mis materias',
-    notas     : 'Historial académico',
-    encuestas : 'Encuestas',
-    perfil    : 'Perfil',
-    mensajes  : 'Mensajes'
-  };
+  dashboard : `Hola, ${usuario.nombre.split(' ')[0]}!`,
+  materias  : 'Mis materias',
+  notas     : 'Historial académico',
+  encuestas : 'Encuestas',
+  perfil    : 'Perfil',
+  mensajes  : 'Mensajes'
+};
 
   document.getElementById('pageTitle').textContent =
     titles[page] || '';
@@ -570,30 +570,6 @@ window.addEventListener('load', () => {
 });
 
 
-function changeAvatar(input) {
-  const file = input.files[0];
-
-  if (!file) return;
-
-  const reader = new FileReader();
-
-  reader.onload = function (e) {
-    const imageData = e.target.result;
-
-    // FOTO PERFIL GRANDE
-    const profileAv = document.getElementById("profileAv");
-    profileAv.innerHTML = `<img src="${imageData}" alt="avatar">`;
-
-    // FOTO SIDEBAR
-    const sidebarAv = document.getElementById("sidebarAv");
-    sidebarAv.innerHTML = `<img src="${imageData}" alt="avatar">`;
-
-    // GUARDAR EN LOCALSTORAGE
-    localStorage.setItem("userAvatar", imageData);
-  };
-
-  reader.readAsDataURL(file);
-}
 // CARGAR FOTO GUARDADA
 window.addEventListener("load", () => {
   const savedAvatar = localStorage.getItem("userAvatar");
@@ -614,5 +590,7 @@ window.addEventListener("load", () => {
 });
 
 function cerrarSesion() {
+  localStorage.removeItem("usuarioActivo");
   window.location.href = "Login.html";
+
 }
