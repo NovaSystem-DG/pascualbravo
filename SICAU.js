@@ -591,6 +591,6 @@ window.addEventListener("load", () => {
 
 function cerrarSesion() {
   localStorage.removeItem("usuarioActivo");
-  window.location.href = "Login.html";
+  window.location.href = "login.html";
 
 }
